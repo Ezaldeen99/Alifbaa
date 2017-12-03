@@ -15,14 +15,14 @@
         android:id="@+id/drag_and_drop"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:numColumns="5"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:numColumns="5" />
 
     <Button
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="20dp" />
 
 </LinearLayout>
