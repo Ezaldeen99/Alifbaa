@@ -16,7 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FlashCardsActivity"></activity>
+        <activity android:name=".AlphabetTilesActivity" />
+        <activity android:name=".TouchTheLetterActivity"/>
+        <activity android:name=".LetterTrackingActivity" />
+        <activity android:name=".FlashCardsActivity" />
     </application>
 
 </manifest>
