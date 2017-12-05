@@ -16,6 +16,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".DragAndDrop" />
+        <activity android:name=".TrackingLetter" />
+        <activity android:name=".FindTheLetter" />
+        <activity android:name=".FlashCards"></activity>
     </application>
 
 </manifest>

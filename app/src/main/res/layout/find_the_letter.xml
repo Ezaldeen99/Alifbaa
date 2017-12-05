@@ -11,6 +11,7 @@
         android:layout_gravity="center"
         android:layout_margin="15dp"
         android:text="@string/find_the_letter"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -74,6 +75,7 @@
         android:id="@+id/button"
         android:layout_width="45dp"
         android:layout_height="45dp"
+        android:background="@mipmap/homeButton"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="40dp" />
