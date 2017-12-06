@@ -24,7 +24,7 @@
         android:layout_height="80dp"
         android:layout_gravity="center"
         android:layout_marginBottom="15dp"
-        android:background="#000" />
+        android:src="@drawable/letter_a"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -39,7 +39,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@android:color/holo_green_light" />
+            android:src="@drawable/letter_a" />
 
         <ImageView
             android:id="@+id/image2"
@@ -47,7 +47,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@android:color/darker_gray" />
+            android:src="@drawable/letter_d" />
     </LinearLayout>
 
     <LinearLayout
@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@android:color/holo_blue_light" />
+            android:src="@drawable/letter_f" />
 
         <ImageView
             android:id="@+id/image4"
@@ -71,7 +71,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="@android:color/holo_orange_dark" />
+            android:src="@drawable/letter_c" />
     </LinearLayout>
 
     <Button
