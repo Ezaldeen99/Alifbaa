@@ -17,9 +17,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".AlphabetTilesActivity" />
-        <activity android:name=".TouchTheLetterActivity"/>
+        <activity android:name=".TouchTheLetterActivity" />
         <activity android:name=".LetterTrackingActivity" />
         <activity android:name=".FlashCardsActivity" />
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
