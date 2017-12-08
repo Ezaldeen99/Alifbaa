@@ -8,6 +8,7 @@
     <gradient
         android:endColor="@color/backgroundLight"
         android:gradientRadius="60dp"
+        android:angle="270"
         android:startColor="@color/backgroundDark"/>
 
 </shape>

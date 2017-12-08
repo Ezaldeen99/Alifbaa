@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background_colored"
     tools:context="com.example.android.alifbaa.TouchTheLetterActivity">
 
     <TextView
@@ -75,7 +76,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/home_button"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:background="@drawable/homebutton"

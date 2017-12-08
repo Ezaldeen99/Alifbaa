@@ -10,7 +10,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity {
     ImageView flashCardGame;
-    ImageView touchTheletterGame;
+    ImageView touchTheLetterGame;
     ImageView alphabetTilesGame;
     ImageView letterTrackingGame;
     CircleImageView settings;
@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         flashCardGame = (ImageView) findViewById(R.id._1st_game_button);
-        touchTheletterGame = (ImageView) findViewById(R.id._2nd_game_button);
+        touchTheLetterGame = (ImageView) findViewById(R.id._2nd_game_button);
         alphabetTilesGame = (ImageView) findViewById(R.id._3ed_game_button);
         letterTrackingGame = (ImageView) findViewById(R.id._4th_game_button);
         settings = (CircleImageView) findViewById(R.id.settings);
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-        touchTheletterGame.setOnClickListener(new View.OnClickListener() {
+        touchTheLetterGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TouchTheLetterActivity.class);
