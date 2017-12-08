@@ -4,8 +4,6 @@ package com.example.android.alifbaa;
 import android.app.FragmentManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-import android.view.View;
 
 
 public class FlashCardsActivity extends AppCompatActivity implements FragmentManager.OnBackStackChangedListener {
@@ -23,18 +21,13 @@ public class FlashCardsActivity extends AppCompatActivity implements FragmentMan
         } else {
             isShowingBackLayout = (getFragmentManager().getBackStackEntryCount() > 0);
         }
-        getFragmentManager().addOnBackStackChangedListener(this);
-        View v = findViewById(R.layout.fragment_front_layout);
-        v.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-             flipCard();
-            }
-        });
     }
-
+    public void values(String title_txts, String bannerImgUrl) {
+        if (!title_txts.isEmpty()) {
+            flipCard();
+        }
+    }
     public void flipCard() {
-        Log.e(" ghgh","ghghgh");
         if (isShowingBackLayout) {
             getFragmentManager().popBackStack();
             return;
