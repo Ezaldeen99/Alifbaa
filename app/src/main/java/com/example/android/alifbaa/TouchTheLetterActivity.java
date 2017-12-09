@@ -20,6 +20,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         homeButton=(Button) findViewById(R.id.home_button);
         image1=(ImageView) findViewById(R.id.image1);
 
+
         // Home button to return back to the main activity
         homeButton.setOnClickListener(new View.OnClickListener() {
             @Override
