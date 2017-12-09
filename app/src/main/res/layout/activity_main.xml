@@ -57,9 +57,10 @@
 
     <ImageView
         android:id="@+id/_1st_game_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
         android:layout_margin="8dp"
+        android:background="@drawable/games_background"
         android:src="@drawable/game1"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -68,9 +69,10 @@
 
     <ImageView
         android:id="@+id/_2nd_game_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
         android:layout_margin="8dp"
+        android:background="@drawable/games_background"
         android:src="@drawable/game2"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,9 +81,10 @@
 
     <ImageView
         android:id="@+id/_3ed_game_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
         android:layout_margin="8dp"
+        android:background="@drawable/games_background"
         android:src="@drawable/game4"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,9 +93,10 @@
 
     <ImageView
         android:id="@+id/_4th_game_button"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="120dp"
+        android:layout_height="140dp"
         android:layout_margin="8dp"
+        android:background="@drawable/games_background"
         android:src="@drawable/game3"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
@@ -108,7 +112,7 @@
         android:layout_marginStart="8dp"
         android:background="@android:color/transparent"
         android:padding="20dp"
-        android:text="full version"
+        android:text="@string/full_version"
         app:layout_constraintBottom_toTopOf="@+id/app_store_Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
