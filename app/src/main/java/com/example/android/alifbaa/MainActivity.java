@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, FlashCardsActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         touchTheLetterGame.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, TouchTheLetterActivity.class);
                 startActivity(intent);
-                finish();
+
             }
         });
         alphabetTilesGame.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, AlphabetTilesActivity.class);
                 startActivity(intent);
-                finish();
             }
         });
         letterTrackingGame.setOnClickListener(new View.OnClickListener() {
@@ -53,16 +51,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LetterTrackingActivity.class);
                 startActivity(intent);
-                finish();
+
             }
         });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, LetterTrackingActivity.class);
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
-                finish();
                 //add here instead of LetterTrackingActivity.class add the settingActivity.class when available
             }
         });

@@ -1,9 +1,9 @@
 package com.example.android.alifbaa;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -23,7 +23,7 @@ public class SettingsActivity extends AppCompatActivity {
         // facebook button
         final ImageView facebook = (ImageView) findViewById(R.id.facebook_icon);
         //home button
-        final Button home_button = (Button) findViewById(R.id.float_button_home);
+        final FloatingActionButton home_button = findViewById(R.id.float_button_home);
         // random order
         final Switch switch1 = (Switch) findViewById(R.id.random_order);
         // Lowercase letters
