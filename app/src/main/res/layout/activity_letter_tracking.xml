@@ -2,19 +2,33 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary">
+    android:background="@drawable/background_colored">
 
     <ImageView
+        android:id="@+id/clouds"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/home"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="40dp"
-        android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:background="@color/colorAccent"
-        android:contentDescription="letter image" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/clouds" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/grass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/grass" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="letter image"
+        android:src="@drawable/letter_a" />
 
     <Button
         android:id="@+id/home"
@@ -22,7 +36,8 @@
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="@dimen/activity_horizontal_margin" />
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/homebutton" />
 
 
     <Button
@@ -30,5 +45,6 @@
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/activity_horizontal_margin" />
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/eraser" />
 </RelativeLayout>

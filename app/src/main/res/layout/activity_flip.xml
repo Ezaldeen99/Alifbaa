@@ -7,14 +7,32 @@
     android:background="@drawable/background_colored"
     tools:context=".FlashCardsActivity">
 
+    <ImageView
+        android:id="@+id/clouds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/clouds" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/grass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/grass" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:paddingBottom="20dp"
         android:layout_marginTop="40dp"
-        android:textColor="@android:color/black"
+        android:paddingBottom="20dp"
         android:text="@string/tap_to_reveal_object"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
 
