@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView alphabetTilesGame;
     ImageView letterTrackingGame;
     CircleImageView settings;
-
+// this is a change 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
