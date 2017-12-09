@@ -1,9 +1,8 @@
 package com.example.android.alifbaa;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +25,9 @@ public class BackLayoutFragment extends Fragment {
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("   ","hhgg");
-                ((FlashCardsActivity)getActivity()).values("title_txt","bannerImgUrl");
+                ((FlashCardsActivity)getActivity()).flipCard(true);
             }
         });
         return v;
     }
-
 }

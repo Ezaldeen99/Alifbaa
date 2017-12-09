@@ -12,7 +12,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:src="@drawable/ic_home_white_48dp" />
+            android:src="@drawable/homebutton" />
         <Switch
             android:id="@+id/random_order"
             android:layout_width="fill_parent"
@@ -108,7 +108,7 @@
             android:layout_margin="8dp"
             android:layout_toLeftOf="@id/email_icon"
             android:scaleType="centerCrop"
-            android:src="@drawable/facebookIcon" />
+            android:src="@drawable/facebookicon" />
         <ImageView
             android:id="@+id/twitter_icon"
             android:layout_width="48dp"
@@ -116,7 +116,7 @@
             android:layout_alignParentBottom="true"
             android:layout_margin="8dp"
             android:layout_toLeftOf="@id/facebook_icon"
-            android:src="@drawable/twitterIcon" />
+            android:src="@drawable/twittericon" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
