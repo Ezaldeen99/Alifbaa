@@ -1,7 +1,6 @@
 package com.example.android.alifbaa;
 
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -17,8 +16,8 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_touch_the_letter);
 
-        homeButton=(Button) findViewById(R.id.home_button);
-        image1=(ImageView) findViewById(R.id.image1);
+        homeButton= findViewById(R.id.home_button);
+        image1= findViewById(R.id.image1);
 
         // Home button to return back to the main activity
         homeButton.setOnClickListener(new View.OnClickListener() {
@@ -39,14 +38,6 @@ public class TouchTheLetterActivity extends AppCompatActivity {
                     }
                 });
                 dialog.create().show();
-            }
-        });
-
-        image1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(TouchTheLetterActivity.this,WordExampleActivity.class);
-                startActivity(intent);
             }
         });
     }

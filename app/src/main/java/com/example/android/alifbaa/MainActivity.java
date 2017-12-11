@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
-                //add here instead of LetterTrackingActivity.class add the settingActivity.class when available
             }
         });
 

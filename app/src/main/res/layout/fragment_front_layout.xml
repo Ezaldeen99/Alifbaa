@@ -8,7 +8,8 @@
 
     <ImageView
         android:id="@+id/image_linear"
+        android:background="@android:color/white"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/letter_a" />
+        android:src="@drawable/letter_a" />
 </LinearLayout>
