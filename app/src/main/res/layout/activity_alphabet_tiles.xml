@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/background_colored">
+    android:background="@drawable/full_background">
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,6 +25,7 @@
         android:layout_height="45dp"
         android:layout_gravity="center"
         android:layout_marginBottom="10dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginTop="20dp"
+        android:background="@drawable/homebutton"/>
 
 </LinearLayout>
