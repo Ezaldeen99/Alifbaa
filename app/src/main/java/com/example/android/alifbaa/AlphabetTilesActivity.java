@@ -13,6 +13,7 @@ public class AlphabetTilesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alphabet_tiles);
+        int x =0 ;
 
     }
 }
