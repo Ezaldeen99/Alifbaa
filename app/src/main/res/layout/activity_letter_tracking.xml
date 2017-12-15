@@ -4,23 +4,55 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_colored">
 
+    <ImageView
+        android:id="@+id/clouds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/clouds" />
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:layout_centerVertical="true"
+    android:contentDescription="letter image"
+    android:background="@drawable/letter_a">
+
     <com.example.android.alifbaa.PaintView
         android:id="@+id/paintView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+</LinearLayout>
+
+
+
+    <ImageView
+        android:id="@+id/grass"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/grass" />
+
+
+
     <Button
-        android:id="@+id/home"
+        android:id="@+id/home_button"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:background="@drawable/homebutton"/>
+        android:background="@drawable/homebutton" />
+
 
     <Button
         android:id="@+id/erase"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
-        android:layout_margin="@dimen/activity_horizontal_margin" />
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:background="@drawable/homebutton" />
 </RelativeLayout>
