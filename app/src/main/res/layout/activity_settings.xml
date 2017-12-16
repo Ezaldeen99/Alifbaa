@@ -4,7 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/full_background"
+        android:background="@drawable/background_colored"
         tools:context="com.example.android.alifbaa.SettingsActivity">
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/float_button_home"

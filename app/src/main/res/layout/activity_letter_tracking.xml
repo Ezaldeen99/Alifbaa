@@ -4,23 +4,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_colored">
 
-    <ImageView
-        android:id="@+id/clouds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/clouds" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ImageView
-        android:id="@+id/grass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/grass" />
+    <include layout="@layout/background_objects" />
 
     <ImageView
         android:layout_width="wrap_content"
