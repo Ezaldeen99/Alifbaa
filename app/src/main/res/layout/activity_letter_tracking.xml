@@ -54,5 +54,5 @@
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:background="@drawable/homebutton" />
+        android:background="@drawable/eraser" />
 </RelativeLayout>
