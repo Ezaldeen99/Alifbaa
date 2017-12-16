@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+// sulaiman
 
 public class MainActivity extends AppCompatActivity {
     ImageView flashCardGame;
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
-
             }
         });
 
