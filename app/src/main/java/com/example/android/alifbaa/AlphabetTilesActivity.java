@@ -5,14 +5,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.GridView;
 
 import java.text.CharacterIterator;
 import java.text.StringCharacterIterator;
 import java.util.ArrayList;
 import java.util.List;
-import android.view.View;
-import android.widget.Button;
 
 /**
  * Created by brayan pc on 12/4/2017.
@@ -44,7 +44,7 @@ public class AlphabetTilesActivity extends AppCompatActivity {
         letters.add(new Letter(27,R.drawable.letter_z3));
         letters.add(new Letter(28,R.drawable.letter_z4));
         letters.add(new Letter(29,R.drawable.letter_z5));
-        GridView gridView =(GridView) findViewById(R.id.drag_and_drop);
+        GridView gridView = findViewById(R.id.drag_and_drop);
         alphabetTilesAdapter alphabetTilesAdapter=new alphabetTilesAdapter(this,R.layout.letter_item,letters);
 
         gridView.setAdapter(alphabetTilesAdapter);
