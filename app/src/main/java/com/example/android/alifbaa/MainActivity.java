@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         flashCardGame = (ImageView) findViewById(R.id._1st_game_button);
         touchTheLetterGame = (ImageView) findViewById(R.id._2nd_game_button);
-        alphabetTilesGame = (ImageView) findViewById(R.id._3ed_game_button);
+        alphabetTilesGame = (ImageView) findViewById(R.id._3rd_game_button);
         letterTrackingGame = (ImageView) findViewById(R.id._4th_game_button);
         settings = (CircleImageView) findViewById(R.id.settings);
         flashCardGame.setOnClickListener(new View.OnClickListener() {

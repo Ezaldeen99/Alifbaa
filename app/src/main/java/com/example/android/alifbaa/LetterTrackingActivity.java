@@ -24,7 +24,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
         paintView = (PaintView) findViewById(R.id.paintView);
         DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        paintView.init(metrics);
+        paintView.init();
 
         earser.setOnClickListener(new View.OnClickListener() {
             @Override
