@@ -3,7 +3,7 @@ package com.example.android.alifbaa;
 /**
  * Created by sulaiman on 20/12/2017.
  */
-
+//AlphabetTilesViewHolder
 public class AlphabetTilesViewHolder {
     int position;
     public AlphabetTilesViewHolder(int position){
