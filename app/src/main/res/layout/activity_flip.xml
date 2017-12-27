@@ -4,16 +4,48 @@
     android:id="@+id/flash"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_colored"
     tools:context=".FlashCardsActivity">
 
+    <ImageView
+        android:id="@+id/clouds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/clouds" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/grass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/grass" />
+
+    <LinearLayout
+        android:id="@+id/image_flip"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/home_button"
+        android:layout_below="@+id/text"
+        android:orientation="vertical">
+
+    </LinearLayout>
+
     <TextView
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
-        android:layout_marginTop="55dp"
-        android:textColor="@android:color/black"
+        android:layout_marginTop="30dp"
+        android:paddingBottom="20dp"
         android:text="@string/tap_to_reveal_object"
+        android:textColor="@android:color/black"
         android:textSize="20sp"
         android:textStyle="bold" />
 
@@ -31,11 +63,10 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_margin="@dimen/activity_horizontal_margin"
-        android:background="@drawable/rightbutton"
-        android:focusable="true" />
+        android:background="@drawable/rightbutton"/>
 
     <Button
-        android:id="@+id/btn_home"
+        android:id="@+id/home_button"
         android:layout_width="45dp"
         android:layout_height="45dp"
         android:layout_alignParentBottom="true"

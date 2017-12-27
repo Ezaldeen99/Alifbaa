@@ -1,8 +1,8 @@
 package com.example.android.alifbaa;
 
 
+import android.app.Fragment;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,11 +24,10 @@ public class BackLayoutFragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_back_layout, container, false);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                ((FlashCardsActivity)getActivity()).flipCard();
+            public void onClick(View v) {
+                ((FlashCardsActivity)getActivity()).flipCard(true);
             }
         });
-        return inflater.inflate(R.layout.fragment_back_layout, container, false);
+        return v;
     }
-
 }
