@@ -3,17 +3,12 @@ package com.example.android.alifbaa;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class CardContainerFragment extends android.app.Fragment {
     private int position;
     private boolean cardFlipped = false;
@@ -119,11 +114,11 @@ public class CardContainerFragment extends android.app.Fragment {
                                  Bundle savedInstanceState) {
             View rootView = inflater.inflate(R.layout.fragment_back_layout, container, false);
             ImageView animalView = rootView.findViewById(R.id.animal_img);
-            ImageView speeling = rootView.findViewById(R.id.letter_animal_spelling_img);
+            ImageView spelling = rootView.findViewById(R.id.letter_animal_spelling_img);
             TextView animalArabic = rootView.findViewById(R.id.letter_sound_text);
             TextView animalEnglish = rootView.findViewById(R.id.animal_in_english);
             animalView.setImageResource(animals[position]);
-            speeling.setImageResource(animalsSpelling[position]);
+            spelling.setImageResource(animalsSpelling[position]);
             rootView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
