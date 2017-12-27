@@ -11,7 +11,6 @@ import android.widget.Button;
 
 
 public class FlashCardsActivity extends FragmentActivity {
-    int pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
