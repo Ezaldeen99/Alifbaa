@@ -30,11 +30,7 @@ public class AlphabetTilesActivity extends AppCompatActivity {
          letters =new ArrayList<>();
 
         int i = 0;
-        for (char c = ABC.first();
-             c != CharacterIterator.DONE;
-             c = ABC.next(), i++) {
-
-
+        for (char c = ABC.first(); c != CharacterIterator.DONE; c = ABC.next(), i++) {
 
             int id = this.getResources().getIdentifier("letter_" + c,"drawable", this.getPackageName());
             letters.add(new Letter(i,id));

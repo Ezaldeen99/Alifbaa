@@ -7,12 +7,12 @@
     <include layout="@layout/background_objects" />
 
     <ImageView
+        android:id="@+id/draw"
+        android:background="@android:color/black"
+        android:src="@drawable/letter_c"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="letter image"
-        android:src="@drawable/letter_a" />
+        android:layout_centerInParent="true" />
 
     <Button
         android:id="@+id/home_button"
@@ -22,7 +22,6 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:background="@drawable/homebutton" />
-
 
     <Button
         android:id="@+id/erase"

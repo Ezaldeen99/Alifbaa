@@ -13,23 +13,35 @@ import android.widget.Button;
  */
 
 public class LetterTrackingActivity extends AppCompatActivity {
+    Button eraser;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_letter_tracking);
         Button home = findViewById(R.id.home_button);
+        eraser = (Button) findViewById(R.id.erase);
+        eraser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-          dialog();
+                dialog();
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         dialog();
     }
-    public void dialog (){
+
+    public void dialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(LetterTrackingActivity.this);
         dialog.setMessage("Are You Sure, all the progress will be lost?");
         dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
@@ -47,3 +59,5 @@ public class LetterTrackingActivity extends AppCompatActivity {
         dialog.create().show();
     }
 }
+
+
