@@ -11,7 +11,6 @@ import android.widget.Button;
 
 
 public class FlashCardsActivity extends FragmentActivity {
-    int pos;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +24,35 @@ public class FlashCardsActivity extends FragmentActivity {
                 finish();
             }
         });
-        ViewPager vpPager = findViewById(R.id.viewpager);
+
+        final ViewPager vpPager = findViewById(R.id.viewpager);
         CardPagerAdapter adapter = new CardPagerAdapter(getFragmentManager());
         vpPager.setAdapter(adapter);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vpPager.setCurrentItem(vpPager.getCurrentItem() + 1, true);
+
+
+            }
+        });
+
+        prev.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                vpPager.setCurrentItem(vpPager.getCurrentItem() - 1, true);
+
+            }
+        });
     }
 
     @Override
     public void onBackPressed() {
         finish();
     }
+
     public class CardPagerAdapter extends android.support.v13.app.FragmentPagerAdapter {
 
         public CardPagerAdapter(FragmentManager fm) {
