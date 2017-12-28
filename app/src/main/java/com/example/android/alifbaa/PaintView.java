@@ -9,6 +9,7 @@ import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -19,14 +20,10 @@ import java.util.ArrayList;
  */
 
 public class PaintView extends View {
+
     public static final int BRUSH_SIZE = 50;
     public static final int COLOR = Color.BLACK;
     private static final float TOUCH_TOLERANCE = 4;
-
-
-//    Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.drawable.letter_b);
-//    Bitmap mutableBitmap = bmp.copy(Bitmap.Config.ARGB_8888, true);
-
 
     private float mX, mY;
     private Path mPath;
@@ -56,8 +53,6 @@ public class PaintView extends View {
     public void init(DisplayMetrics metrics) {
 
 
-//        mCanvas = new Canvas(mutableBitmap);
-
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
 
@@ -72,7 +67,6 @@ public class PaintView extends View {
 
     public void clear(DisplayMetrics metrics) {
 
-//        mCanvas = new Canvas(mutableBitmap);
 
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
@@ -97,11 +91,7 @@ public class PaintView extends View {
 
         }
 
-
-//        canvas.drawBitmap(mutableBitmap, 0, 0, mBitmapPaint);
-
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-
         canvas.restore();
     }
 
@@ -114,11 +104,28 @@ public class PaintView extends View {
 
         Viewbitmap viewbitmap = new Viewbitmap();
         bmp = viewbitmap.getMbitmap();
+        //to get the bitmap which was generated from converting the image view
+
+        if (bmp==null) {
+            Log.e("bitmap", "null");
+        }
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-//                touchStart(x, y);
+
                 mPath = new Path();
+                int color = Color.rgb(34, 47, 96);
+                int color2 = Color.rgb(5, 64, 96);
+
+                if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
+
+                    int pixel = bmp.getPixel(x, y);
+                    if (color2 <= pixel && pixel <= color)
+                        currentColor = Color.RED;
+                    else
+                        currentColor = COLOR;
+                }
+
                 TouchTrace fp = new TouchTrace(currentColor, strokeWidth, mPath);
                 paths.add(fp);
                 mPath.moveTo(x, y);
@@ -126,20 +133,21 @@ public class PaintView extends View {
                 mY = y;
                 invalidate();
                 break;
+
             case MotionEvent.ACTION_MOVE:
-//                touchMove(x, y);
+
                 float dx = Math.abs(x - mX);
                 float dy = Math.abs(y - mY);
 
-                int color = Color.rgb(34, 47, 96);
-                int color2 = Color.rgb(5, 64, 96);
-                if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
+                int color3 = Color.rgb(34, 47, 96);
+                int color4 = Color.rgb(5, 64, 96);
 
+                if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
                     int pixel = bmp.getPixel(x, y);
-                    if (color2 <= pixel && pixel <= color)
+                    if (color4 <= pixel && pixel <= color3)
                         currentColor = Color.RED;
                     else
-                        currentColor = Color.BLACK;
+                        currentColor = COLOR;
                 }
 
                 if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
@@ -151,47 +159,9 @@ public class PaintView extends View {
                 }
                 invalidate();
                 break;
-
-
         }
 
         return true;
     }
 
-
-//    private void touchStart(float x, float y) {
-//        mPath = new Path();
-//        TouchTrace fp = new TouchTrace(currentColor, strokeWidth, mPath);
-//        paths.add(fp);
-//        mPath.moveTo(x, y);
-//        mX = x;
-//        mY = y;
-//    }
-    /////////////////////////////////////////////////
-//    private void touchMove(int x, int y) {
-//        float dx = Math.abs(x - mX);
-//        float dy = Math.abs(y - mY);
-//
-//        int color = Color.rgb(34, 47, 96);
-//        int color2 = Color.rgb(5, 64, 96);
-//        if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
-//
-//            int pixel = bmp.getPixel(x, y);
-//            if (color2 <= pixel && pixel <= color)
-//                currentColor = Color.RED;
-//            else
-//                currentColor = Color.BLACK;
-//        }
-//
-//        if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-//            mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
-//            mX = x;
-//            mY = y;
-//
-//
-//
-//
-//        }
-//    }
-    ///////////////////////////////////////
 }

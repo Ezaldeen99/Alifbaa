@@ -13,12 +13,12 @@
         android:layout_alignParentTop="true"
         android:src="@drawable/clouds" />
     <ImageView
-        android:id="@+id/le"
+        android:id="@+id/letter-tracing"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/letter_b" />
+        android:src="@drawable/letter_b" />
 
 
 <com.example.android.alifbaa.PaintView
