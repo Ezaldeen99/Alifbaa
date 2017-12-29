@@ -29,13 +29,13 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result_layout);
 
-        letterNameText =(TextView)findViewById(R.id.letter_sound_text);
-        animalInEnglishText =(TextView)findViewById(R.id.animal_in_english);
+        letterNameText = findViewById(R.id.letter_sound_text);
+        animalInEnglishText = findViewById(R.id.animal_in_english);
 
-        animalImg=(ImageView) findViewById(R.id.letter_animal_img);
-        wordImg=(ImageView) findViewById(R.id.letter_animal_spelling_img);
+        animalImg= findViewById(R.id.letter_animal_img);
+        wordImg= findViewById(R.id.letter_animal_spelling_img);
 
-        tickButton=(ImageView)findViewById(R.id.tick_button);
+        tickButton= findViewById(R.id.tick_button);
         tickButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,8 +43,8 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
-        String arabicReading= getIntent().getStringExtra("ArabicReading");
-        String englishMeaning= getIntent().getStringExtra("EnglishMeaning");
+        int arabicReading= getIntent().getIntExtra("ArabicReading",R.string.alif);
+        int englishMeaning= getIntent().getIntExtra("EnglishMeaning",R.string.arnab);
         int animalImgResource= getIntent().getIntExtra("AnimalImg",R.drawable.ic_sun);
         int wordImgResource= getIntent().getIntExtra("WordImg",R.drawable.ic_sun);
         int letterVoiceResource= getIntent().getIntExtra("letterVoice",R.raw.keep_trying);
