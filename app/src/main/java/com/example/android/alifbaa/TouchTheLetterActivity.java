@@ -45,8 +45,8 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             new Letter(6, R.drawable.letter_f, R.drawable.animal_f, R.drawable.spelling_f,
                     R.string.haa, R.string.horse, R.raw.letter_6, R.raw.obj_6),
             new Letter(7, R.drawable.letter_g, R.drawable.animal_g, R.drawable.spelling_g,
-            R.string.khaa, R.string.kharoof, R.raw.letter_7, R.raw.obj_7),
-            new Letter(8, R.drawable.letter_h, R.drawable.animal_h,R.drawable.spelling_h,
+                    R.string.khaa, R.string.kharoof, R.raw.letter_7, R.raw.obj_7),
+            new Letter(8, R.drawable.letter_h, R.drawable.animal_h, R.drawable.spelling_h,
                     R.string.daal, R.string.bear, R.raw.letter_8, R.raw.obj_8),
             new Letter(9, R.drawable.letter_i, R.drawable.animal_i, R.drawable.spelling_i,
                     R.string.dhaad, R.string.housefly, R.raw.letter_9, R.raw.obj_9),
@@ -131,14 +131,16 @@ public class TouchTheLetterActivity extends AppCompatActivity {
     }
 
     public void game(final int i) {
+
         questionLetterImg.setImageResource(letters[i].getLetterImg());
+
         int[] randomIndices = new int[3];
         Log.v("IValue", String.valueOf(i));
         if (i == 0 || i == 1) {
             for (int j = 0; j < 3; j++) {
                 randomIndices[j] = randInt(i + 1, letters.length);
             }
-        } else if (i == letters.length) {
+        } else if (i == letters.length-1) {
             for (int j = 0; j < 3; j++) {
                 randomIndices[j] = randInt(0, i);
             }
@@ -147,21 +149,22 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             randomIndices[1] = randInt(i + 1, letters.length);
             randomIndices[2] = randInt(0, (randomIndices[0] + randomIndices[1]) / 2);
 
-//            if (randomIndices[2] == i || randomIndices[2] == randomIndices[1] || randomIndices[2] == randomIndices[0]) {
-//                randomIndices[2] = randInt(randomIndices[0], randomIndices[1]);
-//            }
+            if(randomIndices[2]==i)
+            {
+                randomIndices[2]=randInt(i+1, letters.length);
+            }
 
         }
-        //Todo: checking the randomIndices array for not duplicated values
-        for (int k = 0; k < randomIndices.length; k++) {
+
+        for (int k = 0; k < randomIndices.length-1; k++) {
             for (int j = k + 1; j < randomIndices.length; j++) {
                 if (randomIndices[k] == randomIndices[j]) {
-                    Log.v("DUPLICATED", "" + k);
+                    Log.v("DUPLICATED", "" + randomIndices[k]);
 
-                    if (randomIndices[k] == letters.length)
-                        randomIndices[k] = randInt(0, letters.length - 1);
+                    if (randomIndices[j] == letters.length-1)
+                        randomIndices[j] = randInt(0, letters.length - 1);
                     else
-                        randomIndices[k]=randInt(randomIndices[k]+1,letters.length);
+                        randomIndices[j] = randInt(randomIndices[j] + j, letters.length);
                 }
             }
         }
@@ -171,16 +174,10 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         for (int j = 0; j < 3; j++) {
             tempLetterImages[j] = letters[randomIndices[j]].getLetterImg();
         }
-        Log.v("BeforeShuffle", "tempArray");
-        printArray(tempLetterImages);
-        Log.v("BeforeShuffle", "ImageArray");
-        printArray(imageViews);
+
         // we will shuffle the tempLetterImages array who has 4 letters Imgs we have saved them
         Collections.shuffle(Arrays.asList(imageViews));
-        Log.v("AfterShuffle", "tempArray");
-        printArray(tempLetterImages);
-        Log.v("AfterShuffle", "ImageArray");
-        printArray(imageViews);
+
 
 
         for (int j = 0; j < imageViews.length; j++) {
@@ -218,13 +215,4 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         return rand.nextInt(max - min) + min;
     }
 
-    public void printArray(int[] object) {
-        for (int i = 0; i < object.length; i++)
-            Log.v("ArrayElements", String.valueOf(object[i]));
-    }
-
-    public void printArray(ImageView[] object) {
-        for (int i = 0; i < object.length; i++)
-            Log.v("ArrayElements", String.valueOf(object[i].getImageAlpha()));
-    }
 }
