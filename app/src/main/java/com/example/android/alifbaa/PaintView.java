@@ -35,7 +35,9 @@ public class PaintView extends View {
 
     private Bitmap mBitmap;
     private Canvas mCanvas;
+    private Canvas cCanvas;
     private Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
+    TouchTrace fp;
 
     public PaintView(Context context) {
         super(context);
@@ -78,6 +80,24 @@ public class PaintView extends View {
 
     }
 
+    public void create(DisplayMetrics metrics) {
+
+        int height = metrics.heightPixels;
+        int width = metrics.widthPixels;
+
+        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        cCanvas = new Canvas(mBitmap);
+        cCanvas.drawColor(Color.BLACK);
+
+        for (TouchTrace fb : paths) {
+            mPaint.setColor(fb.color);
+            mPaint.setStrokeWidth(fb.strokeWidth);
+
+            cCanvas.drawPath(fp.path, mPaint);
+        }
+        invalidate();
+
+    }
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -99,75 +119,87 @@ public class PaintView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Bitmap bmp;
+        int letterColor = getResources().getColor(R.color.letters_color);
+        int color = Color.rgb(34, 47, 96);
+
+        Log.e("cccccccccccccccccc", letterColor + "");
+
         int x = (int) event.getX();
         int y = (int) event.getY();
+//         Viewbitmap viewbitmap=LetterTrackingActivity.viewbitmap;
+        if (LetterTrackingActivity.viewbitmap != null) {
+            bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
 
-        Viewbitmap viewbitmap = new Viewbitmap();
-        bmp = viewbitmap.getMbitmap();
-        //to get the bitmap which was generated from converting the image view
+            //to get the bitmap which was generated from converting the image view
 
-        if (bmp==null) {
-            Log.e("bitmap", "null");
-        }
+            if (bmp == null) {
+                Log.e("bitmap", "null");
+            }
 
-        switch (event.getAction()) {
-            case MotionEvent.ACTION_DOWN:
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
 
-                mPath = new Path();
+                    mPath = new Path();
 
-                if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
+                    if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
 
-                    int pixel = bmp.getPixel(x, y);
-                    if (pixel!=Color.TRANSPARENT)
+                        int pixel = bmp.getPixel(x, y);
+                        Log.e("pppppppppppppppppppppp", pixel + "");
 
-                        currentColor = Color.RED;
-                    else
-                        currentColor = COLOR;
-                }
+                        if (pixel != Color.TRANSPARENT && pixel != Color.WHITE)
 
-                TouchTrace fp = new TouchTrace(currentColor, strokeWidth, mPath);
-                paths.add(fp);
-                mPath.moveTo(x, y);
-                mX = x;
-                mY = y;
-                invalidate();
-                break;
-
-            case MotionEvent.ACTION_MOVE:
-
-                float dx = Math.abs(x - mX);
-                float dy = Math.abs(y - mY);
-
-
-
-                if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
-                    int pixel = bmp.getPixel(x, y);
-
-                    if (pixel!=Color.TRANSPARENT)
-
-                        currentColor = Color.RED;
-                    else {
-                        currentColor =COLOR;
-                        TouchTrace Tt = new TouchTrace(currentColor, strokeWidth, mPath);
-                        paths.add(Tt);
-                        mPath.moveTo(x, y);
-                        mX = x;
-                        mY = y;
+                        {
+                            currentColor = Color.RED;
+                            fp = new TouchTrace(currentColor, strokeWidth, mPath);
+                            paths.add(fp);
+                            mPath.moveTo(x, y);
+                            mX = x;
+                            mY = y;
+                            invalidate();
+                        } else
+                            currentColor = COLOR;
                     }
-                }
-
-                if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
-                    mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
-                    mX = x;
-                    mY = y;
 
 
-                }
-                invalidate();
-                break;
+                    break;
+
+                case MotionEvent.ACTION_MOVE:
+
+                    float dx = Math.abs(x - mX);
+                    float dy = Math.abs(y - mY);
+
+
+                    if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
+                        int pixel = bmp.getPixel(x, y);
+                        Log.e("pppppppppppppppppppppp", pixel + "");
+                        if (pixel != Color.TRANSPARENT && pixel != Color.WHITE)
+
+                        {
+                            currentColor = Color.RED;
+                            if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
+                                mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
+                                mX = x;
+                                mY = y;
+
+
+                            }
+                            invalidate();
+                        } else {
+                            currentColor = COLOR;
+//                            TouchTrace Tt = new TouchTrace(currentColor, strokeWidth, mPath);
+//                            paths.add(Tt);
+//                            mPath.moveTo(x, y);
+//                            mX = x;
+//                            mY = y;
+                        }
+                    }
+
+
+                    break;
+            }
+
+
         }
-
         return true;
     }
-
 }

@@ -2,9 +2,6 @@ package com.example.android.alifbaa;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -13,11 +10,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 
 public class LetterTrackingActivity extends AppCompatActivity {
 
+    public static Viewbitmap viewbitmap = null;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,13 +26,17 @@ public class LetterTrackingActivity extends AppCompatActivity {
         Button earser;
         earser = (Button) findViewById(R.id.erase);
 
+        Button add;
+        add = (Button) findViewById(R.id.add);
+
         ImageView r = (ImageView) findViewById(R.id.letter_tracing);
         Bitmap bmp = loadBitmapFromView(r);
 
-        if (bmp==null) {
+        if (bmp == null) {
             Log.e("bitmap", "is null");
         }
-        Viewbitmap viewbitmap = new Viewbitmap();
+
+        viewbitmap = new Viewbitmap();
         viewbitmap.setMbitmap(bmp);
 
         paintView = (PaintView) findViewById(R.id.paintView);
@@ -51,20 +52,27 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
             }
         });
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                paintView.create(metrics);
+
+            }
+        });
 
 
     }
 
-    public  Bitmap loadBitmapFromView(View v) {
+    public Bitmap loadBitmapFromView(View v) {
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        Bitmap b = Bitmap.createBitmap( metrics.widthPixels, metrics.heightPixels , Bitmap.Config.ARGB_8888);
+        Bitmap b = Bitmap.createBitmap(metrics.widthPixels, metrics.heightPixels, Bitmap.Config.ARGB_8888);
         Canvas c = new Canvas(b);
-        v.layout(0, 0,  metrics.widthPixels,metrics.heightPixels);
+        v.layout(0, 0, metrics.widthPixels, metrics.heightPixels);
         v.draw(c);
-        if (b ==null)
+        if (b == null)
             return null;
         else
-        return b;
+            return b;
     }
 }

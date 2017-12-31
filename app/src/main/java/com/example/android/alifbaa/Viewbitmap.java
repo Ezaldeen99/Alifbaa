@@ -6,14 +6,15 @@ import android.graphics.Bitmap;
  * Created by brayan pc on 12/28/2017.
  */
 
-public  class Viewbitmap {
-    private  static Bitmap mbitmap;
+public class Viewbitmap {
+    private Bitmap mbitmap;
 
-    public  Viewbitmap(){
+    public Viewbitmap() {
         super();
     }
-    public   Viewbitmap(Bitmap mbitmap){
-        this.mbitmap=mbitmap;
+
+    public Viewbitmap(Bitmap mbitmap) {
+        this.mbitmap = mbitmap;
     }
 
     public Bitmap getMbitmap() {
