@@ -11,8 +11,8 @@ import android.widget.Switch;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
-//sulaiman
-   @Override
+    //sulaiman
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -104,14 +104,16 @@ public class SettingsActivity extends AppCompatActivity {
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 Toast.makeText(getApplicationContext(), "SeekBar progress: " + i, Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(getApplicationContext(), "SeekBar touch started: ", Toast.LENGTH_SHORT).show();
             }
+
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(getApplicationContext(), "SeekBar touch stopped: ", Toast.LENGTH_SHORT).show();
             }
         });
     }
-    }
+}
