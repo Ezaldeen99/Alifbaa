@@ -8,6 +8,8 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -29,12 +31,12 @@ public class TouchTheLetterActivity extends AppCompatActivity {
     MediaPlayer letterVoice;
     MediaPlayer wrongVoice;
 
-    int i = 0;
+    int i = 28;
 
     ImageView[] imageViews = new ImageView[4];
     Letter[] letters = {
             new Letter(1, R.drawable.letter_a, R.drawable.animal_a, R.drawable.spelling_a,
-            R.string.alif, R.string.arnab, R.raw.letter_1, R.raw.obj_1),
+                    R.string.alif, R.string.arnab, R.raw.letter_1, R.raw.obj_1),
             new Letter(2, R.drawable.letter_b, R.drawable.animal_b, R.drawable.spelling_b,
                     R.string.baa, R.string.duck, R.raw.letter_2, R.raw.obj_2),
             new Letter(3, R.drawable.letter_c, R.drawable.animal_c, R.drawable.spelling_c,
@@ -67,21 +69,21 @@ public class TouchTheLetterActivity extends AppCompatActivity {
                     R.string.taa, R.string.peacock, R.raw.letter_16, R.raw.obj_16),
             new Letter(17, R.drawable.letter_q, R.drawable.animal_q, R.drawable.spelling_q,
                     R.string.zaa, R.string.antelope, R.raw.letter_17, R.raw.obj_17),
-             new Letter(18, R.drawable.letter_r, R.drawable.animal_r, R.drawable.spelling_r,
+            new Letter(18, R.drawable.letter_r, R.drawable.animal_r, R.drawable.spelling_r,
                     R.string.ayn, R.string.spider, R.raw.letter_18, R.raw.obj_18),
-             new Letter(19, R.drawable.letter_s, R.drawable.animal_s, R.drawable.spelling_s,
+            new Letter(19, R.drawable.letter_s, R.drawable.animal_s, R.drawable.spelling_s,
                     R.string.ghayan, R.string.crow, R.raw.letter_19, R.raw.obj_19),
-             new Letter(20, R.drawable.letter_t, R.drawable.animal_t, R.drawable.spelling_t,
+            new Letter(20, R.drawable.letter_t, R.drawable.animal_t, R.drawable.spelling_t,
                     R.string.faa, R.string.elephant, R.raw.letter_20, R.raw.obj_20),
-             new Letter(21, R.drawable.letter_u, R.drawable.animal_u, R.drawable.spelling_u,
+            new Letter(21, R.drawable.letter_u, R.drawable.animal_u, R.drawable.spelling_u,
                     R.string.qaaf, R.string.cat, R.raw.letter_21, R.raw.obj_21),
-             new Letter(22, R.drawable.letter_v, R.drawable.animal_v, R.drawable.spelling_v,
+            new Letter(22, R.drawable.letter_v, R.drawable.animal_v, R.drawable.spelling_v,
                     R.string.kaaf, R.string.dog, R.raw.letter_22, R.raw.obj_22),
             new Letter(23, R.drawable.letter_w, R.drawable.animal_w, R.drawable.spelling_w,
                     R.string.laam, R.string.strok, R.raw.letter_23, R.raw.obj_23),
-             new Letter(24, R.drawable.letter_x, R.drawable.animal_x, R.drawable.spelling_x,
+            new Letter(24, R.drawable.letter_x, R.drawable.animal_x, R.drawable.spelling_x,
                     R.string.meem, R.string.goat, R.raw.letter_24, R.raw.obj_24),
-             new Letter(25, R.drawable.letter_y, R.drawable.animal_y, R.drawable.spelling_y,
+            new Letter(25, R.drawable.letter_y, R.drawable.animal_y, R.drawable.spelling_y,
                     R.string.noon, R.string.tiger, R.raw.letter_25, R.raw.obj_25),
             new Letter(26, R.drawable.letter_z, R.drawable.animal_z, R.drawable.spelling_z,
                     R.string.waaw, R.string.rhino, R.raw.letter_26, R.raw.obj_26),
@@ -92,8 +94,12 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             new Letter(29, R.drawable.letter_z4, R.drawable.animal_z4, R.drawable.spelling_z4,
                     R.string.hamza, R.string.lion, R.raw.letter_29, R.raw.obj_29),
             new Letter(30, R.drawable.letter_z5, R.drawable.animal_z5, R.drawable.spelling_z5,
-                    R.string.yaa, R.string.gragonfly, R.raw.letter_30, R.raw.obj_30)
+                    R.string.yaa, R.string.dragonfly, R.raw.letter_30, R.raw.obj_30)
     };
+
+    // Load the animation like this
+    Animation animSlideRight;
+    Animation animSlideLeft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,11 +113,19 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         image3 = findViewById(R.id.image3);
         image4 = findViewById(R.id.image4);
 
+        // initialization of the sliding animation
+        animSlideRight = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_right);
+        animSlideLeft = AnimationUtils.loadAnimation(getApplicationContext(),
+                R.anim.slide_left);
+
+        // adding the images views to an array
         imageViews[0] = image1;
         imageViews[1] = image2;
         imageViews[2] = image3;
         imageViews[3] = image4;
 
+        // initialize wrong voice
         wrongVoice = MediaPlayer.create(this, R.raw.alert_tone);
 
         // Home button to return back to the main activity
@@ -123,21 +137,37 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         });
     }
 
+    // when the activity starts, it prepares the layout with randomly four-selected objects
+    // from the Letters array and add the letters images to the screen.
+    //Also assign the animation to the four options image views(letters images).as well as,
+    // initializing the touch the sound and letter sound.
     @Override
     protected void onStart() {
         super.onStart();
-        game(i);
-        touchTheVoice = MediaPlayer.create(TouchTheLetterActivity.this, R.raw.touch_the);
-        touchTheVoice.start();
-        touchTheVoice.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                letterVoice = MediaPlayer.create(TouchTheLetterActivity.this, letters[i].getLetterSound());
-                letterVoice.start();
-            }
-        });
+        if (i == letters.length) {
+            gameDone();
+            Log.v("GAMEOVER", "GAMEOVER");
+        } else {
+            game(i);
+
+            // Start the animation like this
+            image1.startAnimation(animSlideRight);
+            image3.startAnimation(animSlideRight);
+            image2.startAnimation(animSlideLeft);
+            image4.startAnimation(animSlideLeft);
+            touchTheVoice = MediaPlayer.create(TouchTheLetterActivity.this, R.raw.touch_the);
+            touchTheVoice.start();
+            touchTheVoice.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mediaPlayer) {
+                    letterVoice = MediaPlayer.create(TouchTheLetterActivity.this, letters[i].getLetterSound());
+                    letterVoice.start();
+                }
+            });
+        }
     }
 
+    // when the activity stops it release the current letter voice and increment the i.
     @Override
     protected void onStop() {
         super.onStop();
@@ -145,11 +175,14 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         i++;
     }
 
+    // in case the user click the bac button, it will ask if he want to lose his progress or not.
     @Override
     public void onBackPressed() {
         dialog();
     }
 
+    // the dialog function is responsible for displaying alert dialog to notify the user that he will lose his progress
+    // if he exit the game and give him two options(Yes,No).
     public void dialog() {
         AlertDialog.Builder dialog = new AlertDialog.Builder(TouchTheLetterActivity.this);
         dialog.setMessage("Are You Sure, all the progress will be lost?");
@@ -170,9 +203,16 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         dialog.create().show();
     }
 
+    // the game function is responsible for developing the random images for display them on the game screen and ,
+    // ensure that the user chose the right letter-image for the right image and in case the user chose the correct answer
+    // new activity will be opened with the rest of the Letter-object values.
+    // the function takes the recent i as parameter,according to i it develop random numbers from (0-30) and save them
+    // to randomIndices array which will be the indexes for randomly-selected-Letter-objects from Letters array.
+    // we check for any duplication in the randomIndices array.after that, we generate another array that has the
+    // imagesResourceId(tempLetterImage) from the Letters array. we shuffle the imageViews array (that has the imagesViews)
+    // and we assign each imageView to the one of imageResourceId(tempLetterImage).
     public void game(final int i) {
-        if(i == letters.length)
-            gameDone();
+
         questionLetterImg.setImageResource(letters[i].getLetterImg());
 
         int[] randomIndices = new int[3];
@@ -181,7 +221,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             for (int j = 0; j < 3; j++) {
                 randomIndices[j] = randInt(i + 1, letters.length);
             }
-        } else if (i == letters.length-1) {
+        } else if (i == letters.length - 1) {
             for (int j = 0; j < 3; j++) {
                 randomIndices[j] = randInt(0, i);
             }
@@ -190,19 +230,20 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             randomIndices[1] = randInt(i + 1, letters.length);
             randomIndices[2] = randInt(0, (randomIndices[0] + randomIndices[1]) / 2);
 
-            if(randomIndices[2]==i)
-            {
-                randomIndices[2]=randInt(i+1, letters.length);
+            if (randomIndices[2] == i) {
+                randomIndices[2] = randInt(i + 1, letters.length);
             }
 
         }
-
-        for (int k = 0; k < randomIndices.length-1; k++) {
+        // for checking the randomIndices for any duplication, in case the is duplicated numbers it will be regenerating
+        // EX: 4,5,4
+        // Result: 4,5,8
+        for (int k = 0; k < randomIndices.length - 1; k++) {
             for (int j = k + 1; j < randomIndices.length; j++) {
                 if (randomIndices[k] == randomIndices[j]) {
                     Log.v("DUPLICATED", "" + randomIndices[k]);
 
-                    if (randomIndices[j] == letters.length-1)
+                    if (randomIndices[j] == letters.length - 1)
                         randomIndices[j] = randInt(0, letters.length - 1);
                     else
                         randomIndices[j] = randInt(randomIndices[j] + j, letters.length);
@@ -216,11 +257,12 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             tempLetterImages[j] = letters[randomIndices[j]].getLetterImg();
         }
 
-        // we will shuffle the tempLetterImages array who has 4 letters Imgs we have saved them
+        // we will shuffle the imageViews array who has 4 ImageViews we have saved them
         Collections.shuffle(Arrays.asList(imageViews));
 
-
-
+        //  we assign each imageView to the one of imageResourceId(tempLetterImage) with assigning we add the wrong voice
+        // to the wrong option (OnClickListener) and the last imageViews element will be the correct answer when the user click
+        // new activity will be opened with the rest of the object fields.
         for (int j = 0; j < imageViews.length; j++) {
             if (j != imageViews.length - 1) {
                 imageViews[j].setImageResource(tempLetterImages[j]);
@@ -255,6 +297,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         finish();
     }
 
+    // randInt is responsible for generating thr random number between two numbers.
     public int randInt(int min, int max) {
         Random rand = new Random();
         return rand.nextInt(max - min) + min;

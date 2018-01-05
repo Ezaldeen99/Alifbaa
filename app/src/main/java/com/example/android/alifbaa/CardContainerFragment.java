@@ -114,9 +114,9 @@ public class CardContainerFragment extends android.app.Fragment {
 
     private int[] englishWords = {R.string.rabbit, R.string.duck, R.string.crocodile, R.string.fox, R.string.camel,
             R.string.horse, R.string.sheep, R.string.bear, R.string.housefly, R.string.raccoon, R.string.giraffe,
-            R.string.fish, R.string.lion_cub, R.string.hawk, R.string.frog, R.string.peacock, R.string.atelope,
+            R.string.fish, R.string.lion_cub, R.string.hawk, R.string.frog, R.string.peacock, R.string.antelope,
             R.string.spider, R.string.crow, R.string.elephant, R.string.cat, R.string.dog, R.string.strok, R.string.goat,
-            R.string.tiger, R.string.rhino, R.string.hoopoe, R.string.llama, R.string.lion, R.string.gragonfly};
+            R.string.tiger, R.string.rhino, R.string.hoopoe, R.string.llama, R.string.lion, R.string.dragonfly};
 
     private int[] arabicWords = {R.string.arnab, R.string.batta, R.string.timsah, R.string.thalab, R.string.jamal,
             R.string.hisan, R.string.kharoof, R.string.dob, R.string.thababah, R.string.racoown, R.string.zarraffah,
