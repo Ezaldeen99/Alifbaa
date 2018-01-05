@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+// sulaiman
 
 public class MainActivity extends AppCompatActivity {
     ImageView flashCardGame;
@@ -19,11 +20,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        flashCardGame =  findViewById(R.id._1st_game_button);
-        touchTheLetterGame =  findViewById(R.id._2nd_game_button);
-        alphabetTilesGame =  findViewById(R.id._4th_game_button);
-        letterTrackingGame =  findViewById(R.id._3rd_game_button);
-        settings = findViewById(R.id.settings);
+        flashCardGame = (ImageView) findViewById(R.id._1st_game_button);
+        touchTheLetterGame = (ImageView) findViewById(R.id._2nd_game_button);
+        alphabetTilesGame = (ImageView) findViewById(R.id._3rd_game_button);
+        letterTrackingGame = (ImageView) findViewById(R.id._4th_game_button);
+        settings = (CircleImageView) findViewById(R.id.settings);
         flashCardGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,5 +63,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }
