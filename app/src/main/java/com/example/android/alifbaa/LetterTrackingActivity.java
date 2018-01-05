@@ -20,7 +20,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_letter_tracking);
         Button home = findViewById(R.id.home_button);
-        eraser = (Button) findViewById(R.id.erase);
+        eraser = findViewById(R.id.erase);
         eraser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

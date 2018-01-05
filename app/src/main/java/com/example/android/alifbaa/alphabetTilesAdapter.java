@@ -36,7 +36,7 @@ public class alphabetTilesAdapter extends ArrayAdapter {
 //        position+=count;
 if (position<30) {
 //    count -= 1;
-    ImageView imageView = (ImageView) convertView.findViewById(R.id.letter_image);
+    ImageView imageView = convertView.findViewById(R.id.letter_image);
     Letter obj = letters.get(position);
 
     imageView.setImageResource(obj.getLetterImg());

@@ -32,7 +32,8 @@ public class TouchTheLetterActivity extends AppCompatActivity {
     int i = 0;
 
     ImageView[] imageViews = new ImageView[4];
-    Letter[] letters = {new Letter(1, R.drawable.letter_a, R.drawable.animal_a, R.drawable.spelling_a,
+    Letter[] letters = {
+            new Letter(1, R.drawable.letter_a, R.drawable.animal_a, R.drawable.spelling_a,
             R.string.alif, R.string.arnab, R.raw.letter_1, R.raw.obj_1),
             new Letter(2, R.drawable.letter_b, R.drawable.animal_b, R.drawable.spelling_b,
                     R.string.baa, R.string.duck, R.raw.letter_2, R.raw.obj_2),
@@ -45,7 +46,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             new Letter(6, R.drawable.letter_f, R.drawable.animal_f, R.drawable.spelling_f,
                     R.string.haa, R.string.horse, R.raw.letter_6, R.raw.obj_6),
             new Letter(7, R.drawable.letter_g, R.drawable.animal_g, R.drawable.spelling_g,
-                    R.string.khaa, R.string.kharoof, R.raw.letter_7, R.raw.obj_7),
+                    R.string.khaa, R.string.sheep, R.raw.letter_7, R.raw.obj_7),
             new Letter(8, R.drawable.letter_h, R.drawable.animal_h, R.drawable.spelling_h,
                     R.string.daal, R.string.bear, R.raw.letter_8, R.raw.obj_8),
             new Letter(9, R.drawable.letter_i, R.drawable.animal_i, R.drawable.spelling_i,
@@ -53,7 +54,46 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             new Letter(10, R.drawable.letter_j, R.drawable.animal_j, R.drawable.spelling_j,
                     R.string.raa, R.string.raccoon, R.raw.letter_10, R.raw.obj_10),
             new Letter(11, R.drawable.letter_k, R.drawable.animal_k, R.drawable.spelling_k,
-                    R.string.zaa, R.string.giraffe, R.raw.letter_11, R.raw.obj_11)};
+                    R.string.zaa, R.string.giraffe, R.raw.letter_11, R.raw.obj_11),
+            new Letter(12, R.drawable.letter_l, R.drawable.animal_l, R.drawable.spelling_l,
+                    R.string.seen, R.string.fish, R.raw.letter_12, R.raw.obj_12),
+            new Letter(13, R.drawable.letter_m, R.drawable.animal_m, R.drawable.spelling_m,
+                    R.string.sheen, R.string.lion_cub, R.raw.letter_13, R.raw.obj_13),
+            new Letter(14, R.drawable.letter_n, R.drawable.animal_n, R.drawable.spelling_n,
+                    R.string.saad, R.string.hawk, R.raw.letter_14, R.raw.obj_14),
+            new Letter(15, R.drawable.letter_o, R.drawable.animal_o, R.drawable.spelling_o,
+                    R.string.dhaad, R.string.frog, R.raw.letter_15, R.raw.obj_15),
+            new Letter(16, R.drawable.letter_p, R.drawable.animal_p, R.drawable.spelling_p,
+                    R.string.taa, R.string.peacock, R.raw.letter_16, R.raw.obj_16),
+            new Letter(17, R.drawable.letter_q, R.drawable.animal_q, R.drawable.spelling_q,
+                    R.string.zaa, R.string.antelope, R.raw.letter_17, R.raw.obj_17),
+             new Letter(18, R.drawable.letter_r, R.drawable.animal_r, R.drawable.spelling_r,
+                    R.string.ayn, R.string.spider, R.raw.letter_18, R.raw.obj_18),
+             new Letter(19, R.drawable.letter_s, R.drawable.animal_s, R.drawable.spelling_s,
+                    R.string.ghayan, R.string.crow, R.raw.letter_19, R.raw.obj_19),
+             new Letter(20, R.drawable.letter_t, R.drawable.animal_t, R.drawable.spelling_t,
+                    R.string.faa, R.string.elephant, R.raw.letter_20, R.raw.obj_20),
+             new Letter(21, R.drawable.letter_u, R.drawable.animal_u, R.drawable.spelling_u,
+                    R.string.qaaf, R.string.cat, R.raw.letter_21, R.raw.obj_21),
+             new Letter(22, R.drawable.letter_v, R.drawable.animal_v, R.drawable.spelling_v,
+                    R.string.kaaf, R.string.dog, R.raw.letter_22, R.raw.obj_22),
+            new Letter(23, R.drawable.letter_w, R.drawable.animal_w, R.drawable.spelling_w,
+                    R.string.laam, R.string.strok, R.raw.letter_23, R.raw.obj_23),
+             new Letter(24, R.drawable.letter_x, R.drawable.animal_x, R.drawable.spelling_x,
+                    R.string.meem, R.string.goat, R.raw.letter_24, R.raw.obj_24),
+             new Letter(25, R.drawable.letter_y, R.drawable.animal_y, R.drawable.spelling_y,
+                    R.string.noon, R.string.tiger, R.raw.letter_25, R.raw.obj_25),
+            new Letter(26, R.drawable.letter_z, R.drawable.animal_z, R.drawable.spelling_z,
+                    R.string.waaw, R.string.rhino, R.raw.letter_26, R.raw.obj_26),
+            new Letter(27, R.drawable.letter_z2, R.drawable.animal_z2, R.drawable.spelling_z2,
+                    R.string.haa, R.string.hoopoe, R.raw.letter_27, R.raw.obj_27),
+            new Letter(28, R.drawable.letter_z3, R.drawable.animal_z3, R.drawable.spelling_z3,
+                    R.string.laam_alif, R.string.llama, R.raw.letter_28, R.raw.obj_28),
+            new Letter(29, R.drawable.letter_z4, R.drawable.animal_z4, R.drawable.spelling_z4,
+                    R.string.hamza, R.string.lion, R.raw.letter_29, R.raw.obj_29),
+            new Letter(30, R.drawable.letter_z5, R.drawable.animal_z5, R.drawable.spelling_z5,
+                    R.string.yaa, R.string.gragonfly, R.raw.letter_30, R.raw.obj_30)
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -131,7 +171,8 @@ public class TouchTheLetterActivity extends AppCompatActivity {
     }
 
     public void game(final int i) {
-
+        if(i == letters.length)
+            gameDone();
         questionLetterImg.setImageResource(letters[i].getLetterImg());
 
         int[] randomIndices = new int[3];
@@ -208,6 +249,10 @@ public class TouchTheLetterActivity extends AppCompatActivity {
 
             }
         }
+    }
+
+    private void gameDone() {
+        finish();
     }
 
     public int randInt(int min, int max) {
