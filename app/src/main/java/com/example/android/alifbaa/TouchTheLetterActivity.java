@@ -31,7 +31,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
     MediaPlayer letterVoice;
     MediaPlayer wrongVoice;
 
-    int i = 28;
+    int i = 0;
 
     ImageView[] imageViews = new ImageView[4];
     Letter[] letters = {
