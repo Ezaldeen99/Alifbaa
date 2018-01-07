@@ -52,18 +52,18 @@ public class PaintView extends View {
 
     }
 
+    //this to initalize the paintview when first created
     public void init(DisplayMetrics metrics) {
 
 
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
-
+//this takes the screen width and height to create a bitmap which fill up the whole screen
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
-
+//this will create the canvas that contai the bitmap
         currentColor = COLOR;
         strokeWidth = BRUSH_SIZE;
-
 
     }
 
@@ -72,7 +72,7 @@ public class PaintView extends View {
 
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
-
+//when clicking on the earser this will clear the screen
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
         paths.clear();
@@ -84,7 +84,7 @@ public class PaintView extends View {
 
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
-
+//this will retrive last path to display it on the black screen
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         cCanvas = new Canvas(mBitmap);
         cCanvas.drawColor(Color.BLACK);
@@ -101,14 +101,15 @@ public class PaintView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-
+//ths method have to be overrided to draw
         mCanvas.drawColor(Color.TRANSPARENT);
+//the background of the paintView is set here which is transparent
 
         for (TouchTrace Tt : paths) {
             mPaint.setColor(Tt.color);
             mPaint.setStrokeWidth(Tt.strokeWidth);
             mCanvas.drawPath(Tt.path, mPaint);
-
+//display the path with colors chosen on canvas
         }
 
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
@@ -119,14 +120,11 @@ public class PaintView extends View {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         Bitmap bmp;
-        int letterColor = getResources().getColor(R.color.letters_color);
-        int color = Color.rgb(34, 47, 96);
 
-        Log.e("cccccccccccccccccc", letterColor + "");
 
         int x = (int) event.getX();
         int y = (int) event.getY();
-//         Viewbitmap viewbitmap=LetterTrackingActivity.viewbitmap;
+
         if (LetterTrackingActivity.viewbitmap != null) {
             bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
 
@@ -137,18 +135,26 @@ public class PaintView extends View {
             }
 
             switch (event.getAction()) {
+
                 case MotionEvent.ACTION_DOWN:
 
+                    //when user touch the screen
                     mPath = new Path();
+
+                    //create new path
 
                     if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
 
+                        //get the coordinates of the touch event
                         int pixel = bmp.getPixel(x, y);
-                        Log.e("pppppppppppppppppppppp", pixel + "");
+                        //get the color of the pixel user touched
+
 
                         if (pixel != Color.TRANSPARENT && pixel != Color.WHITE)
 
+                            //if pixel is tranparent which mean outside the letter
                         {
+                            //add this path to the arraylist of paths
                             currentColor = Color.RED;
                             fp = new TouchTrace(currentColor, strokeWidth, mPath);
                             paths.add(fp);
@@ -157,6 +163,7 @@ public class PaintView extends View {
                             mY = y;
                             invalidate();
                         } else
+                            //in this case the user is drawing outside the letter
                             currentColor = COLOR;
                     }
 
@@ -165,32 +172,28 @@ public class PaintView extends View {
 
                 case MotionEvent.ACTION_MOVE:
 
+                    //when user swipe on screen
                     float dx = Math.abs(x - mX);
                     float dy = Math.abs(y - mY);
 
 
                     if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
                         int pixel = bmp.getPixel(x, y);
-                        Log.e("pppppppppppppppppppppp", pixel + "");
+
                         if (pixel != Color.TRANSPARENT && pixel != Color.WHITE)
 
                         {
+                            //when user swipe on screen the color will change if it will turn transparnt it wont draw
                             currentColor = Color.RED;
                             if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
                                 mPath.quadTo(mX, mY, (x + mX) / 2, (y + mY) / 2);
                                 mX = x;
                                 mY = y;
-
-
                             }
                             invalidate();
                         } else {
                             currentColor = COLOR;
-//                            TouchTrace Tt = new TouchTrace(currentColor, strokeWidth, mPath);
-//                            paths.add(Tt);
-//                            mPath.moveTo(x, y);
-//                            mX = x;
-//                            mY = y;
+
                         }
                     }
 

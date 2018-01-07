@@ -31,6 +31,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
         ImageView r = (ImageView) findViewById(R.id.letter_tracing);
         Bitmap bmp = loadBitmapFromView(r);
+        //convert the image view to a bitmap
 
         if (bmp == null) {
             Log.e("bitmap", "is null");
@@ -38,7 +39,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
         viewbitmap = new Viewbitmap();
         viewbitmap.setMbitmap(bmp);
-
+//set the bitmap to access it in paintview
         paintView = (PaintView) findViewById(R.id.paintView);
 
         final DisplayMetrics metrics = new DisplayMetrics();
@@ -63,6 +64,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
     }
 
+    //this code will convert a view to bitmap
     public Bitmap loadBitmapFromView(View v) {
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
