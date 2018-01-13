@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 
 public class PaintView extends View {
-
+    Bitmap bmp;
     public static final int BRUSH_SIZE = 10;
     public static final int COLOR = Color.TRANSPARENT;
     private static final float TOUCH_TOLERANCE = 4;
@@ -101,6 +101,7 @@ public class PaintView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
 //ths method have to be overrided to draw
         mCanvas.drawColor(Color.TRANSPARENT);
 //the background of the paintView is set here which is transparent
@@ -113,13 +114,40 @@ public class PaintView extends View {
         }
 
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-        canvas.restore();
+//        canvas.restore();
+        Paint painttt = new Paint();
+        painttt.setStyle(Paint.Style.STROKE);
+        painttt.setColor(Color.WHITE);
+        painttt.setStrokeWidth(10);
+
+        Path pathttt = new Path();
+
+
+        pathttt.moveTo(170, 650);
+
+            bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
+
+        int pixelll= bmp.getPixel(170, 700);
+        String hexColor = String.format("#%06X", (0xFFFFFF & pixelll));
+        Log.e("cccccccccccccc",hexColor);
+
+        int hexpixel=getResources().getColor(R.color.letters_color) ;
+        String hex = String.format("#%06X", (0xFFFFFF & hexpixel));
+        Log.e("kkkkkkkkkkkkk",hex);
+
+        if (hexColor.equals(hex)) {
+            pathttt.cubicTo(215, 870, 850, 870, 810, 650);
+            pathttt.moveTo(480, 1100);
+            pathttt.lineTo(480, 1100);
+        }
+        canvas.drawPath(pathttt, painttt);
+        canvas.drawPath(pathttt, painttt);
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Bitmap bmp;
+
 
 
         int x = (int) event.getX();
@@ -152,7 +180,7 @@ public class PaintView extends View {
 
                         if (pixel != Color.TRANSPARENT && pixel != Color.WHITE)
 
-                            //if pixel is tranparent which mean outside the letter
+                        //if pixel is tranparent which mean outside the letter
                         {
                             //add this path to the arraylist of paths
                             currentColor = Color.RED;
@@ -179,7 +207,10 @@ public class PaintView extends View {
 
                     if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
                         int pixel = bmp.getPixel(x, y);
+                        String hexColor = String.format("#%06X", (0xFFFFFF & pixel));
+                        Log.e("ddddddddddd",hexColor);
 
+                        Log.e("mmmmmmmmmmmmmmm",x+"-"+y);
                         if (pixel != Color.TRANSPARENT && pixel != Color.WHITE)
 
                         {
