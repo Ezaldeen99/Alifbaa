@@ -47,14 +47,14 @@
     <string name="hawk">hawk</string>
     <string name="frog">frog</string>
     <string name="peacock">peacock</string>
-    <string name="atelope">antelope</string>
+    <string name="antelope">antelope</string>
     <string name="spider">spider</string>
     <string name="crow">crow</string>
     <string name="elephant">elephant</string>
     <string name="cat">cat</string>
     <string name="dog">dog</string>
     <string name="strok">stork</string>
-    <string name="gragonfly">dragonfly</string>
+    <string name="dragonfly">dragonfly</string>
     <string name="lion">lion</string>
     <string name="hoopoe">hoopoe</string>
     <string name="llama">llama</string>
@@ -91,4 +91,5 @@
     <string name="laamaa">laamaa</string>
     <string name="asad">asad hayawaan</string>
     <string name="yassob">ya\'soob</string>
+    <string name="are_you_sure_all_the_progress_will_be_lost">Are You Sure, all the progress will be lost?</string>
 </resources>

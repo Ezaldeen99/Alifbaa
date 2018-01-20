@@ -1,7 +1,6 @@
 package com.example.android.alifbaa;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -23,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
         // facebook button
         final ImageView facebook = (ImageView) findViewById(R.id.facebook_icon);
         //home button
-        final FloatingActionButton home_button = findViewById(R.id.float_button_home);
+//        final FloatingActionButton home_button = findViewById(R.id.float_button_home);
         // random order
         final Switch switch1 = (Switch) findViewById(R.id.random_order);
         // Lowercase letters
@@ -42,15 +41,15 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
         // setOnClickListner for home button
-        home_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (home_button.isClickable()) {
-                    Toast.makeText(SettingsActivity.this, "home button activiated", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(SettingsActivity.this, " home button deactiviated", Toast.LENGTH_SHORT).show();
-            }
-        });
+     //   home_button.setOnClickListener(new View.OnClickListener() {
+     //       @Override
+       //     public void onClick(View view) {
+       //         if (home_button.isClickable()) {
+       //             Toast.makeText(SettingsActivity.this, "home button activiated", Toast.LENGTH_SHORT).show();
+       //         } else
+      //              Toast.makeText(SettingsActivity.this, " home button deactiviated", Toast.LENGTH_SHORT).show();
+      //      }
+     //   });
         //  i used the setonCheckedChangeListner instead of the setOnclickListner
         // setOnCheckedListner inherits compoundbutton attributes
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
