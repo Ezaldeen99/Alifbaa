@@ -3,6 +3,7 @@ package com.example.android.alifbaa;
 import android.content.ClipData;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -25,6 +26,9 @@ public class AlphabetTilesActivity extends AppCompatActivity {
     private GridLayout mGrid;
     int viewIndex = 0;
     int counter = 0;
+    int previousCount = 0;
+    MediaPlayer mediaPlayer;
+
     private int[] letters = {R.drawable.letter_a, R.drawable.letter_b, R.drawable.letter_c, R.drawable.letter_d, R.drawable.letter_e, R.drawable.letter_f,
             R.drawable.letter_g, R.drawable.letter_h, R.drawable.letter_i, R.drawable.letter_j, R.drawable.letter_k, R.drawable.letter_l
             , R.drawable.letter_m, R.drawable.letter_n, R.drawable.letter_o, R.drawable.letter_p, R.drawable.letter_q, R.drawable.letter_r
@@ -99,6 +103,8 @@ public class AlphabetTilesActivity extends AppCompatActivity {
                     mGrid.addView(view, index);
                     break;
                 case DragEvent.ACTION_DROP:
+                    //get the previous count before restart it
+                    previousCount=counter;
                     counter = 0;
                     for (int j = 0; j < NBR_ITEMS; j++) {
                         View ourView = mGrid.getChildAt(j);
@@ -108,6 +114,12 @@ public class AlphabetTilesActivity extends AppCompatActivity {
                         } else {
                             ourView.setBackgroundColor(Color.WHITE);
                         }
+                    }
+                    if (counter>previousCount)
+                    {
+                        mediaPlayer = MediaPlayer.create(getBaseContext(),R.raw.correct_sound);
+                        mediaPlayer.start();
+
                     }
                     if (counter == NBR_ITEMS) {
                         String chronoText = clock.getText().toString();
