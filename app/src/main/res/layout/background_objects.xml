@@ -3,8 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="@layout/activity_alphabet_tiles">
 
-
-
     <ImageView
         android:id="@+id/clouds"
         android:layout_width="match_parent"

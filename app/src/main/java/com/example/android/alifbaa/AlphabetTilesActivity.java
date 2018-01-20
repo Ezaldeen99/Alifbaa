@@ -2,6 +2,7 @@ package com.example.android.alifbaa;
 
 import android.content.ClipData;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -118,6 +119,9 @@ public class AlphabetTilesActivity extends AppCompatActivity {
 
                         clock.stop();
                         //TODO start intent here to view the result and save the result if it is the best score.
+                        Intent intent =new Intent (AlphabetTilesActivity.this,WiningActivity.class);
+                        intent.putExtra("SCORE",String.valueOf(estmateTime-stoppedMilliseconds));
+                        startActivity(intent);
                         //Log.e("finish", "" + (estmateTime-stoppedMilliseconds));
                     }
                     view.setVisibility(View.VISIBLE);

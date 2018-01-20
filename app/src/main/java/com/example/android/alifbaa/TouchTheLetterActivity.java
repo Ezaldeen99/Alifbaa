@@ -295,6 +295,8 @@ public class TouchTheLetterActivity extends AppCompatActivity {
 
     private void gameDone() {
         finish();
+        Intent intent=new Intent (TouchTheLetterActivity.this,WiningActivity.class);
+        startActivity(intent);
     }
 
     // randInt is responsible for generating thr random number between two numbers.
