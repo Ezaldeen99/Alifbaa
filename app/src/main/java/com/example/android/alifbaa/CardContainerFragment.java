@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class CardContainerFragment extends android.app.Fragment {
     private int position;
     private boolean cardFlipped = false;
@@ -35,7 +37,7 @@ public class CardContainerFragment extends android.app.Fragment {
             }
         }
     };
-    private void releaseMediaPlayer() {
+     void releaseMediaPlayer() {
         // If the media player is not null, then it may be currently playing a sound.
         if (mMediaPlayer != null) {
             mMediaPlayer.release();
@@ -77,6 +79,7 @@ public class CardContainerFragment extends android.app.Fragment {
 
         }
     };
+    private static final int NBR_ITEMS = 30;
     private int[] AnimalsSounds = {R.raw.obj_1, R.raw.obj_2, R.raw.obj_3, R.raw.obj_4, R.raw.obj_5, R.raw.obj_6, R.raw.obj_7, R.raw.obj_8,
             R.raw.obj_9, R.raw.obj_10, R.raw.obj_11, R.raw.obj_12, R.raw.obj_13, R.raw.obj_14, R.raw.obj_15, R.raw.obj_16, R.raw.obj_17,
             R.raw.obj_18, R.raw.obj_19, R.raw.obj_20, R.raw.obj_21, R.raw.obj_22, R.raw.obj_23, R.raw.obj_24, R.raw.obj_25, R.raw.obj_26,
@@ -122,7 +125,6 @@ public class CardContainerFragment extends android.app.Fragment {
             R.string.samakah, R.string.shibl, R.string.saqar, R.string.dhafdaah, R.string.tawoos, R.string.dhaby,
             R.string.anacaboot, R.string.goraab, R.string.feel, R.string.qitta, R.string.kalb, R.string.laq_laq,
             R.string.maiz, R.string.namir, R.string.waheed, R.string.hoodhood, R.string.laamaa, R.string.asad, R.string.yassob};
-
     public CardContainerFragment() {
         setHasOptionsMenu(true);
     }
@@ -134,17 +136,45 @@ public class CardContainerFragment extends android.app.Fragment {
         f.setArguments(args);
         return f;
     }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         position = getArguments().getInt("image", 0);
         View rootView = inflater.inflate(R.layout.fragment_card_container, container, false);
-        getChildFragmentManager()
+        final int commit = getChildFragmentManager()
                 .beginTransaction()
                 .add(R.id.container, new CardFrontFragment())
                 .commit();
-
+        if(true){
+            Random r = new Random();
+            for (int item = NBR_ITEMS - 1; item > 0; item--) {
+                int k = r.nextInt(item);
+                int e = AnimalsSounds[item];
+                AnimalsSounds[item] = AnimalsSounds[k];
+                AnimalsSounds[k] = e;
+                 e = letterSounds[item];
+                letterSounds[item] = letterSounds[k];
+                letterSounds[k] = e;
+                 e = letters[item];
+                letters[item] = letters[k];
+                letters[k] = e;
+                 e = animals[item];
+                animals[item] = animals[k];
+                animals[k] = e;
+                 e = animalsSpelling[item];
+                animalsSpelling[item] = animalsSpelling[k];
+                animalsSpelling[k] = e;
+                 e = arabicLetterSpelling[item];
+                arabicLetterSpelling[item] = arabicLetterSpelling[k];
+                arabicLetterSpelling[k] = e;
+                 e = englishWords[item];
+                englishWords[item] = englishWords[k];
+                englishWords[k] = e;
+                e = arabicWords[item];
+                arabicWords[item] = arabicWords[k];
+                arabicWords[k] = e;
+            }
+        }
         return rootView;
     }
 
@@ -166,39 +196,38 @@ public class CardContainerFragment extends android.app.Fragment {
 
         cardFlipped = !cardFlipped;
     }
+     @SuppressLint("ValidFragment")
+     public class CardFrontFragment extends android.app.Fragment {
 
-    @SuppressLint("ValidFragment")
-    public class CardFrontFragment extends android.app.Fragment {
+         public CardFrontFragment() {
+         }
 
-        public CardFrontFragment() {
-        }
+         private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
+             @Override
+             public void onCompletion(MediaPlayer mediaPlayer) {
+                 // Now that the sound file has finished playing, release the media player resources.
+                 releaseMediaPlayer();
+             }
+         };
 
-        private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mediaPlayer) {
-                // Now that the sound file has finished playing, release the media player resources.
-                releaseMediaPlayer();
-            }
-        };
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_front_layout, container, false);
-            ImageView imageView = rootView.findViewById(R.id.image_linear);
-            imageView.setImageResource(letters[position]);
-            TextView text = rootView.findViewById(R.id.arabic_spelling);
-            text.setText(arabicLetterSpelling[position]);
-            mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
-            rootView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    flipCard();
-                }
-            });
-            return rootView;
-        }
-    }
+         @Override
+         public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                                  Bundle savedInstanceState) {
+             View rootView = inflater.inflate(R.layout.fragment_front_layout, container, false);
+             ImageView imageView = rootView.findViewById(R.id.image_linear);
+             imageView.setImageResource(letters[position]);
+             TextView text = rootView.findViewById(R.id.arabic_spelling);
+             text.setText(arabicLetterSpelling[position]);
+             mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
+             rootView.setOnClickListener(new View.OnClickListener() {
+                 @Override
+                 public void onClick(View v) {
+                     flipCard();
+                 }
+             });
+             return rootView;
+         }
+     }
 
     @SuppressLint("ValidFragment")
     public class CardBackFragment extends android.app.Fragment {
