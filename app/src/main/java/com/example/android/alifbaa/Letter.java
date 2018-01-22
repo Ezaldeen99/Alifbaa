@@ -26,6 +26,11 @@ public class Letter {
         this.wordSound = wordSound;
     }
 
+    public Letter(int letterId, int letterImg) {
+        this.letterId = letterId;
+        this.letterImg = letterImg;
+
+    }
     public int getLetterId() {
         return letterId;
     }

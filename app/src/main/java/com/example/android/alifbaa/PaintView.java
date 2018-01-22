@@ -16,9 +16,7 @@ import android.view.View;
 import java.io.IOException;
 import java.util.ArrayList;
 
-/**
- * Created by brayan pc on 12/27/2017.
- */
+
 
 public class PaintView extends View {
     Bitmap bmp;
@@ -81,27 +79,36 @@ public class PaintView extends View {
 
     }
 
-//    public void create(DisplayMetrics metrics) throws IOException, ClassNotFoundException {
-//
-//        int height = metrics.heightPixels;
-//        int width = metrics.widthPixels;
-////this will retrive last path to display it on the black screen
-//        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-//        cCanvas = new Canvas(mBitmap);
-//        cCanvas.drawColor(Color.BLACK);
-//
-//        for (TouchTrace fb : paths) {
-//            mPaint.setColor(fb.color);
-//            mPaint.setStrokeWidth(fb.strokeWidth);
-//
-//            cCanvas.drawPath(fp.path, mPaint);
-//        }
-////        bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
-////        Object b=fon(bmp);
-////        cCanvas.drawPath( mPaint);
-//        invalidate();
-//
-//    }
+    public void create(DisplayMetrics metrics)  {
+
+        int height = metrics.heightPixels;
+        int width = metrics.widthPixels;
+//this will retrive last path to display it on the black screen
+
+        try{
+            mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+            cCanvas = new Canvas(mBitmap);
+            cCanvas.drawColor(Color.BLACK);
+
+            for (TouchTrace fb : paths) {
+                mPaint.setColor(fb.color);
+                mPaint.setStrokeWidth(fb.strokeWidth);
+
+                cCanvas.drawPath(fp.path, mPaint);
+            }
+            Thread.sleep(1000);
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        cCanvas.drawColor(Color.TRANSPARENT);
+
+//        bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
+//        Object b=fon(bmp);
+//        cCanvas.drawPath( mPaint);
+
+
+    }
 
 //
 //    @Override
@@ -202,61 +209,6 @@ public class PaintView extends View {
 
 
 
-//    @Override
-//    protected void onDraw(Canvas canvas) {
-//        super.onDraw(canvas);
-//        mCanvas.drawColor(Color.TRANSPARENT);
-//
-//        for (TouchTrace Tt : paths) {
-//            mPaint.setColor(Tt.color);
-//            mPaint.setStrokeWidth(Tt.strokeWidth);
-//            mCanvas.drawPath(Tt.path, mPaint);
-//        }
-////        canvas.drawPath(mPath, mPaint);
-//        canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-//        canvas.restore();
-//        float mX2=0, mY2=0;
-//
-//        Paint paint2 = new Paint();
-//        paint2.setStyle(Paint.Style.STROKE);
-//        paint2.setColor(Color.BLACK);
-//        paint2.setStrokeWidth(10);
-//
-//        bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
-//
-//
-//        int[][] cc = arrayFromBitmap(bmp);
-//        Path mPath2 = new Path();
-//        TouchTrace fp2 = new TouchTrace(currentColor, strokeWidth, mPath2);;
-//        paths.add(fp2);
-//        int c=0;
-//        for (int i = 0; i < cc.length; i++) {
-//            for (int j = 0; j < cc.length; j++) {
-//                if (cc[i][j] == -31379873) {
-//                    if (c==0) {
-//                        mPath2.moveTo(i, j);
-//                        mX2 = i;
-//                        mY2 = j;
-//                        c++;
-//                    }
-//                    else
-//                    {
-//                        mPath2.quadTo(mX2, mY2, (i + mX2) / 2, (j + mY2) / 2);
-//                        mX2 = i;
-//                        mY2 = j;
-//                    }
-//                }
-//            }
-//
-//        }
-//        canvas.drawPath(mPath2, paint2);
-//
-//
-//
-//    }
-
-
-
 
 
 
@@ -272,16 +224,18 @@ public class PaintView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+
         mCanvas.drawColor(Color.TRANSPARENT);
 
         for (TouchTrace Tt : paths) {
             mPaint.setColor(Tt.color);
             mPaint.setStrokeWidth(Tt.strokeWidth);
             mCanvas.drawPath(Tt.path, mPaint);
+
         }
-//        canvas.drawPath(mPath, mPaint);
-//        canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-//        canvas.restore();
+
+        canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
+        canvas.restore();
 
         Paint painttt = new Paint();
         painttt.setStyle(Paint.Style.STROKE);
@@ -293,23 +247,23 @@ public class PaintView extends View {
 
 
 
-//        float x0 = Dimensions.convertPixelsToDp(1000, getContext());
-//        float y0 = Dimensions.convertPixelsToDp(1200, getContext());
-//        float x1 = Dimensions.convertPixelsToDp(1000, getContext());
-//        float y1 = Dimensions.convertPixelsToDp(1200, getContext());
-//        float x2 = Dimensions.convertPixelsToDp(1400, getContext());
-//        float y2 = Dimensions.convertPixelsToDp(1400, getContext());
-//        float x3 = Dimensions.convertPixelsToDp(1450, getContext());
-//        float y3 = Dimensions.convertPixelsToDp(1200, getContext());
+        float x0 = Dimensions.convertDpToPixel(120, getContext());
+        float y0 = Dimensions.convertDpToPixel(466, getContext());
+        float x1 = Dimensions.convertDpToPixel(320, getContext());
+        float y1 = Dimensions.convertDpToPixel(600, getContext());
+        float x2 = Dimensions.convertDpToPixel(553, getContext());
+        float y2 = Dimensions.convertDpToPixel(466, getContext());
+        float x3 = Dimensions.convertDpToPixel(0, getContext());
+        float y3 = Dimensions.convertDpToPixel(0, getContext());
 
-//        pathttt.moveTo(x0, y0);
+        pathttt.moveTo(x0, y0);
 //        pathttt.moveTo(215, 870);
 
 
 //        pathttt.quadTo(x1, y1, x2, y2);
-        pathttt.quadTo( 180,700,480,900);
+        pathttt.cubicTo( x1,y1,x2,y2,x3,y3);
 
-        pathttt.quadTo( 480,900,830, 700);
+//        pathttt.quadTo( 480,900,830, 700);
 
 //        pathttt.cubicTo(215, 870, 850, 870, 810, 650);
 ////        pathttt.moveTo(480, 1100);
