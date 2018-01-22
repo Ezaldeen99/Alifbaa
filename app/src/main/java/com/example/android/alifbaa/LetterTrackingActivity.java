@@ -39,11 +39,19 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
         viewbitmap = new Viewbitmap();
         viewbitmap.setMbitmap(bmp);
+
 //set the bitmap to access it in paintview
         paintView = (PaintView) findViewById(R.id.paintView);
 
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        final DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+        viewbitmap.setScreensize(metrics);
+//        float screenAdjust = (float) dm.densityDpi / 160f;
+
+
         paintView.init(metrics);
 
         earser.setOnClickListener(new View.OnClickListener() {
@@ -56,7 +64,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                paintView.create(metrics);
+//                paintView.create(metrics);
 
             }
         });
@@ -77,4 +85,15 @@ public class LetterTrackingActivity extends AppCompatActivity {
         else
             return b;
     }
+
+
+
+    public DisplayMetrics getWindow(DisplayMetrics metrics) {
+        final DisplayMetrics dm= new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+//        float screenAdjust = (float) dm.densityDpi / 160f;
+        return dm;
+
+    }
+
 }

@@ -11,21 +11,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:src="@drawable/clouds" />
-
-    <ImageView
-        android:id="@+id/letter-tracing"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:src="@drawable/letter_b" />
-
     <ImageView
         android:id="@+id/grass"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@drawable/grass" />
+    <ImageView
+        android:id="@+id/letter-tracing"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/letter_b" />
+
+
 
     <com.example.android.alifbaa.PaintView
         android:id="@+id/paintView"

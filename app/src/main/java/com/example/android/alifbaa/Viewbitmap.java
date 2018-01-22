@@ -1,6 +1,7 @@
 package com.example.android.alifbaa;
 
 import android.graphics.Bitmap;
+import android.util.DisplayMetrics;
 
 /**
  * Created by brayan pc on 12/28/2017.
@@ -8,6 +9,9 @@ import android.graphics.Bitmap;
 
 public class Viewbitmap {
     private Bitmap mbitmap;
+
+
+    private DisplayMetrics screensize;
 
     public Viewbitmap() {
         super();
@@ -25,5 +29,12 @@ public class Viewbitmap {
         this.mbitmap = mbitmap;
     }
 
+    public DisplayMetrics getScreensize() {
+        return screensize;
+    }
+
+    public void setScreensize(DisplayMetrics screensize) {
+        this.screensize = screensize;
+    }
 
 }
