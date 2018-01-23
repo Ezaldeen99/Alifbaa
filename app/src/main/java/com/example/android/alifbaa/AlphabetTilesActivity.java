@@ -118,8 +118,8 @@ public class AlphabetTilesActivity extends AppCompatActivity {
                        int estmateTime = 3660000;
 
                         clock.stop();
-                        //TODO start intent here to view the result and save the result if it is the best score.
-                        Intent intent =new Intent (AlphabetTilesActivity.this,WiningActivity.class);
+                        //TODO Add the right score for the game
+                        Intent intent =new Intent (AlphabetTilesActivity.this,WinningActivity.class);
                         intent.putExtra("SCORE",String.valueOf(estmateTime-stoppedMilliseconds));
                         startActivity(intent);
                         //Log.e("finish", "" + (estmateTime-stoppedMilliseconds));

@@ -75,7 +75,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".WiningActivity"></activity>
+        <activity android:name=".WinningActivity"></activity>
     </application>
 
 </manifest>
