@@ -295,7 +295,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
 
     private void gameDone() {
         finish();
-        Intent intent=new Intent (TouchTheLetterActivity.this,WiningActivity.class);
+        Intent intent=new Intent (TouchTheLetterActivity.this,WinningActivity.class);
         startActivity(intent);
     }
 
