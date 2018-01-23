@@ -122,6 +122,7 @@ public class AlphabetTilesActivity extends AppCompatActivity {
                         Intent intent =new Intent (AlphabetTilesActivity.this,WinningActivity.class);
                         intent.putExtra("SCORE",String.valueOf(estmateTime-stoppedMilliseconds));
                         startActivity(intent);
+                        finish();
                         //Log.e("finish", "" + (estmateTime-stoppedMilliseconds));
                     }
                     view.setVisibility(View.VISIBLE);
