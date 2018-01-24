@@ -21,8 +21,8 @@ import java.util.ArrayList;
 
 public class PaintView extends View {
 
-    public static final int BRUSH_SIZE = 50;
-    public static final int COLOR = Color.BLACK;
+    public static final int BRUSH_SIZE = 10;
+    public static final int COLOR = Color.TRANSPARENT;
     private static final float TOUCH_TOLERANCE = 4;
 
     private float mX, mY;
@@ -92,7 +92,7 @@ public class PaintView extends View {
         }
 
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-        canvas.restore();
+//        canvas.restore();
     }
 
 
@@ -114,13 +114,13 @@ public class PaintView extends View {
             case MotionEvent.ACTION_DOWN:
 
                 mPath = new Path();
-                int color = Color.rgb(34, 47, 96);
-                int color2 = Color.rgb(5, 64, 96);
 
+                assert bmp != null;
                 if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
 
                     int pixel = bmp.getPixel(x, y);
-                    if (color2 <= pixel && pixel <= color)
+                    if (pixel!=Color.TRANSPARENT)
+
                         currentColor = Color.RED;
                     else
                         currentColor = COLOR;
@@ -139,15 +139,22 @@ public class PaintView extends View {
                 float dx = Math.abs(x - mX);
                 float dy = Math.abs(y - mY);
 
-                int color3 = Color.rgb(34, 47, 96);
-                int color4 = Color.rgb(5, 64, 96);
+
 
                 if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
                     int pixel = bmp.getPixel(x, y);
-                    if (color4 <= pixel && pixel <= color3)
+
+                    if (pixel!=Color.TRANSPARENT)
+
                         currentColor = Color.RED;
-                    else
-                        currentColor = COLOR;
+                    else {
+                        currentColor =COLOR;
+                        TouchTrace Tt = new TouchTrace(currentColor, strokeWidth, mPath);
+                        paths.add(Tt);
+                        mPath.moveTo(x, y);
+                        mX = x;
+                        mY = y;
+                    }
                 }
 
                 if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {

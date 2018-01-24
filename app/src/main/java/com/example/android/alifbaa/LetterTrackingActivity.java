@@ -61,6 +61,6 @@ public class LetterTrackingActivity extends AppCompatActivity {
         if (b ==null)
             return null;
         else
-        return b;
+            return b;
     }
 }
