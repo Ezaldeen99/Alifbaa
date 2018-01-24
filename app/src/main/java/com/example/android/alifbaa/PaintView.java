@@ -68,16 +68,16 @@ public class PaintView extends View {
 
     public void clear(DisplayMetrics metrics) {
 
-
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
 //when clicking on the earser this will clear the screen
-        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-        mCanvas = new Canvas(mBitmap);
+//        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+//        mCanvas = new Canvas(mBitmap);
         paths.clear();
+        mCanvas.drawColor(Color.TRANSPARENT);
         invalidate();
-
     }
+
 
     public void create(DisplayMetrics metrics)  {
 
@@ -85,131 +85,36 @@ public class PaintView extends View {
         int width = metrics.widthPixels;
 //this will retrive last path to display it on the black screen
 
-        try{
-            mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-            cCanvas = new Canvas(mBitmap);
-            cCanvas.drawColor(Color.BLACK);
+//        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+//        mCanvas = new Canvas(mBitmap);
+
+            mCanvas.drawColor(Color.BLACK);
 
             for (TouchTrace fb : paths) {
                 mPaint.setColor(fb.color);
                 mPaint.setStrokeWidth(fb.strokeWidth);
-
-                cCanvas.drawPath(fp.path, mPaint);
+                mCanvas.drawPath(fp.path, mPaint);
             }
+
+
+
+        mCanvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
+
+
+        try {
+
             Thread.sleep(1000);
 
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        cCanvas.drawColor(Color.TRANSPARENT);
+        clear(metrics);
 
-//        bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
-//        Object b=fon(bmp);
-//        cCanvas.drawPath( mPaint);
+
+
 
 
     }
-
-//
-//    @Override
-//    protected void onDraw(Canvas canvas) {
-//        super.onDraw(canvas);
-////ths method have to be overrided to draw
-//        mCanvas.drawColor(Color.TRANSPARENT);
-////the background of the paintView is set here which is transparent
-//
-//        for (TouchTrace Tt : paths) {
-//            mPaint.setColor(Tt.color);
-//            mPaint.setStrokeWidth(Tt.strokeWidth);
-//            mCanvas.drawPath(Tt.path, mPaint);
-////display the path with colors chosen on canvas
-//        }
-////        canvas.drawPath(mPath, mPaint);
-////        canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-////        canvas.restore();
-//
-//        Paint painttt = new Paint();
-//        painttt.setStyle(Paint.Style.STROKE);
-//        painttt.setColor(Color.WHITE);
-//        painttt.setStrokeWidth(10);
-////
-//        Path pathttt = new Path();
-////
-////
-////        pathttt.moveTo(170, 650);
-////       float scale=LetterTrackingActivity.viewbitmap.getScreensize();
-////        DisplayMetrics metrics = LetterTrackingActivity.viewbitmap.getScreensize();
-////
-////        int heights = metrics.heightPixels;
-////        int widths = metrics.widthPixels;
-////
-////
-////        bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
-////
-////        int[][] cc = arrayFromBitmap(bmp);
-//////        int[][] bb = null;
-////        Path mPath2 = new Path();
-////        TouchTrace fp2;
-////        for (int i = 0; i < cc.length; i++) {
-////            for (int j = 0; j < cc.length; j++) {
-////                if (cc[i][j] == -31379873) {
-//////                    bb[i][j] = cc[i][j];
-////                    fp2 = new TouchTrace(currentColor, strokeWidth, mPath2);
-////                    paths.add(fp2);
-////                }
-////            }
-////
-////        }
-////        canvas.drawPath(mPath2, mPaint);
-//
-//
-////        int pixelll = bmp.getPixel(170, 700);
-////        String hexColor = String.format("#%06X", (0xFFFFFF & pixelll));
-////        Log.e("cccccccccccccc", hexColor);
-////
-////        int hexpixel = getResources().getColor(R.color.letters_color);
-////        String hex = String.format("#%06X", (0xFFFFFF & hexpixel));
-////        Log.e("kkkkkkkkkkkkk", hex);
-////
-////
-//////        pathttt.moveTo(  ( 170 - (widths / 2)) * - bmp.getWidth()  , (250 - (heights/ 2)) * - bmp.getHeight() );
-//////        pathttt.offset(  (  (widths / 2))   , ( (heights/ 2))  );
-////
-////
-//////        pathttt.moveTo((widths / 2)   , (heights/ 2));
-////
-//////        if (hexColor.equals(hex)) {
-//        float x0 = Dimensions.convertPixelsToDp(1000, getContext());
-//        float y0 = Dimensions.convertPixelsToDp(1200, getContext());
-//        float x1 = Dimensions.convertPixelsToDp(1000, getContext());
-//        float y1 = Dimensions.convertPixelsToDp(1200, getContext());
-//        float x2 = Dimensions.convertPixelsToDp(1400, getContext());
-//        float y2 = Dimensions.convertPixelsToDp(1400, getContext());
-//        float x3 = Dimensions.convertPixelsToDp(1450, getContext());
-//        float y3 = Dimensions.convertPixelsToDp(1200, getContext());
-//        pathttt.moveTo(x0, y0);
-////        pathttt.moveTo(170, 250);
-//
-//        pathttt.cubicTo(x1, y1, x2, y2, x3, y3);
-////        pathttt.cubicTo(215, 870, 850, 870, 810, 650);
-//////
-//////        pathttt.moveTo(480, 1100);
-////        pathttt.lineTo(x3, y3);
-////
-////
-//////        pathttt.lineTo(0, 0);
-////
-//////        }
-//        canvas.drawPath(pathttt, painttt);
-//
-//    }
-
-
-
-
-
-
-
 
 
 
@@ -243,75 +148,28 @@ public class PaintView extends View {
         painttt.setStrokeWidth(10);
         Path pathttt = new Path();
 
+        float x0 = Dimensions.DpToPix(60, getContext());
+        float y0 = Dimensions.DpToPix(233, getContext());
+        float x1 = Dimensions.DpToPix(160, getContext());
+        float y1 = Dimensions.DpToPix(300, getContext());
+        float x2 = Dimensions.DpToPix(276, getContext());
+        float y2 = Dimensions.DpToPix(233, getContext());
+        float x3 = Dimensions.DpToPix(266, getContext());
+        float y3 = Dimensions.DpToPix(216, getContext());
 
 
 
 
-        float x0 = Dimensions.convertDpToPixel(120, getContext());
-        float y0 = Dimensions.convertDpToPixel(466, getContext());
-        float x1 = Dimensions.convertDpToPixel(320, getContext());
-        float y1 = Dimensions.convertDpToPixel(600, getContext());
-        float x2 = Dimensions.convertDpToPixel(553, getContext());
-        float y2 = Dimensions.convertDpToPixel(466, getContext());
-        float x3 = Dimensions.convertDpToPixel(0, getContext());
-        float y3 = Dimensions.convertDpToPixel(0, getContext());
 
         pathttt.moveTo(x0, y0);
-//        pathttt.moveTo(215, 870);
 
-
-//        pathttt.quadTo(x1, y1, x2, y2);
         pathttt.cubicTo( x1,y1,x2,y2,x3,y3);
 
-//        pathttt.quadTo( 480,900,830, 700);
 
-//        pathttt.cubicTo(215, 870, 850, 870, 810, 650);
-////        pathttt.moveTo(480, 1100);
-//        pathttt.lineTo(x3, y3);
-
-////        pathttt.lineTo(0, 0);
 
         canvas.drawPath(pathttt, painttt);
 
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -374,7 +232,7 @@ public class PaintView extends View {
 
                     if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
                         int pixel = bmp.getPixel(x, y);
-                        Log.e("bbbbbbbbbbbfjortorut", pixel + "");
+                        Log.e("bbbbbbbbbbb", pixel + "");
 
                         String hexColor = String.format("#%06X", (0xFFFFFF & pixel));
                         Log.e("ddddddddddd", hexColor);
@@ -406,61 +264,6 @@ public class PaintView extends View {
         return true;
     }
 
-
-//    public Object fon(Bitmap m) throws IOException, ClassNotFoundException {
-//        int[] pixels;
-//        int height = m.getHeight();
-//        int width = m.getWidth();
-//
-//        pixels = new int[height * width];
-//        int j = 0;
-//        m.getPixels(pixels, 0, width, 1, 1, width - 1, height - 1);
-//        int[] pixels2=null;
-//        for (int i = 0; i < pixels.length; i++) {
-//            if (pixels[i] == -31379873) {
-//                pixels2[j] = pixels[i];
-//
-//
-//                j++;
-//            }
-//
-//        }
-//        Log.e("nnnnnnnnnnnnnn",""+pixels2);
-//        byte[] c = integersToBytes(pixels2);
-//        ByteArrayInputStream in = new ByteArrayInputStream(c);
-//        ObjectInputStream is = new ObjectInputStream(in);
-//        return is.readObject();
-//
-//
-//    }
-//
-//
-//    byte[] integersToBytes(int[] values) throws IOException {
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        DataOutputStream dos = new DataOutputStream(baos);
-//        for (int i = 0; i < values.length; ++i) {
-//            dos.writeInt(values[i]);
-//        }
-//
-//        return baos.toByteArray();
-//    }
-
-
-    public static int[][] arrayFromBitmap(Bitmap source) {
-        int width = source.getWidth();
-        int height = source.getHeight();
-        int[][] result = new int[width][height];
-        int[] pixels = new int[width * height];
-        source.getPixels(pixels, 0, width, 0, 0, width, height);
-        int pixelsIndex = 0;
-        for (int i = 0; i < width; i++) {
-            for (int j = 0; j < height; j++) {
-                result[i][j] = pixels[pixelsIndex];
-                pixelsIndex++;
-            }
-        }
-        return result;
-    }
 }
 
 

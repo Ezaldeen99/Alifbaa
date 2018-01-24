@@ -1,5 +1,6 @@
 package com.example.android.alifbaa;
 
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -92,10 +93,14 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
             }
         });
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                paintView.create(metrics);
+
+
+                    paintView.create(metrics);
+
 
                 r.setImageResource(letters[counter].getLetterImg());
                 counter++;
@@ -109,7 +114,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
                 viewbitmap = new Viewbitmap();
                 viewbitmap.setMbitmap(bmp);
-                paintView.clear(metrics);
+
             }
         });
 
@@ -135,7 +140,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
     public DisplayMetrics getWindow(DisplayMetrics metrics) {
         final DisplayMetrics dm= new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
-//        float screenAdjust = (float) dm.densityDpi / 160f;
+        Resources r = this.getResources();
         return dm;
 
     }
