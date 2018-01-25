@@ -2,6 +2,9 @@ package com.example.android.alifbaa;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -10,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 
 public class LetterTrackingActivity extends AppCompatActivity {
@@ -61,6 +65,6 @@ public class LetterTrackingActivity extends AppCompatActivity {
         if (b ==null)
             return null;
         else
-            return b;
+        return b;
     }
 }

@@ -15,7 +15,9 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-
+/**
+ * Created by brayan pc on 12/27/2017.
+ */
 
 public class PaintView extends View {
 
@@ -90,8 +92,7 @@ public class PaintView extends View {
         }
 
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-       // sometimes it cause problems , just comment it for now.
-        //canvas.restore();
+        canvas.restore();
     }
 
 
