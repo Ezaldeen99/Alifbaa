@@ -3,13 +3,21 @@ package com.example.android.alifbaa;
 import android.graphics.Bitmap;
 import android.util.DisplayMetrics;
 
-/**
- * Created by brayan pc on 12/28/2017.
- */
+import java.util.ArrayList;
+
+
 
 public class Viewbitmap {
     private Bitmap mbitmap;
+    private ArrayList mPath;
 
+    public ArrayList getmPath() {
+        return mPath;
+    }
+
+    public void setmPath(ArrayList mPath) {
+        this.mPath = mPath;
+    }
 
     private DisplayMetrics screensize;
 

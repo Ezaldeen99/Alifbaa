@@ -12,10 +12,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 
 public class LetterTrackingActivity extends AppCompatActivity {
 
     public static Viewbitmap viewbitmap = null;
+
     int counter=1;
     Letter[] letters = {
             new Letter(1, R.drawable.letter_a),
@@ -117,8 +120,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
             }
         });
-
-
+//        ArrayList a=PaintView.viewbitmap.getmPath();
     }
 
     //this code will convert a view to bitmap

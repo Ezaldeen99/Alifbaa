@@ -1,6 +1,8 @@
 package com.example.android.alifbaa;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -12,23 +14,29 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Toast;
 
-import java.io.IOException;
 import java.util.ArrayList;
-
 
 
 public class PaintView extends View {
     Bitmap bmp;
+    DisplayMetrics metrics = getResources().getDisplayMetrics();
+    public static Viewbitmap viewbitmap = null;
+
     public static final int BRUSH_SIZE = 10;
     public static final int COLOR = Color.TRANSPARENT;
     private static final float TOUCH_TOLERANCE = 4;
 
     private float mX, mY;
+    private float x0, y0;
+
     private Path mPath;
     private Paint mPaint;
 
-    private ArrayList<TouchTrace> paths = new ArrayList<>();
+    private static ArrayList<TouchTrace> paths = new ArrayList<>();
+    private ArrayList<Points> xypoint = new ArrayList<>();
+//    ArrayList<Points> xypoints = new ArrayList<>();
     private int currentColor;
     private int strokeWidth;
 
@@ -79,23 +87,22 @@ public class PaintView extends View {
     }
 
 
-    public void create(DisplayMetrics metrics)  {
+    public void create(DisplayMetrics metrics) {
 
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
 //this will retrive last path to display it on the black screen
 
-//        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
 //        mCanvas = new Canvas(mBitmap);
 
-            mCanvas.drawColor(Color.BLACK);
+        mCanvas.drawColor(Color.BLACK);
 
-            for (TouchTrace fb : paths) {
-                mPaint.setColor(fb.color);
-                mPaint.setStrokeWidth(fb.strokeWidth);
-                mCanvas.drawPath(fp.path, mPaint);
-            }
-
+        for (TouchTrace fb : paths) {
+            mPaint.setColor(fb.color);
+            mPaint.setStrokeWidth(fb.strokeWidth);
+            mCanvas.drawPath(fp.path, mPaint);
+        }
 
 
         mCanvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
@@ -108,22 +115,10 @@ public class PaintView extends View {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        clear(metrics);
-
-
-
+//        clear(metrics);
 
 
     }
-
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -148,8 +143,8 @@ public class PaintView extends View {
         painttt.setStrokeWidth(10);
         Path pathttt = new Path();
 
-        float x0 = Dimensions.DpToPix(60, getContext());
-        float y0 = Dimensions.DpToPix(233, getContext());
+        x0 = Dimensions.DpToPix(60, getContext());
+        y0 = Dimensions.DpToPix(233, getContext());
         float x1 = Dimensions.DpToPix(160, getContext());
         float y1 = Dimensions.DpToPix(300, getContext());
         float x2 = Dimensions.DpToPix(276, getContext());
@@ -158,13 +153,15 @@ public class PaintView extends View {
         float y3 = Dimensions.DpToPix(216, getContext());
 
 
-
-
-
+        Points p = new Points(Math.round(x0), Math.round(y0));
+        xypoint.add(p);
+        Points p1 = new Points(0, 0);
+        xypoint.add(p1);
+        Points p2 = new Points(10, 10);
+        xypoint.add(p2);
         pathttt.moveTo(x0, y0);
 
-        pathttt.cubicTo( x1,y1,x2,y2,x3,y3);
-
+        pathttt.cubicTo(x1, y1, x2, y2, x3, y3);
 
 
         canvas.drawPath(pathttt, painttt);
@@ -178,6 +175,13 @@ public class PaintView extends View {
 
         int x = (int) event.getX();
         int y = (int) event.getY();
+        Log.e("mmmmmmmmmmmmmmm", x + "-" + y);
+
+//        Points p = new Points(x, y);
+//        Points p1 = new Points(0, 0);
+//        xypoints.add(p);
+//        xypoints.add(p1);
+
         if (LetterTrackingActivity.viewbitmap != null) {
             bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
 
@@ -224,7 +228,23 @@ public class PaintView extends View {
                     break;
 
                 case MotionEvent.ACTION_MOVE:
+                    Log.e("NNNNNNNNNNND", x + "-" + y);
+                    for (Points points1 : xypoint) {
+                        if (x == (points1.getX()) && y == (points1.getY())) {
+//                            create(metrics);
+                            Intent n =new Intent(getContext(), BlackBoardActivity.class);
+//                            n.putExtra("path",paths);
+                            viewbitmap = new Viewbitmap();
+                            viewbitmap.setmPath(paths);
+                            Log.e("pathsffffffff","");
+                            getContext().startActivity(n);
+//                            Toast.makeText(getContext(), "This is my Toast message!",
+//                                    Toast.LENGTH_LONG).show();
+                            Log.e("NNNNNNNNNNNNNNNN", "DONE");
+//                            Log.e("NNNNNNNNNNNNNNNND", x + "-" + y);
 
+                        }
+                    }
                     //when user swipe on screen
                     float dx = Math.abs(x - mX);
                     float dy = Math.abs(y - mY);
@@ -233,14 +253,21 @@ public class PaintView extends View {
                     if (x < bmp.getWidth() && x > 0 && y > 0 && y < bmp.getHeight()) {
                         int pixel = bmp.getPixel(x, y);
                         Log.e("bbbbbbbbbbb", pixel + "");
+//
+//                        Points p = new Points(x, y);
+//                        Points p1 = new Points(0, 0);
+//                        xypoints.add(new Points(x, y));
+//                        xypoints.add(new Points(0, 0));
 
                         String hexColor = String.format("#%06X", (0xFFFFFF & pixel));
                         Log.e("ddddddddddd", hexColor);
 
-                        Log.e("mmmmmmmmmmmmmmm",  x + "-" + y);
+                        Log.e("mmmmmmmmmmmmmmm", x + "-" + y);
                         if (pixel != Color.TRANSPARENT && pixel != Color.WHITE)
 
                         {
+                            if (x == x0 && y == y0)
+                                create(metrics);
                             //when user swipe on screen the color will change if it will turn transparnt it wont draw
                             currentColor = Color.RED;
                             if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
@@ -257,13 +284,17 @@ public class PaintView extends View {
 
 
                     break;
+
             }
+
 
 
         }
         return true;
     }
 
+    public static ArrayList<TouchTrace> getVariable()
+    {
+        return paths;
+    }
 }
-
-
