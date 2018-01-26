@@ -2,8 +2,10 @@ package com.example.android.alifbaa;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -21,6 +24,7 @@ import java.util.Random;
 public class TouchTheLetterActivity extends AppCompatActivity {
     Button homeButton;
 
+    TextView findTheLetterText;
     ImageView questionLetterImg;
     ImageView image1;
     ImageView image2;
@@ -107,6 +111,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_touch_the_letter);
 
         homeButton = findViewById(R.id.home_button);
+        findTheLetterText=findViewById(R.id.find_the_letter_text);
         questionLetterImg = findViewById(R.id.question_letter_img);
         image1 = findViewById(R.id.image1);
         image2 = findViewById(R.id.image2);
@@ -125,8 +130,22 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         imageViews[2] = image3;
         imageViews[3] = image4;
 
-        // initialize wrong voice
-        wrongVoice = MediaPlayer.create(this, R.raw.alert_tone);
+        // For Displaying the hints ,checking the sharedPreferences
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String displayHints = preferences.getString("HINTS", "ON");
+        Log.v("HINTS Are ", displayHints);
+
+        if(!displayHints.equals("ON"))
+        {
+            findTheLetterText.setVisibility(View.INVISIBLE);
+            questionLetterImg.setVisibility(View.INVISIBLE);
+        }else {
+            findTheLetterText.setVisibility(View.VISIBLE);
+            questionLetterImg.setVisibility(View.VISIBLE);
+        }
+
+        /// initialize wrong voice
+        wrongVoice =MediaPlayer.create(this, R.raw.alert_tone);
 
         // Home button to return back to the main activity
         homeButton.setOnClickListener(new View.OnClickListener() {
