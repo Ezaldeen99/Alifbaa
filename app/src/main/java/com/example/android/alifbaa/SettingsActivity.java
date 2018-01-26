@@ -109,7 +109,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Log.v("HINTS","Are NOW ON");
                 }
                 else {
-                    editor.putString("Name", "OFF");
+                    editor.putString("HINTS", "OFF");
                     Log.v("HINTS","Are NOW OFF");
 
                 }
