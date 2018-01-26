@@ -49,7 +49,14 @@ public class SettingsActivity extends AppCompatActivity {
         } else
             switch4.setChecked(true);
 
-
+        if (preferences.contains("RANDOM")) {
+            String randomOrder = preferences.getString("RANDOM", "ON");
+            if (randomOrder.equals("ON"))
+                switch1.setChecked(true);
+            else
+                switch1.setChecked(false);
+        } else
+            switch1.setChecked(true);
         // seekbar
         SeekBar seekBar = (SeekBar) findViewById(R.id.id_seek_bar);
         facebook.setOnClickListener(new View.OnClickListener() {
@@ -73,10 +80,18 @@ public class SettingsActivity extends AppCompatActivity {
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // ischecked switch1 ?
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
+                SharedPreferences.Editor editor = preferences.edit();
+
                 if (switch1.isChecked()) {
-                    Toast.makeText(SettingsActivity.this, "random order on", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(SettingsActivity.this, "random order off", Toast.LENGTH_SHORT).show();
+                    editor.putString("RANDOM", "ON");
+                    Log.v("RANDOM","Are NOW ON");
+                }
+                else {
+                    editor.putString("RANDOM", "OFF");
+                    Log.v("RANDOM","Are NOW OFF");
+                }
+                editor.apply();
             }
         });
         switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

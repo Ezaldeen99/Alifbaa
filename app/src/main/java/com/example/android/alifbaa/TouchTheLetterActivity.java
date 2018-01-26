@@ -111,7 +111,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_touch_the_letter);
 
         homeButton = findViewById(R.id.home_button);
-        findTheLetterText=findViewById(R.id.find_the_letter_text);
+        findTheLetterText = findViewById(R.id.find_the_letter_text);
         questionLetterImg = findViewById(R.id.question_letter_img);
         image1 = findViewById(R.id.image1);
         image2 = findViewById(R.id.image2);
@@ -135,17 +135,26 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         String displayHints = preferences.getString("HINTS", "ON");
         Log.v("HINTS Are ", displayHints);
 
-        if(!displayHints.equals("ON"))
-        {
+        if (!displayHints.equals("ON")) {
             findTheLetterText.setVisibility(View.INVISIBLE);
             questionLetterImg.setVisibility(View.INVISIBLE);
-        }else {
+        } else {
             findTheLetterText.setVisibility(View.VISIBLE);
             questionLetterImg.setVisibility(View.VISIBLE);
         }
 
+        String randomOrder = preferences.getString("RANDOM", "OFF");
+        if (randomOrder.equals("ON")) {
+            for (int item = letters.length - 1; item > 0; item--) {
+                int randomIndex = randInt(0, item);
+                Letter temp = letters[item];
+                letters[item] = letters[randomIndex];
+                letters[randomIndex] = temp;
+            }
+        }
+
         /// initialize wrong voice
-        wrongVoice =MediaPlayer.create(this, R.raw.alert_tone);
+        wrongVoice = MediaPlayer.create(this, R.raw.alert_tone);
 
         // Home button to return back to the main activity
         homeButton.setOnClickListener(new View.OnClickListener() {
@@ -165,7 +174,6 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         super.onStart();
         if (i == letters.length) {
             gameDone();
-            Log.v("GAMEOVER", "GAMEOVER");
         } else {
             game(i);
 
@@ -257,18 +265,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         // for checking the randomIndices for any duplication, in case the is duplicated numbers it will be regenerating
         // EX: 4,5,4
         // Result: 4,5,8
-        for (int k = 0; k < randomIndices.length - 1; k++) {
-            for (int j = k + 1; j < randomIndices.length; j++) {
-                if (randomIndices[k] == randomIndices[j]) {
-                    Log.v("DUPLICATED", "" + randomIndices[k]);
-
-                    if (randomIndices[j] == letters.length - 1)
-                        randomIndices[j] = randInt(0, letters.length - 1);
-                    else
-                        randomIndices[j] = randInt(randomIndices[j] + j, letters.length);
-                }
-            }
-        }
+        randomIndices = checkForDuplication(randomIndices);
 
 
         int[] tempLetterImages = new int[3];
@@ -312,9 +309,25 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         }
     }
 
+    private int[] checkForDuplication(int[] randomIndices) {
+        for (int k = 0; k < randomIndices.length - 1; k++) {
+            for (int j = k + 1; j < randomIndices.length; j++) {
+                if (randomIndices[k] == randomIndices[j]) {
+                    Log.v("DUPLICATED", "" + randomIndices[k]);
+
+                    if (randomIndices[j] == letters.length - 1)
+                        randomIndices[j] = randInt(0, letters.length - 1);
+                    else
+                        randomIndices[j] = randInt(randomIndices[j] + j, letters.length);
+                }
+            }
+        }
+        return randomIndices;
+    }
+
     private void gameDone() {
         finish();
-        Intent intent=new Intent (TouchTheLetterActivity.this,WinningActivity.class);
+        Intent intent = new Intent(TouchTheLetterActivity.this, WinningActivity.class);
         startActivity(intent);
     }
 
