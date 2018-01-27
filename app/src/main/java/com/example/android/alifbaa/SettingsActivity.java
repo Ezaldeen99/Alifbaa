@@ -33,7 +33,7 @@ public class SettingsActivity extends AppCompatActivity {
         // Lowercase letters
         final Switch switch2 = (Switch) findViewById(R.id.Lowercase_letters);
         //enable swiping
-        final Switch switch3 = (Switch) findViewById(R.id.enable_swiping);
+        final Switch switch3 = (Switch) findViewById(R.id.enable_scoring);
         // Show hints
         final Switch switch4 = (Switch) findViewById(R.id.Show_hints);
         // teacher mode
@@ -50,13 +50,23 @@ public class SettingsActivity extends AppCompatActivity {
             switch4.setChecked(true);
 
         if (preferences.contains("RANDOM")) {
-            String randomOrder = preferences.getString("RANDOM", "ON");
+            String randomOrder = preferences.getString("RANDOM", "OFF");
             if (randomOrder.equals("ON"))
                 switch1.setChecked(true);
             else
                 switch1.setChecked(false);
         } else
+            switch1.setChecked(false);
+
+        if (preferences.contains("SCORING")) {
+            String enableScoring = preferences.getString("SCORING", "ON");
+            if (enableScoring.equals("ON"))
+                switch1.setChecked(true);
+            else
+                switch1.setChecked(false);
+        } else
             switch1.setChecked(true);
+
         // seekbar
         SeekBar seekBar = (SeekBar) findViewById(R.id.id_seek_bar);
         facebook.setOnClickListener(new View.OnClickListener() {
@@ -107,10 +117,18 @@ public class SettingsActivity extends AppCompatActivity {
         switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
+                SharedPreferences.Editor editor = preferences.edit();
+
                 if (switch3.isChecked()) {
-                    Toast.makeText(SettingsActivity.this, "enable swiping is on ", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(SettingsActivity.this, "enable swiping is off ", Toast.LENGTH_SHORT).show();
+                    editor.putString("SCORING", "ON");
+                    Log.v("SCORING","Are NOW ON");
+                }
+                else {
+                    editor.putString("SCORING", "OFF");
+                    Log.v("SCORING","Are NOW OFF");
+                }
+                editor.apply();
             }
         });
         switch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
