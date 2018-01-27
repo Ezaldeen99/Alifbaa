@@ -1,8 +1,10 @@
 package com.example.android.alifbaa;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -11,30 +13,51 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class SettingsActivity extends AppCompatActivity {
-    //sulaiman
-    @Override
+//sulaiman
+   @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
         // twitter button
-        final ImageView twitter = findViewById(R.id.twitter_icon);
+        final ImageView twitter = (ImageView) findViewById(R.id.twitter_icon);
         // email button
-        final ImageView email = findViewById(R.id.email_icon);
+        final ImageView email = (ImageView) findViewById(R.id.email_icon);
         // facebook button
-        final ImageView facebook = findViewById(R.id.facebook_icon);
+        final ImageView facebook = (ImageView) findViewById(R.id.facebook_icon);
         //home button
-//        final FloatingActionButton home_button = findViewById(R.id.float_button_home);
+        final CircleImageView home_button = findViewById(R.id.float_button_home);
         // random order
-        final Switch switch1 = findViewById(R.id.random_order);
+        final Switch switch1 = (Switch) findViewById(R.id.random_order);
         // Lowercase letters
-        final Switch switch2 = findViewById(R.id.Lowercase_letters);
+        final Switch switch2 = (Switch) findViewById(R.id.Lowercase_letters);
         //enable swiping
-        final Switch switch3 = findViewById(R.id.enable_swiping);
+        final Switch switch3 = (Switch) findViewById(R.id.enable_swiping);
         // Show hints
-        final Switch switch4 = findViewById(R.id.Show_hints);
+        final Switch switch4 = (Switch) findViewById(R.id.Show_hints);
         // teacher mode
-        final Switch switch5 = findViewById(R.id.teacher_mode);
+        final Switch switch5 = (Switch) findViewById(R.id.teacher_mode);
+
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        if (preferences.contains("HINTS")) {
+            String displayHints = preferences.getString("HINTS", "ON");
+            if (displayHints.equals("ON"))
+                switch4.setChecked(true);
+            else
+                switch4.setChecked(false);
+        } else
+            switch4.setChecked(true);
+
+        if (preferences.contains("RANDOM")) {
+            String randomOrder = preferences.getString("RANDOM", "ON");
+            if (randomOrder.equals("ON"))
+                switch1.setChecked(true);
+            else
+                switch1.setChecked(false);
+        } else
+            switch1.setChecked(true);
         // seekbar
         SeekBar seekBar = findViewById(R.id.id_seek_bar);
         // contact us
@@ -46,31 +69,34 @@ public class SettingsActivity extends AppCompatActivity {
                 startActivity(contact_fragment);
             }
         });
-        facebook.setOnClickListener(new View.OnClickListener() {
+        // setOnClickListner for home button
+        home_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                finish();
+                if (home_button.isClickable()) {
+                    Toast.makeText(SettingsActivity.this, "home button activiated", Toast.LENGTH_SHORT).show();
+                } else
+                    Toast.makeText(SettingsActivity.this, " home button deactiviated", Toast.LENGTH_SHORT).show();
             }
         });
-
-        // setOnClickListner for home button
-        //   home_button.setOnClickListener(new View.OnClickListener() {
-        //       @Override
-        //     public void onClick(View view) {
-        //         if (home_button.isClickable()) {
-        //             Toast.makeText(SettingsActivity.this, "home button activiated", Toast.LENGTH_SHORT).show();
-        //         } else
-        //              Toast.makeText(SettingsActivity.this, " home button deactiviated", Toast.LENGTH_SHORT).show();
-        //      }
-        //   });
         //  i used the setonCheckedChangeListner instead of the setOnclickListner
         // setOnCheckedListner inherits compoundbutton attributes
         switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 // ischecked switch1 ?
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
+                SharedPreferences.Editor editor = preferences.edit();
+
                 if (switch1.isChecked()) {
-                    Toast.makeText(SettingsActivity.this, "random order on", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(SettingsActivity.this, "random order off", Toast.LENGTH_SHORT).show();
+                    editor.putString("RANDOM", "ON");
+                    Log.v("RANDOM","Are NOW ON");
+                }
+                else {
+                    editor.putString("RANDOM", "OFF");
+                    Log.v("RANDOM","Are NOW OFF");
+                }
+                editor.apply();
             }
         });
         switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -95,10 +121,19 @@ public class SettingsActivity extends AppCompatActivity {
         switch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
+                SharedPreferences.Editor editor = preferences.edit();
+
                 if (switch4.isChecked()) {
-                    Toast.makeText(SettingsActivity.this, "hints is on ", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(SettingsActivity.this, "hints is off", Toast.LENGTH_SHORT).show();
+                    editor.putString("HINTS", "ON");
+                    Log.v("HINTS","Are NOW ON");
+                }
+                else {
+                    editor.putString("HINTS", "OFF");
+                    Log.v("HINTS","Are NOW OFF");
+
+                }
+                editor.apply();
             }
         });
         switch5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -112,21 +147,17 @@ public class SettingsActivity extends AppCompatActivity {
         });
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
-
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
                 Toast.makeText(getApplicationContext(), "SeekBar progress: " + i, Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(getApplicationContext(), "SeekBar touch started: ", Toast.LENGTH_SHORT).show();
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
                 Toast.makeText(getApplicationContext(), "SeekBar touch stopped: ", Toast.LENGTH_SHORT).show();
             }
         });
     }
-
 }

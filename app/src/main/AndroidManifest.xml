@@ -2,10 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.android.alifbaa">
 
-    <permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
-    <uses-feature android:name="android.hardware.screen.portrait" />
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -23,7 +19,6 @@
         <activity
             android:name=".AlphabetTilesActivity"
             android:parentActivityName=".MainActivity">
-
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -31,9 +26,7 @@
         </activity>
         <activity
             android:name=".TouchTheLetterActivity"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait">
-
+            android:parentActivityName=".MainActivity">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"

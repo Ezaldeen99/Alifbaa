@@ -9,12 +9,12 @@ class Letter {
     private int letterImg;
     private int animalImg;
     private int wordImg;
-    private String arabicReading;
-    private String englishTranslation;
+    private int arabicReading;
+    private int englishTranslation;
     private int letterSound;
     private int wordSound;
 
-    public Letter(int letterId, int letterImg, int animalImg, int wordImg, String arabicReading, String englishTranslation, int letterSound, int wordSound) {
+    public Letter(int letterId, int letterImg, int animalImg, int wordImg, int arabicReading, int englishTranslation, int letterSound, int wordSound) {
         this.letterId = letterId;
         this.letterImg = letterImg;
         this.animalImg = animalImg;
@@ -46,11 +46,11 @@ class Letter {
         return wordImg;
     }
 
-    public String getArabicReading() {
+    public int getArabicReading() {
         return arabicReading;
     }
 
-    public String getEnglishTranslation() {
+    public int getEnglishTranslation() {
         return englishTranslation;
     }
 
