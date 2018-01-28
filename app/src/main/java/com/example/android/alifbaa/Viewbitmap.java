@@ -19,14 +19,8 @@ public class Viewbitmap {
         this.mPath = mPath;
     }
 
-    private DisplayMetrics screensize;
-
     public Viewbitmap() {
         super();
-    }
-
-    public Viewbitmap(Bitmap mbitmap) {
-        this.mbitmap = mbitmap;
     }
 
     public Bitmap getMbitmap() {
@@ -37,12 +31,6 @@ public class Viewbitmap {
         this.mbitmap = mbitmap;
     }
 
-    public DisplayMetrics getScreensize() {
-        return screensize;
+
     }
 
-    public void setScreensize(DisplayMetrics screensize) {
-        this.screensize = screensize;
-    }
-
-}

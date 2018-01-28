@@ -51,12 +51,4 @@
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:background="@drawable/eraser" />
 
-    <Button
-        android:id="@+id/add"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:background="@drawable/leftbutton" />
 </RelativeLayout>
