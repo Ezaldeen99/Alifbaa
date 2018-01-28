@@ -1,5 +1,6 @@
 package com.example.android.alifbaa;
 
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -27,7 +28,8 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
         Button earser;
         earser = (Button) findViewById(R.id.erase);
-
+        Button home;
+        home = (Button) findViewById(R.id.home_button);
 
 
 
@@ -63,12 +65,23 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
             }
         });
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent n = new Intent(LetterTrackingActivity.this, BlackBoardActivity.class);
+
+              startActivity(n);;
+
+            }
+        });
+
+
     }
 
 
     //this code will convert a view to bitmap
 
-    public Bitmap loadBitmapFromView(View v) {
+    public final Bitmap loadBitmapFromView(View v) {
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         Bitmap b = Bitmap.createBitmap(metrics.widthPixels, metrics.heightPixels, Bitmap.Config.ARGB_8888);

@@ -7,6 +7,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -25,14 +26,11 @@ public class PaintView extends View {
     int counter = 1;
     ImageView imageView;
 
-//    public static Viewbitmap viewbitmap = null;
 
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
     }
-    public void setBitmap(Bitmap bmp) {
-        this.bmp = bmp;
-    }
+
 
     Letter[] letters = {
             new Letter(1, R.drawable.letter_a),
@@ -70,13 +68,14 @@ public class PaintView extends View {
     private static final float TOUCH_TOLERANCE = 4;
 
     private float mX, mY;
-    private float x0, y0;
 
     private Path mPath;
     private Paint mPaint;
 
     private static ArrayList<TouchTrace> paths = new ArrayList<>();
+
     private ArrayList<Points> xypoint = new ArrayList<>();
+
 
     private int currentColor;
     private int strokeWidth;
@@ -84,7 +83,7 @@ public class PaintView extends View {
     private Bitmap mBitmap;
     private Canvas mCanvas;
     private Paint mBitmapPaint = new Paint(Paint.DITHER_FLAG);
-    TouchTrace fp;
+
 
     public PaintView(Context context) {
         super(context);
@@ -183,8 +182,8 @@ public class PaintView extends View {
         painttt.setStrokeWidth(10);
         Path pathttt = new Path();
 
-        x0 = Dimensions.DpToPix(60, getContext());
-        y0 = Dimensions.DpToPix(233, getContext());
+        float x0 = Dimensions.DpToPix(60, getContext());
+        float y0 = Dimensions.DpToPix(233, getContext());
         float x1 = Dimensions.DpToPix(160, getContext());
         float y1 = Dimensions.DpToPix(300, getContext());
         float x2 = Dimensions.DpToPix(276, getContext());
@@ -225,14 +224,10 @@ public class PaintView extends View {
         int y = (int) event.getY();
         Log.e("mmmmmmmmmmmmmmm", x + "-" + y);
 
-        if (imageView != null) {
+        if (bmp == null) {
             bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
-        } else {
-            bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
-
         }
-//        if (LetterTrackingActivity.viewbitmap != null) {
-//            bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
+
 
         //to get the bitmap which was generated from converting the image view
 
@@ -262,7 +257,7 @@ public class PaintView extends View {
                     {
                         //add this path to the arraylist of paths
                         currentColor = Color.RED;
-                        fp = new TouchTrace(currentColor, strokeWidth, mPath);
+                        TouchTrace fp = new TouchTrace(currentColor, strokeWidth, mPath);
                         paths.add(fp);
                         mPath.moveTo(x, y);
                         mX = x;
@@ -277,34 +272,7 @@ public class PaintView extends View {
                 break;
 
             case MotionEvent.ACTION_MOVE:
-                Log.e("NNNNNNNNNNND", x + "-" + y);
 
-                Log.e("sssssssssssssize", counter2 + "");
-
-                for (Points points1 : xypoint) {
-
-//                        Log.e("wwwwwwwwwwwwwwwwwwwww", points1.getX()+"_"+points1.getY());
-                    if (((points1.getX() - 50) <= x && x <= (points1.getX() + 50)) && ((points1.getY() - 50) <= y && y <= (points1.getY() + 50))) {
-                        counter2--;
-
-                        if (counter2 == 1) {
-                            LetterTrackingActivity.viewbitmap.setmPath(paths);
-                            Intent n = new Intent(getContext(), BlackBoardActivity.class);
-//
-                            getContext().startActivity(n);
-                            counter++;
-                            try {
-                                Thread.sleep(10000);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                            imageView.setImageResource(letters[counter].getLetterImg());
-                            bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
-                            Log.e("NNNNNNNNNNNNNNNN", "DONE");
-                        }
-
-                    }
-                }
                 //when user swipe on screen
                 float dx = Math.abs(x - mX);
                 float dy = Math.abs(y - mY);
@@ -323,7 +291,8 @@ public class PaintView extends View {
 
                     {
 
-
+                        TouchTrace fp = new TouchTrace(currentColor, strokeWidth, mPath);
+                        paths.add(fp);
                         //when user swipe on screen the color will change if it will turn transparnt it wont draw
                         currentColor = Color.RED;
                         if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
@@ -338,19 +307,59 @@ public class PaintView extends View {
                     }
                 }
 
+                Log.e("NNNNNNNNNNND", x + "-" + y);
+
+                Log.e("sssssssssssssize", counter2 + "");
+
+                for (Points points1 : xypoint) {
+
+//                        Log.e("wwwwwwwwwwwwwwwwwwwww", points1.getX()+"_"+points1.getY());
+                    if (((points1.getX() - 50) <= x && x <= (points1.getX() + 50)) && ((points1.getY() - 50) <= y && y <= (points1.getY() + 50))) {
+                        counter2--;
+
+                        if (counter2 == 3) {
+                            PaintViewResult paintViewResult=new PaintViewResult(getContext());
+                            paintViewResult.setPaths(paths);
+                            Intent n = new Intent(getContext(), BlackBoardActivity.class);
+                            getContext().startActivity(n);
+                            counter++;
+                            try {
+                                Thread.sleep(10000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            imageView.setImageResource(letters[counter].getLetterImg());
+                            bmp = getBitmapFromView(imageView);
+                            Log.e("NNNNNNNNNNNNNNNN", "DONE");
+                        }
+
+                    }
+                }
 
                 break;
 
         }
 
-
+        PaintViewResult paintViewResult=new PaintViewResult(getContext());
+        paintViewResult.setPaths(paths);
 //    }
         return true;
     }
+
 
     public static ArrayList<TouchTrace> getVariable() {
         return paths;
     }
 
-
+    public static Bitmap getBitmapFromView(View view) {
+        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(returnedBitmap);
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null)
+            bgDrawable.draw(canvas);
+        else
+            canvas.drawColor(Color.WHITE);
+        view.draw(canvas);
+        return returnedBitmap;
+    }
 }

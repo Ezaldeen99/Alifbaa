@@ -2,21 +2,14 @@ package com.example.android.alifbaa;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 
 public class BlackBoardActivity extends Activity {
 
@@ -35,23 +28,26 @@ public class BlackBoardActivity extends Activity {
         paintView.init(metrics);
         ImageView imageView=findViewById(R.id.im);
 
-       Bitmap bmp= loadBitmapFromView(this,paintView);
+        Bitmap bmp= loadBitmapFromView(this,paintView);
 
 
 //        paintView.setVisibility(View.GONE);
 
         imageView.setImageBitmap(bmp);
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        for (int i = 0; i <200 ; i++) {
+
         }
+//        try {
+//            Thread.sleep(200);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         finish();
     }
 //
 
-//
+    //
     public static Bitmap loadBitmapFromView(Context context, View v) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         v.measure(View.MeasureSpec.makeMeasureSpec(dm.widthPixels, View.MeasureSpec.EXACTLY),
@@ -64,18 +60,6 @@ public class BlackBoardActivity extends Activity {
 
         return returnedBitmap;
     }
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
