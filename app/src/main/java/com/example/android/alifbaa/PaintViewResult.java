@@ -14,9 +14,6 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-/**
- * Created by brayan pc on 1/28/2018.
- */
 
 public class PaintViewResult extends View {
 
@@ -72,17 +69,17 @@ public class PaintViewResult extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mCanvas.drawColor(Color.CYAN);
-        Log.e("pppppppppppppppvv", paths+ "-");
-        if (    paths==null)
-            Log.e("mmmmmmmmmmmmmmmnbnvcx", "null");
-        for (TouchTrace Tt : paths) {
-            mPaint.setColor(COLOR);
-            mPaint.setStrokeWidth(Tt.strokeWidth);
-            mCanvas.drawPath(Tt.path, mPaint);
-
-        }
-
-        canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
+//        Log.e("pppppppppppppppvv", paths+ "-");
+//        if (    paths==null)
+//            Log.e("mmmmmmmmmmmmmmmnbnvcx", "null");
+//        for (TouchTrace Tt : paths) {
+//            mPaint.setColor(COLOR);
+//            mPaint.setStrokeWidth(Tt.strokeWidth);
+//            mCanvas.drawPath(Tt.path, mPaint);
+//
+//        }
+//
+//        canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
         Paint painttt = new Paint();
         painttt.setStyle(Paint.Style.STROKE);
         painttt.setColor(Color.WHITE);

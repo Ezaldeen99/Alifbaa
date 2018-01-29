@@ -25,7 +25,7 @@ public class PaintView extends View {
     int counter2;
     int counter = 1;
     ImageView imageView;
-
+    TouchTrace fp;
 
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
@@ -119,9 +119,8 @@ public class PaintView extends View {
         int width = metrics.widthPixels;
 //when clicking on the earser this will clear the screen
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-//        mCanvas = new Canvas(mBitmap);
+        mCanvas = new Canvas(mBitmap);
         paths.clear();
-        mCanvas.drawColor(Color.TRANSPARENT);
         invalidate();
     }
 
@@ -257,7 +256,7 @@ public class PaintView extends View {
                     {
                         //add this path to the arraylist of paths
                         currentColor = Color.RED;
-                        TouchTrace fp = new TouchTrace(currentColor, strokeWidth, mPath);
+                        fp = new TouchTrace(currentColor, strokeWidth, mPath);
                         paths.add(fp);
                         mPath.moveTo(x, y);
                         mX = x;
@@ -290,9 +289,6 @@ public class PaintView extends View {
                     if (pixel != Color.TRANSPARENT && pixel != Color.WHITE)
 
                     {
-
-                        TouchTrace fp = new TouchTrace(currentColor, strokeWidth, mPath);
-                        paths.add(fp);
                         //when user swipe on screen the color will change if it will turn transparnt it wont draw
                         currentColor = Color.RED;
                         if (dx >= TOUCH_TOLERANCE || dy >= TOUCH_TOLERANCE) {
@@ -322,9 +318,10 @@ public class PaintView extends View {
                             paintViewResult.setPaths(paths);
                             Intent n = new Intent(getContext(), BlackBoardActivity.class);
                             getContext().startActivity(n);
+
                             counter++;
                             try {
-                                Thread.sleep(10000);
+                                Thread.sleep(500);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
@@ -340,8 +337,7 @@ public class PaintView extends View {
 
         }
 
-        PaintViewResult paintViewResult=new PaintViewResult(getContext());
-        paintViewResult.setPaths(paths);
+
 //    }
         return true;
     }
