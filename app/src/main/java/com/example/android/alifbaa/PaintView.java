@@ -27,6 +27,16 @@ public class PaintView extends View {
     ImageView imageView;
     TouchTrace fp;
 
+//    public int getLaunch() {
+//        return launch;
+//    }
+//
+//    public void setLaunch(int launch) {
+//        this.launch = launch;
+//    }
+//
+//    int launch = 0;
+
     public void setImageView(ImageView imageView) {
         this.imageView = imageView;
     }
@@ -314,14 +324,14 @@ public class PaintView extends View {
                         counter2--;
 
                         if (counter2 == 3) {
-                            PaintViewResult paintViewResult=new PaintViewResult(getContext());
+                            PaintViewResult paintViewResult = new PaintViewResult(getContext());
                             paintViewResult.setPaths(paths);
                             Intent n = new Intent(getContext(), BlackBoardActivity.class);
                             getContext().startActivity(n);
-
+//                            launch = 1;
                             counter++;
                             try {
-                                Thread.sleep(500);
+                                Thread.sleep(1500);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }

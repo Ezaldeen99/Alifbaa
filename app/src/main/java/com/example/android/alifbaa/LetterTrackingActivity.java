@@ -1,7 +1,6 @@
 package com.example.android.alifbaa;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -18,20 +17,18 @@ public class LetterTrackingActivity extends AppCompatActivity {
     static ImageView imageView;
 
     public static Viewbitmap viewbitmap = null;
-
+     PaintView paintView;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_letter_tracking);
         imageView = findViewById(R.id.letter_tracing);
-        final PaintView paintView;
+
 
         Button earser;
         earser = (Button) findViewById(R.id.erase);
         Button home;
         home = (Button) findViewById(R.id.home_button);
-
-
 
 
 //set the bitmap to access it in paintview
@@ -58,6 +55,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
         paintView.init(metrics);
 
+
         earser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,9 +66,8 @@ public class LetterTrackingActivity extends AppCompatActivity {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent n = new Intent(LetterTrackingActivity.this, BlackBoardActivity.class);
 
-              startActivity(n);;
+
 
             }
         });
@@ -78,8 +75,22 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
     }
 
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        int launch=paintView.getLaunch();
+//        if (launch==1) {
+//            Intent n = new Intent(LetterTrackingActivity.this, BlackBoardActivity.class);
+//
+//            startActivity(n);
+//
+//            launch--;
+//            paintView.setLaunch(launch);
+//            finish();
+//        }
+//    }
 
-    //this code will convert a view to bitmap
+//this code will convert a view to bitmap
 
     public final Bitmap loadBitmapFromView(View v) {
         final DisplayMetrics metrics = new DisplayMetrics();
