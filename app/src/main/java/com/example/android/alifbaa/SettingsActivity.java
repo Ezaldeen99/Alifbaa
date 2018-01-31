@@ -3,12 +3,11 @@ package com.example.android.alifbaa;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
-import android.widget.ImageView;
-import android.widget.SeekBar;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,20 +20,13 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        // twitter button
-        final ImageView twitter = (ImageView) findViewById(R.id.twitter_icon);
-        // email button
-        final ImageView email = (ImageView) findViewById(R.id.email_icon);
-        // facebook button
-        final ImageView facebook = (ImageView) findViewById(R.id.facebook_icon);
+
         //home button
         final CircleImageView home_button = findViewById(R.id.float_button_home);
         // random order
         final Switch switch1 = (Switch) findViewById(R.id.random_order);
         // Lowercase letters
-        final Switch switch2 = (Switch) findViewById(R.id.Lowercase_letters);
-        //enable swiping
-        final Switch switch3 = (Switch) findViewById(R.id.enable_swiping);
+
         // Show hints
         final Switch switch4 = (Switch) findViewById(R.id.Show_hints);
         // teacher mode
@@ -58,9 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
                 switch1.setChecked(false);
         } else
             switch1.setChecked(true);
-        // seekbar
-        SeekBar seekBar = findViewById(R.id.id_seek_bar);
-        // contact us
+               // contact us
          TextView contact_text = findViewById(R.id.contact);
         contact_text.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,25 +89,7 @@ public class SettingsActivity extends AppCompatActivity {
                 editor.apply();
             }
         });
-        switch2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                // ischecked switch2 ?
-                if (switch2.isChecked()) {
-                    Toast.makeText(SettingsActivity.this, " Lowercase letters on", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(SettingsActivity.this, "Lowercase letters off", Toast.LENGTH_SHORT).show();
-            }
-        });
-        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (switch3.isChecked()) {
-                    Toast.makeText(SettingsActivity.this, "enable swiping is on ", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(SettingsActivity.this, "enable swiping is off ", Toast.LENGTH_SHORT).show();
-            }
-        });
+
         switch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
@@ -145,19 +117,6 @@ public class SettingsActivity extends AppCompatActivity {
                     Toast.makeText(SettingsActivity.this, "teacher mode is off", Toast.LENGTH_SHORT).show();
             }
         });
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Toast.makeText(getApplicationContext(), "SeekBar progress: " + i, Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(getApplicationContext(), "SeekBar touch started: ", Toast.LENGTH_SHORT).show();
-            }
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(getApplicationContext(), "SeekBar touch stopped: ", Toast.LENGTH_SHORT).show();
-            }
-        });
+
     }
 }
