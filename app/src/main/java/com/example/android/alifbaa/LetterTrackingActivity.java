@@ -75,20 +75,6 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
     }
 
-//    @Override
-//    protected void onResume() {
-//        super.onResume();
-//        int launch=paintView.getLaunch();
-//        if (launch==1) {
-//            Intent n = new Intent(LetterTrackingActivity.this, BlackBoardActivity.class);
-//
-//            startActivity(n);
-//
-//            launch--;
-//            paintView.setLaunch(launch);
-//            finish();
-//        }
-//    }
 
 //this code will convert a view to bitmap
 

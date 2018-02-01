@@ -65,8 +65,6 @@ public class PaintViewResult extends View {
         strokeWidth = BRUSH_SIZE;
     }
     public void clear() {
-
-        paths.clear();
         setPaths(null);
 
     }
@@ -75,9 +73,7 @@ public class PaintViewResult extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         mCanvas.drawColor(Color.BLACK);
-//        Log.e("pppppppppppppppvv", paths+ "-");
-//        if (    paths==null)
-//            Log.e("mmmmmmmmmmmmmmmnbnvcx", "null");
+
         for (TouchTrace Tt : paths) {
             mPaint.setColor(COLOR);
             mPaint.setStrokeWidth(Tt.strokeWidth);
@@ -86,18 +82,6 @@ public class PaintViewResult extends View {
         }
 
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-
-//        Paint painttt = new Paint();
-//        painttt.setStyle(Paint.Style.STROKE);
-//        painttt.setColor(Color.WHITE);
-//        painttt.setStrokeWidth(10);
-//        Path pathttt = new Path();
-//        pathttt.moveTo(10, 10);
-//        pathttt.lineTo(100,100);
-////
-////        pathttt.cubicTo(x1, y1, x2, y2, x3, y3);
-////
-//        canvas.drawPath(pathttt, painttt);
 
     }
 

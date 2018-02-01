@@ -23,7 +23,7 @@
         android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/letter_b" />
+        android:src="@drawable/letter_a" />
 
 
 

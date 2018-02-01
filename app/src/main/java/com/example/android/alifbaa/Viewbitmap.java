@@ -11,6 +11,15 @@ public class Viewbitmap {
     private Bitmap mbitmap;
     private ArrayList mPath;
 
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    private int counter;
     public ArrayList getmPath() {
         return mPath;
     }
