@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -21,57 +20,23 @@ import java.util.ArrayList;
 
 public class PaintView extends View {
     Bitmap bmp;
-    int c = 1;
+    Viewbitmap viewbitmap = new Viewbitmap();
 
-    int setImage=0;
-    int counter = 2;
+
+    int counter = 4;
+
+
     ImageView imageView;
     TouchTrace fp;
-    private ArrayList<Points> xypoint = lettersPoint(counter);
-    int counter2 = xypoint.size();
+    private ArrayList<Points> xypoint;
+    int counter2;
 
 
-    public void setImageView(ImageView imageView) {
-        this.imageView = imageView;
-    }
-
-
-    Letter[] letters = {
-            new Letter(1, R.drawable.letter_a),
-            new Letter(2, R.drawable.letter_b),
-            new Letter(3, R.drawable.letter_c),
-            new Letter(4, R.drawable.letter_d),
-            new Letter(5, R.drawable.letter_e),
-            new Letter(6, R.drawable.letter_f),
-            new Letter(7, R.drawable.letter_g),
-            new Letter(8, R.drawable.letter_h),
-            new Letter(9, R.drawable.letter_i),
-            new Letter(10, R.drawable.letter_j),
-            new Letter(11, R.drawable.letter_k),
-            new Letter(12, R.drawable.letter_l),
-            new Letter(13, R.drawable.letter_m),
-            new Letter(14, R.drawable.letter_n),
-            new Letter(15, R.drawable.letter_o),
-            new Letter(16, R.drawable.letter_p),
-            new Letter(17, R.drawable.letter_q),
-            new Letter(18, R.drawable.letter_r),
-            new Letter(19, R.drawable.letter_s),
-            new Letter(20, R.drawable.letter_t),
-            new Letter(21, R.drawable.letter_u),
-            new Letter(22, R.drawable.letter_v),
-            new Letter(23, R.drawable.letter_w),
-            new Letter(24, R.drawable.letter_x),
-            new Letter(25, R.drawable.letter_y),
-            new Letter(26, R.drawable.letter_z),
-            new Letter(27, R.drawable.letter_z2),
-            new Letter(28, R.drawable.letter_z3),
-            new Letter(29, R.drawable.letter_z4),
-            new Letter(30, R.drawable.letter_z5)};
     public static final int BRUSH_SIZE = 10;
     public static final int COLOR = Color.TRANSPARENT;
     private static final float TOUCH_TOLERANCE = 4;
 
-    private float mX, mY,mxr,myr;
+    private float mX, mY, mxr, myr;
 
     private Path mPath;
     private Paint mPaint;
@@ -100,9 +65,15 @@ public class PaintView extends View {
 
     }
 
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+    }
+
+
     //this to initalize the paintview when first created
     public void init(DisplayMetrics metrics) {
-
+        Log.e("cccccccccccccccinit", counter + "");
 
         int height = metrics.heightPixels;
         int width = metrics.widthPixels;
@@ -112,7 +83,12 @@ public class PaintView extends View {
 //this will create the canvas that contain the bitmap
         currentColor = COLOR;
         strokeWidth = BRUSH_SIZE;
-
+        xypoint = lettersPoint(counter);
+        counter2 = xypoint.size();
+        if (counter == 0 || counter == 1) {
+            counter = 1;
+        } else
+            counter = viewbitmap.getCounter();
     }
 
     public void clear(DisplayMetrics metrics) {
@@ -129,6 +105,8 @@ public class PaintView extends View {
     public ArrayList lettersPoint(int c) {
 
         ArrayList<Points> xypoints = new ArrayList<>();
+
+
         switch (c) {
 
             case 1:
@@ -137,39 +115,159 @@ public class PaintView extends View {
                 float xa1 = Dimensions.DpToPix(166, getContext());
                 float ya1 = Dimensions.DpToPix(400, getContext());
 
-                Points pa = new Points(Math.round(xa0), Math.round(ya0));
-                xypoints.add(pa);
-
-
-                Points pa2 = new Points(Math.round(xa1), Math.round(ya1));
-                xypoints.add(pa2);
+                Points pa0 = new Points(Math.round(xa0), Math.round(ya0));
+                xypoints.add(pa0);
+                Points pa1 = new Points(Math.round(xa1), Math.round(ya1));
+                xypoints.add(pa1);
 
 
                 break;
             case 2:
-                float x0 = Dimensions.DpToPix(60, getContext());
-                float y0 = Dimensions.DpToPix(233, getContext());
-                float x1 = Dimensions.DpToPix(160, getContext());
-                float y1 = Dimensions.DpToPix(300, getContext());
-                float x2 = Dimensions.DpToPix(276, getContext());
-                float y2 = Dimensions.DpToPix(233, getContext());
-                float x3 = Dimensions.DpToPix(266, getContext());
-                float y3 = Dimensions.DpToPix(216, getContext());
-                Points pb = new Points(Math.round(x0), Math.round(y0));
-                xypoints.add(pb);
+                float xb0 = Dimensions.DpToPix(60, getContext());
+                float yb0 = Dimensions.DpToPix(233, getContext());
+                float xb1 = Dimensions.DpToPix(160, getContext());
+                float yb1 = Dimensions.DpToPix(300, getContext());
+                float xb2 = Dimensions.DpToPix(276, getContext());
+                float yb2 = Dimensions.DpToPix(233, getContext());
+                float xb3 = Dimensions.DpToPix(153, getContext());
+                float yb3 = Dimensions.DpToPix(366, getContext());
 
-
-                Points pb3 = new Points(Math.round(x1), Math.round(y1));
+                Points pb0 = new Points(Math.round(xb0), Math.round(yb0));
+                xypoints.add(pb0);
+                Points pb1 = new Points(Math.round(xb1), Math.round(yb1));
+                xypoints.add(pb1);
+                Points pb2 = new Points(Math.round(xb2), Math.round(yb2));
+                xypoints.add(pb2);
+                Points pb3 = new Points(Math.round(xb3), Math.round(yb3));
                 xypoints.add(pb3);
-                Points p4 = new Points(Math.round(x2), Math.round(y2));
-                xypoints.add(p4);
-                Points p5 = new Points(Math.round(x2), Math.round(y2));
-                xypoints.add(p5);
                 break;
 
+            case 3:
+                float xc0 = Dimensions.DpToPix(193, getContext());
+                float yc0 = Dimensions.DpToPix(233, getContext());
+                float xc1 = Dimensions.DpToPix(150, getContext());
+                float yc1 = Dimensions.DpToPix(233, getContext());
+                float xc2 = Dimensions.DpToPix(290, getContext());
+                float yc2 = Dimensions.DpToPix(300, getContext());
+                float xc3 = Dimensions.DpToPix(63, getContext());
+                float yc3 = Dimensions.DpToPix(300, getContext());
+                float xc4 = Dimensions.DpToPix(173, getContext());
+                float yc4 = Dimensions.DpToPix(366, getContext());
+
+                Points pc0 = new Points(Math.round(xc0), Math.round(yc0));
+                xypoints.add(pc0);
+                Points pc1 = new Points(Math.round(xc1), Math.round(yc1));
+                xypoints.add(pc1);
+                Points pc2 = new Points(Math.round(xc2), Math.round(yc2));
+                xypoints.add(pc2);
+                Points pc3 = new Points(Math.round(xc3), Math.round(yc3));
+                xypoints.add(pc3);
+                Points pc4 = new Points(Math.round(xc4), Math.round(yc4));
+                xypoints.add(pc4);
+                break;
+            case 4:
+                float xd0 = Dimensions.DpToPix(193, getContext());
+                float yd0 = Dimensions.DpToPix(233, getContext());
+                float xd1 = Dimensions.DpToPix(150, getContext());
+                float yd1 = Dimensions.DpToPix(233, getContext());
+                float xd2 = Dimensions.DpToPix(290, getContext());
+                float yd2 = Dimensions.DpToPix(300, getContext());
+                float xd3 = Dimensions.DpToPix(63, getContext());
+                float yd3 = Dimensions.DpToPix(300, getContext());
+                float xd4 = Dimensions.DpToPix(173, getContext());
+                float yd4 = Dimensions.DpToPix(366, getContext());
+                float xd5 = Dimensions.DpToPix(175, getContext());
+                float yd5 = Dimensions.DpToPix(225, getContext());
+
+                Points pd0 = new Points(Math.round(xd0), Math.round(yd0));
+                xypoints.add(pd0);
+                Points pd1 = new Points(Math.round(xd1), Math.round(yd1));
+                xypoints.add(pd1);
+                Points pd2 = new Points(Math.round(xd2), Math.round(yd2));
+                xypoints.add(pd2);
+                Points pd3 = new Points(Math.round(xd3), Math.round(yd3));
+                xypoints.add(pd3);
+                Points pd4 = new Points(Math.round(xd4), Math.round(yd4));
+                xypoints.add(pd4);
+                Points pd5 = new Points(Math.round(xd4), Math.round(yd4));
+                xypoints.add(pd5);
+                break;
+
+            case 5:
+                float xe0 = Dimensions.DpToPix(115, getContext());
+                float ye0 = Dimensions.DpToPix(210, getContext());
+                float xe1 = Dimensions.DpToPix(235, getContext());
+                float ye1 = Dimensions.DpToPix(230, getContext());
+                float xe2 = Dimensions.DpToPix(106, getContext());
+                float ye2 = Dimensions.DpToPix(333, getContext());
+                float xe3 = Dimensions.DpToPix(183, getContext());
+                float ye3 = Dimensions.DpToPix(323, getContext());
+
+
+                Points pe0 = new Points(Math.round(xe0), Math.round(ye0));
+                xypoints.add(pe0);
+                Points pe1 = new Points(Math.round(xe1), Math.round(ye1));
+                xypoints.add(pe1);
+                Points pe2 = new Points(Math.round(xe2), Math.round(ye2));
+                xypoints.add(pe2);
+                Points pe3 = new Points(Math.round(xe3), Math.round(ye3));
+                xypoints.add(pe3);
+
+                break;
+
+            case 6:
+                float xf0 = Dimensions.DpToPix(115, getContext());
+                float yf0 = Dimensions.DpToPix(210, getContext());
+                float xf1 = Dimensions.DpToPix(235, getContext());
+                float yf1 = Dimensions.DpToPix(230, getContext());
+                float xf2 = Dimensions.DpToPix(106, getContext());
+                float yf2 = Dimensions.DpToPix(333, getContext());
+
+
+                Points pf0 = new Points(Math.round(xf0), Math.round(yf0));
+                xypoints.add(pf0);
+                Points pf1 = new Points(Math.round(xf1), Math.round(yf1));
+                xypoints.add(pf1);
+                Points pf2 = new Points(Math.round(xf2), Math.round(yf2));
+                xypoints.add(pf2);
+
+                break;
         }
+
         return xypoints;
     }
+//    public void create(DisplayMetrics metrics) {
+//
+//        int height = metrics.heightPixels;
+//        int width = metrics.widthPixels;
+////this will retrive last path to display it on the black screen
+//
+//        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+////        mCanvas = new Canvas(mBitmap);
+//
+//        mCanvas.drawColor(Color.BLACK);
+//
+//        for (TouchTrace fb : paths) {
+//            mPaint.setColor(fb.color);
+//            mPaint.setStrokeWidth(fb.strokeWidth);
+//            mCanvas.drawPath(fp.path, mPaint);
+//        }
+//
+//
+//        mCanvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
+//
+//
+//        try {
+//
+//            Thread.sleep(1000);
+//
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+////        clear(metrics);
+//
+//
+//    }
 
 
     @Override
@@ -194,7 +292,6 @@ public class PaintView extends View {
         painttt.setStrokeWidth(10);
 
 
-
     }
 
 
@@ -207,8 +304,9 @@ public class PaintView extends View {
 
         if (bmp == null) {
             bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
+        } else {
+            bmp = LetterTrackingActivity.viewbitmap.getMbitmap();
         }
-
 
         //to get the bitmap which was generated from converting the image view
 
@@ -243,7 +341,7 @@ public class PaintView extends View {
                         mPath.moveTo(x, y);
                         mX = x;
                         mY = y;
-                        mxr= x;
+                        mxr = x;
                         myr = y;
                         invalidate();
                     } else
@@ -298,9 +396,9 @@ public class PaintView extends View {
 //                        Log.e("wwwwwwwwwwwwwwwwwwwww", points1.getX()+"_"+points1.getY());
                     if (((points1.getX() - 30) <= x && x <= (points1.getX() + 30)) && ((points1.getY() - 30) <= y && y <= (points1.getY() + 30))) {
 
-                        if (dxdraw>30||dydraw>30) {
+                        if (dxdraw > 30 || dydraw > 30) {
                             counter2--;
-                            Log.e("jjjjjjjjjjjjj", counter2+"" );
+                            Log.e("jjjjjjjjjjjjj", counter2 + "");
                         }
                         if (counter2 == 0) {
                             PaintViewResult paintViewResult = new PaintViewResult(getContext());
@@ -310,19 +408,22 @@ public class PaintView extends View {
 //                            launch = 1;
 
                             try {
-                                Thread.sleep(1500);
+                                Thread.sleep(1000);
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
                             counter++;
-                            Viewbitmap viewbitmap=new Viewbitmap();
-                             setImage=viewbitmap.getCounter();
-                            if (setImage==1) {
-                                imageView.setImageResource(letters[counter].getLetterImg());
-                                bmp = getBitmapFromView(imageView);
-                                Log.e("NNNNNNNNNNNNNNNN", "DONE");
-                                viewbitmap.setCounter(0);
-                            }
+                            viewbitmap.setCounter(counter);
+                            Log.e("cccccccccccccccpp", counter + "");
+//                            Viewbitmap viewbitmap=new Viewbitmap();
+//                             setImage=viewbitmap.getCounter();
+
+//                                imageView.setImageResource(letters[counter].getLetterImg());
+//                                bmp = getBitmapFromView(imageView);
+
+                            Log.e("NNNNNNNNNNNNNNNN", "DONE");
+//                                viewbitmap.setCounter(0);
+
                         }
 
                     }
@@ -330,8 +431,8 @@ public class PaintView extends View {
 
                 break;
             case MotionEvent.ACTION_UP:
-                mxr=x;
-                myr=y;
+                mxr = x;
+                myr = y;
                 break;
 
         }
@@ -342,15 +443,19 @@ public class PaintView extends View {
     }
 
 
-    public static Bitmap getBitmapFromView(View view) {
-        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas canvas = new Canvas(returnedBitmap);
-        Drawable bgDrawable = view.getBackground();
-        if (bgDrawable != null)
-            bgDrawable.draw(canvas);
-        else
-            canvas.drawColor(Color.WHITE);
-        view.draw(canvas);
-        return returnedBitmap;
-    }
+//    public static ArrayList<TouchTrace> getVariable() {
+//        return paths;
+//    }
+//
+//    public static Bitmap getBitmapFromView(View view) {
+//        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
+//        Canvas canvas = new Canvas(returnedBitmap);
+//        Drawable bgDrawable = view.getBackground();
+//        if (bgDrawable != null)
+//            bgDrawable.draw(canvas);
+//        else
+//            canvas.drawColor(Color.WHITE);
+//        view.draw(canvas);
+//        return returnedBitmap;
+//    }
 }

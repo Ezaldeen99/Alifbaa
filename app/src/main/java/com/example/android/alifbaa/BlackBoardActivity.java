@@ -37,7 +37,12 @@ public class BlackBoardActivity extends Activity {
 
         imageView.setImageBitmap(bmp);
         paintView.setVisibility(View.GONE);
-
+//        try {
+//            Thread.sleep(4000);
+//
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         tick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +50,7 @@ public class BlackBoardActivity extends Activity {
 
                 paintView.clear();
                 Viewbitmap viewbitmap=new Viewbitmap();
-                viewbitmap.setCounter(1);
+
 
                 finish();
             }

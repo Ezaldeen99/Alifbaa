@@ -15,6 +15,15 @@ public class Letter {
     private int letterSound;
     private int wordSound;
 
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
+    private int counter;
     public Letter(int letterId, int letterImg, int animalImg, int wordImg, String arabicReading, String englishTranslation, int letterSound, int wordSound) {
         this.letterId = letterId;
         this.letterImg = letterImg;
@@ -30,6 +39,9 @@ public class Letter {
         this.letterId = letterId;
         this.letterImg = letterImg;
 
+    }
+    public Letter() {
+     super();
     }
     public int getLetterId() {
         return letterId;
