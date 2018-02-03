@@ -26,7 +26,6 @@ public class PaintView extends View {
     int counter = 4;
 
 
-    ImageView imageView;
     TouchTrace fp;
     private ArrayList<Points> xypoint;
     int counter2;
@@ -176,8 +175,6 @@ public class PaintView extends View {
                 float yd3 = Dimensions.DpToPix(300, getContext());
                 float xd4 = Dimensions.DpToPix(173, getContext());
                 float yd4 = Dimensions.DpToPix(366, getContext());
-                float xd5 = Dimensions.DpToPix(175, getContext());
-                float yd5 = Dimensions.DpToPix(225, getContext());
 
                 Points pd0 = new Points(Math.round(xd0), Math.round(yd0));
                 xypoints.add(pd0);
@@ -232,42 +229,67 @@ public class PaintView extends View {
                 xypoints.add(pf2);
 
                 break;
+            case 7:
+                float xg0 = Dimensions.DpToPix(115, getContext());
+                float yg0 = Dimensions.DpToPix(210, getContext());
+                float xg1 = Dimensions.DpToPix(235, getContext());
+                float yg1 = Dimensions.DpToPix(230, getContext());
+                float xg2 = Dimensions.DpToPix(106, getContext());
+                float yg2 = Dimensions.DpToPix(333, getContext());
+                float xg3 = Dimensions.DpToPix(150, getContext());
+                float yg3 = Dimensions.DpToPix(183, getContext());
+
+                Points pg0 = new Points(Math.round(xg0), Math.round(yg0));
+                xypoints.add(pg0);
+                Points pg1 = new Points(Math.round(xg1), Math.round(yg1));
+                xypoints.add(pg1);
+                Points pg2 = new Points(Math.round(xg2), Math.round(yg2));
+                xypoints.add(pg2);
+                Points pg3 = new Points(Math.round(xg3), Math.round(yg3));
+                xypoints.add(pg3);
+                break;
+            case 8:
+                float xh0 = Dimensions.DpToPix(190, getContext());
+                float yh0 = Dimensions.DpToPix(283, getContext());
+                float xh1 = Dimensions.DpToPix(223, getContext());
+                float yh1 = Dimensions.DpToPix(353, getContext());
+                float xh2 = Dimensions.DpToPix(146, getContext());
+                float yh2 = Dimensions.DpToPix(383, getContext());
+
+
+                Points ph0 = new Points(Math.round(xh0), Math.round(yh0));
+                xypoints.add(ph0);
+                Points ph1 = new Points(Math.round(xh1), Math.round(yh1));
+                xypoints.add(ph1);
+                Points ph2 = new Points(Math.round(xh2), Math.round(yh2));
+                xypoints.add(ph2);
+
+                break;
+            case 9:
+                float xi0 = Dimensions.DpToPix(190, getContext());
+                float yi0 = Dimensions.DpToPix(283, getContext());
+                float xi1 = Dimensions.DpToPix(223, getContext());
+                float yi1 = Dimensions.DpToPix(353, getContext());
+                float xi2 = Dimensions.DpToPix(146, getContext());
+                float yi2 = Dimensions.DpToPix(383, getContext());
+                float xi3 = Dimensions.DpToPix(150, getContext());
+                float yi3 = Dimensions.DpToPix(233, getContext());
+
+                Points pi0 = new Points(Math.round(xi0), Math.round(yi0));
+                xypoints.add(pi0);
+                Points pi1 = new Points(Math.round(xi1), Math.round(yi1));
+                xypoints.add(pi1);
+                Points pi2 = new Points(Math.round(xi2), Math.round(yi2));
+                xypoints.add(pi2);
+                Points pi3 = new Points(Math.round(xi3), Math.round(yi3));
+                xypoints.add(pi3);
+
+                break;
         }
 
         return xypoints;
     }
-//    public void create(DisplayMetrics metrics) {
-//
-//        int height = metrics.heightPixels;
-//        int width = metrics.widthPixels;
-////this will retrive last path to display it on the black screen
-//
-//        mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
-////        mCanvas = new Canvas(mBitmap);
-//
-//        mCanvas.drawColor(Color.BLACK);
-//
-//        for (TouchTrace fb : paths) {
-//            mPaint.setColor(fb.color);
-//            mPaint.setStrokeWidth(fb.strokeWidth);
-//            mCanvas.drawPath(fp.path, mPaint);
-//        }
-//
-//
-//        mCanvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-//
-//
-//        try {
-//
-//            Thread.sleep(1000);
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-////        clear(metrics);
-//
-//
-//    }
+
 
 
     @Override
@@ -310,9 +332,7 @@ public class PaintView extends View {
 
         //to get the bitmap which was generated from converting the image view
 
-        if (bmp == null) {
-            Log.e("bitmap", "nulllllllllllllll");
-        }
+
 
         switch (event.getAction()) {
 
@@ -393,7 +413,6 @@ public class PaintView extends View {
                 float ury;
                 for (Points points1 : xypoint) {
 
-//                        Log.e("wwwwwwwwwwwwwwwwwwwww", points1.getX()+"_"+points1.getY());
                     if (((points1.getX() - 30) <= x && x <= (points1.getX() + 30)) && ((points1.getY() - 30) <= y && y <= (points1.getY() + 30))) {
 
                         if (dxdraw > 30 || dydraw > 30) {
@@ -405,7 +424,6 @@ public class PaintView extends View {
                             paintViewResult.setPaths(paths);
                             Intent n = new Intent(getContext(), BlackBoardActivity.class);
                             getContext().startActivity(n);
-//                            launch = 1;
 
                             try {
                                 Thread.sleep(1000);
@@ -414,15 +432,7 @@ public class PaintView extends View {
                             }
                             counter++;
                             viewbitmap.setCounter(counter);
-                            Log.e("cccccccccccccccpp", counter + "");
-//                            Viewbitmap viewbitmap=new Viewbitmap();
-//                             setImage=viewbitmap.getCounter();
 
-//                                imageView.setImageResource(letters[counter].getLetterImg());
-//                                bmp = getBitmapFromView(imageView);
-
-                            Log.e("NNNNNNNNNNNNNNNN", "DONE");
-//                                viewbitmap.setCounter(0);
 
                         }
 
@@ -438,24 +448,9 @@ public class PaintView extends View {
         }
 
 
-//    }
+
         return true;
     }
 
 
-//    public static ArrayList<TouchTrace> getVariable() {
-//        return paths;
-//    }
-//
-//    public static Bitmap getBitmapFromView(View view) {
-//        Bitmap returnedBitmap = Bitmap.createBitmap(view.getWidth(), view.getHeight(), Bitmap.Config.ARGB_8888);
-//        Canvas canvas = new Canvas(returnedBitmap);
-//        Drawable bgDrawable = view.getBackground();
-//        if (bgDrawable != null)
-//            bgDrawable.draw(canvas);
-//        else
-//            canvas.drawColor(Color.WHITE);
-//        view.draw(canvas);
-//        return returnedBitmap;
-//    }
 }

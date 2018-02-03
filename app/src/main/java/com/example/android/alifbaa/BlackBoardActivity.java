@@ -33,16 +33,11 @@ public class BlackBoardActivity extends Activity {
 
         Bitmap bmp = loadBitmapFromView(this, paintView);
 
-//
+
 
         imageView.setImageBitmap(bmp);
         paintView.setVisibility(View.GONE);
-//        try {
-//            Thread.sleep(4000);
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+
 
         tick.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,9 +51,7 @@ public class BlackBoardActivity extends Activity {
             }
         });
     }
-//
 
-    //
     public static Bitmap loadBitmapFromView(Context context, View v) {
         DisplayMetrics dm = context.getResources().getDisplayMetrics();
         v.measure(View.MeasureSpec.makeMeasureSpec(dm.widthPixels, View.MeasureSpec.EXACTLY),
