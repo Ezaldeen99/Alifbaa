@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -75,8 +74,6 @@ public class LetterTrackingActivity extends AppCompatActivity {
         viewbitmap.setMbitmap(bmp);
 
 
-
-
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
@@ -105,20 +102,23 @@ public class LetterTrackingActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
+        if (counter != 28) {
+            imageView.setImageResource(letters[counter].getLetterImg());
+            counter++;
+            Bitmap bmp = loadBitmapFromView(imageView);
+            //convert the image view to a bitmap
 
-        imageView.setImageResource(letters[counter].getLetterImg());
-        counter++;
-        Bitmap bmp = loadBitmapFromView(imageView);
-        //convert the image view to a bitmap
 
+            viewbitmap = new Viewbitmap();
+            viewbitmap.setMbitmap(bmp);
 
-        viewbitmap = new Viewbitmap();
-        viewbitmap.setMbitmap(bmp);
-
-        final DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        paintView.clear(metrics);
-        paintView.init(metrics);
+            final DisplayMetrics metrics = new DisplayMetrics();
+            getWindowManager().getDefaultDisplay().getMetrics(metrics);
+            paintView.clear(metrics);
+            paintView.init(metrics);
+        } else {
+    finish();
+        }
 
     }
 
