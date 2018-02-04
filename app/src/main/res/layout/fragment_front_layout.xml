@@ -4,6 +4,7 @@
     android:layout_marginLeft="@dimen/activity_horizontal_margin"
     android:layout_marginRight="@dimen/activity_horizontal_margin"
     android:background="@drawable/filp_background"
+    android:focusable="true"
     android:orientation="vertical">
 
     <ImageView
@@ -14,6 +15,7 @@
         android:src="@drawable/letter_a" />
 
     <TextView
+        android:id="@+id/arabic_spelling"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"

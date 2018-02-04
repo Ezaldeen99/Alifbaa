@@ -1,10 +1,17 @@
 package com.example.android.alifbaa;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.Random;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 // sulaiman
@@ -15,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView alphabetTilesGame;
     ImageView letterTrackingGame;
     CircleImageView settings;
-
+// this is a change 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,10 +66,56 @@ public class MainActivity extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
+                new SettingDialog(MainActivity.this).show();
             }
         });
 
     }
+
+    public class SettingDialog extends android.app.Dialog implements android.view.View.OnClickListener {
+        private Activity c;
+        private Button yes;
+        TextView text;
+        EditText edit;
+        int answer, s, d;
+
+        SettingDialog(Activity a) {
+            super(a);
+            this.c = a;
+        }
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            setContentView(R.layout.settings_question);
+            Random ran = new Random();
+            s = ran.nextInt(8) + 1;
+            d = ran.nextInt(8) + 1;
+            text = findViewById(R.id.first_text);
+            edit = findViewById(R.id.answer);
+            text.setText(s + " + " + d + " = ");
+            text.setTextSize(24);
+            yes = findViewById(R.id.btn_yes);
+            yes.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()) {
+                case R.id.btn_yes:
+                    answer = Integer.parseInt(edit.getText().toString());
+                    if (answer == s + d) {
+                        Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                        startActivity(intent);
+                    }
+                    break;
+                default:
+                    dismiss();
+            }
+            dismiss();
+        }
+    }
+
 }

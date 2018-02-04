@@ -6,6 +6,6 @@
     <color name="backgroundDark">#04bff4</color>
     <color name="backgroundLight">#9de8fb</color>
     <color name="words_color">#001064</color>
-    <color name="letters_color">#212e5f</color>
-
+    <color name="result_background_color">#FEFEFE</color>
+    <color name="black">#000000</color>
 </resources>
