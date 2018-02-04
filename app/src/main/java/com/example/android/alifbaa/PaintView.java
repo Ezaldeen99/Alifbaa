@@ -23,7 +23,7 @@ public class PaintView extends View {
     Viewbitmap viewbitmap = new Viewbitmap();
 
 
-    int counter = 4;
+    int counter = 1;
 
 
     TouchTrace fp;
@@ -249,22 +249,24 @@ public class PaintView extends View {
                 xypoints.add(pg3);
                 break;
             case 8:
+//                dal
                 float xh0 = Dimensions.DpToPix(190, getContext());
                 float yh0 = Dimensions.DpToPix(283, getContext());
-                float xh1 = Dimensions.DpToPix(223, getContext());
-                float yh1 = Dimensions.DpToPix(353, getContext());
+//                float xh1 = Dimensions.DpToPix(223, getContext());
+//                float yh1 = Dimensions.DpToPix(353, getContext());
                 float xh2 = Dimensions.DpToPix(146, getContext());
                 float yh2 = Dimensions.DpToPix(383, getContext());
 
 
                 Points ph0 = new Points(Math.round(xh0), Math.round(yh0));
                 xypoints.add(ph0);
-                Points ph1 = new Points(Math.round(xh1), Math.round(yh1));
-                xypoints.add(ph1);
+//                Points ph1 = new Points(Math.round(xh1), Math.round(yh1));
+//                xypoints.add(ph1);
                 Points ph2 = new Points(Math.round(xh2), Math.round(yh2));
                 xypoints.add(ph2);
 
                 break;
+//thal
             case 9:
                 float xi0 = Dimensions.DpToPix(190, getContext());
                 float yi0 = Dimensions.DpToPix(283, getContext());
@@ -284,6 +286,199 @@ public class PaintView extends View {
                 Points pi3 = new Points(Math.round(xi3), Math.round(yi3));
                 xypoints.add(pi3);
 
+                break;
+            case 10:
+//                raa
+                float xj0 = Dimensions.DpToPix(193, getContext());
+                float yj0 = Dimensions.DpToPix(240, getContext());
+                float xj1 = Dimensions.DpToPix(115, getContext());
+                float yj1 = Dimensions.DpToPix(373, getContext());
+
+
+                Points pj0 = new Points(Math.round(xj0), Math.round(yj0));
+                xypoints.add(pj0);
+                Points pj1 = new Points(Math.round(xj1), Math.round(yj1));
+                xypoints.add(pj1);
+
+
+                break;
+//                zaa
+            case 11:
+                float xk0 = Dimensions.DpToPix(193, getContext());
+                float yk0 = Dimensions.DpToPix(240, getContext());
+                float xk1 = Dimensions.DpToPix(115, getContext());
+                float yk1 = Dimensions.DpToPix(373, getContext());
+                float xk2 = Dimensions.DpToPix(196, getContext());
+                float yk2 = Dimensions.DpToPix(210, getContext());
+
+
+                Points pk0 = new Points(Math.round(xk0), Math.round(yk0));
+                xypoints.add(pk0);
+                Points pk1 = new Points(Math.round(xk1), Math.round(yk1));
+                xypoints.add(pk1);
+                Points pk2 = new Points(Math.round(xk2), Math.round(yk2));
+                xypoints.add(pk2);
+
+
+                break;
+            case 12:
+                float xseen0 = Dimensions.DpToPix(316, getContext());
+                float yseen0 = Dimensions.DpToPix(293, getContext());
+                float xseen1 = Dimensions.DpToPix(253, getContext());
+                float yseen1 = Dimensions.DpToPix(310, getContext());
+                float xseen2 = Dimensions.DpToPix(183, getContext());
+                float yseen2 = Dimensions.DpToPix(216, getContext());
+                float xseen3 = Dimensions.DpToPix(115, getContext());
+                float yseen3 = Dimensions.DpToPix(433, getContext());
+                float xseen4 = Dimensions.DpToPix(40, getContext());
+                float yseen4 = Dimensions.DpToPix(360, getContext());
+
+                Points pseen0 = new Points(Math.round(xseen0), Math.round(yseen0));
+                xypoints.add(pseen0);
+                Points pseen1 = new Points(Math.round(xseen1), Math.round(yseen1));
+                xypoints.add(pseen1);
+                Points pseen2 = new Points(Math.round(xseen2), Math.round(yseen2));
+                xypoints.add(pseen2);
+                Points pseen3 = new Points(Math.round(xseen3), Math.round(yseen3));
+                xypoints.add(pseen3);
+                Points pseen4 = new Points(Math.round(xseen4), Math.round(yseen4));
+                xypoints.add(pseen4);
+                break;
+            case 13:
+                float xsheen0 = Dimensions.DpToPix(316, getContext());
+                float ysheen0 = Dimensions.DpToPix(293, getContext());
+                float xsheen1 = Dimensions.DpToPix(253, getContext());
+                float ysheen1 = Dimensions.DpToPix(310, getContext());
+                float xsheen2 = Dimensions.DpToPix(183, getContext());
+                float ysheen2 = Dimensions.DpToPix(216, getContext());
+                float xsheen3 = Dimensions.DpToPix(115, getContext());
+                float ysheen3 = Dimensions.DpToPix(433, getContext());
+                float xsheen4 = Dimensions.DpToPix(40, getContext());
+                float ysheen4 = Dimensions.DpToPix(360, getContext());
+                float xsheen5 = Dimensions.DpToPix(266, getContext());
+                float ysheen5 = Dimensions.DpToPix(240, getContext());
+                float xsheen6 = Dimensions.DpToPix(250, getContext());
+                float ysheen6 = Dimensions.DpToPix(186, getContext());
+                float xsheen7 = Dimensions.DpToPix(233, getContext());
+                float ysheen7 = Dimensions.DpToPix(340, getContext());
+                Points psheen0 = new Points(Math.round(xsheen0), Math.round(ysheen0));
+                xypoints.add(psheen0);
+                Points psheen1 = new Points(Math.round(xsheen1), Math.round(ysheen1));
+                xypoints.add(psheen1);
+                Points psheen2 = new Points(Math.round(xsheen2), Math.round(ysheen2));
+                xypoints.add(psheen2);
+                Points psheen3 = new Points(Math.round(xsheen3), Math.round(ysheen3));
+                xypoints.add(psheen3);
+                Points psheen4 = new Points(Math.round(xsheen4), Math.round(ysheen4));
+                xypoints.add(psheen4);
+                Points psheen5 = new Points(Math.round(xsheen5), Math.round(ysheen5));
+                xypoints.add(psheen5);
+                Points psheen6 = new Points(Math.round(xsheen6), Math.round(ysheen6));
+                xypoints.add(psheen6);
+                Points psheen7 = new Points(Math.round(xsheen7), Math.round(ysheen7));
+                xypoints.add(psheen7);
+                break;
+            case 14:
+//                sad
+                float xsad0 = Dimensions.DpToPix(220, getContext());
+                float ysad0 = Dimensions.DpToPix(293, getContext());
+                float xsad1 = Dimensions.DpToPix(326, getContext());
+                float ysad1 = Dimensions.DpToPix(293, getContext());
+                float xsad2 = Dimensions.DpToPix(213, getContext());
+                float ysad2 = Dimensions.DpToPix(306, getContext());
+                float xsad3 = Dimensions.DpToPix(133, getContext());
+                float ysad3 = Dimensions.DpToPix(403, getContext());
+                float xsad4 = Dimensions.DpToPix(133, getContext());
+                float ysad4 = Dimensions.DpToPix(403, getContext());
+                float xsad5 = Dimensions.DpToPix(26, getContext());
+                float ysad5 = Dimensions.DpToPix(336, getContext());
+
+                Points psad0 = new Points(Math.round(xsad0), Math.round(ysad0));
+                xypoints.add(psad0);
+                Points psad1 = new Points(Math.round(xsad1), Math.round(ysad1));
+                xypoints.add(psad1);
+                Points psad2 = new Points(Math.round(xsad2), Math.round(ysad2));
+                xypoints.add(psad2);
+                Points psad3 = new Points(Math.round(xsad3), Math.round(ysad3));
+                xypoints.add(psad3);
+                Points psad4 = new Points(Math.round(xsad4), Math.round(ysad4));
+                xypoints.add(psad4);
+                Points psad5 = new Points(Math.round(xsad5), Math.round(ysad5));
+                xypoints.add(psad5);
+                break;
+            case 15:
+//                thad
+                float xthad0 = Dimensions.DpToPix(220, getContext());
+                float ythad0 = Dimensions.DpToPix(293, getContext());
+                float xthad1 = Dimensions.DpToPix(326, getContext());
+                float ythad1 = Dimensions.DpToPix(293, getContext());
+                float xthad2 = Dimensions.DpToPix(213, getContext());
+                float ythad2 = Dimensions.DpToPix(306, getContext());
+                float xthad3 = Dimensions.DpToPix(133, getContext());
+                float ythad3 = Dimensions.DpToPix(403, getContext());
+                float xthad4 = Dimensions.DpToPix(133, getContext());
+                float ythad4 = Dimensions.DpToPix(403, getContext());
+                float xthad5 = Dimensions.DpToPix(26, getContext());
+                float ythad5 = Dimensions.DpToPix(336, getContext());
+                float xthad6 = Dimensions.DpToPix(266, getContext());
+                float ythad6 = Dimensions.DpToPix(196, getContext());
+                Points pthad0 = new Points(Math.round(xthad0), Math.round(ythad0));
+                xypoints.add(pthad0);
+                Points pthad1 = new Points(Math.round(xthad1), Math.round(ythad1));
+                xypoints.add(pthad1);
+                Points pthad2 = new Points(Math.round(xthad2), Math.round(ythad2));
+                xypoints.add(pthad2);
+                Points pthad3 = new Points(Math.round(xthad3), Math.round(ythad3));
+                xypoints.add(pthad3);
+                Points pthad4 = new Points(Math.round(xthad4), Math.round(ythad4));
+                xypoints.add(pthad4);
+                Points pthad5 = new Points(Math.round(xthad5), Math.round(ythad5));
+                xypoints.add(pthad5);
+                Points pthad6 = new Points(Math.round(xthad6), Math.round(ythad6));
+                xypoints.add(pthad6);
+                break;
+            case 16:
+                float xtah0 = Dimensions.DpToPix(150, getContext());
+                float ytah0 = Dimensions.DpToPix(396, getContext());
+                float xtah1 = Dimensions.DpToPix(150, getContext());
+                float ytah1 = Dimensions.DpToPix(233, getContext());
+                float xtah2 = Dimensions.DpToPix(250, getContext());
+                float ytah2 = Dimensions.DpToPix(343, getContext());
+                float xtah3 = Dimensions.DpToPix(100, getContext());
+                float ytah3 = Dimensions.DpToPix(400, getContext());
+
+                Points ptah0 = new Points(Math.round(xtah0), Math.round(ytah0));
+                xypoints.add(ptah0);
+                Points ptah1 = new Points(Math.round(xtah1), Math.round(ytah1));
+                xypoints.add(ptah1);
+                Points ptah2 = new Points(Math.round(xtah2), Math.round(ytah2));
+                xypoints.add(ptah2);
+                Points ptah3 = new Points(Math.round(xtah3), Math.round(ytah3));
+                xypoints.add(ptah3);
+
+                break;
+            case 17:
+                float xthah0 = Dimensions.DpToPix(150, getContext());
+                float ythah0 = Dimensions.DpToPix(396, getContext());
+                float xthah1 = Dimensions.DpToPix(150, getContext());
+                float ythah1 = Dimensions.DpToPix(233, getContext());
+                float xthah2 = Dimensions.DpToPix(250, getContext());
+                float ythah2 = Dimensions.DpToPix(343, getContext());
+                float xthah3 = Dimensions.DpToPix(100, getContext());
+                float ythah3 = Dimensions.DpToPix(400, getContext());
+                float xthah4 = Dimensions.DpToPix(243, getContext());
+                float ythah4 = Dimensions.DpToPix(256, getContext());
+
+                Points pthah0 = new Points(Math.round(xthah0), Math.round(ythah0));
+                xypoints.add(pthah0);
+                Points pthah1 = new Points(Math.round(xthah1), Math.round(ythah1));
+                xypoints.add(pthah1);
+                Points pthah2 = new Points(Math.round(xthah2), Math.round(ythah2));
+                xypoints.add(pthah2);
+                Points pthah3 = new Points(Math.round(xthah3), Math.round(ythah3));
+                xypoints.add(pthah3);
+                Points pthah4 = new Points(Math.round(xthah4), Math.round(ythah4));
+                xypoints.add(pthah4);
                 break;
         }
 

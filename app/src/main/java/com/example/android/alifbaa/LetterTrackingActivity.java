@@ -43,9 +43,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
             new Letter(25, R.drawable.letter_y),
             new Letter(26, R.drawable.letter_z),
             new Letter(27, R.drawable.letter_z2),
-            new Letter(28, R.drawable.letter_z3),
-            new Letter(29, R.drawable.letter_z4),
-            new Letter(30, R.drawable.letter_z5)};
+            new Letter(28, R.drawable.letter_z5)};
 
     public static Viewbitmap viewbitmap = null;
     PaintView paintView;
