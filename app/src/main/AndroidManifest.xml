@@ -73,6 +73,7 @@
         </activity>
         <activity android:name=".WinningActivity"></activity>
         <activity android:name=".TeacherMode"></activity>
+        <activity android:name=".BlackBoardActivity"></activity>
     </application>
 
 </manifest>
