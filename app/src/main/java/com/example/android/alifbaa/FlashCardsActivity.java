@@ -3,7 +3,9 @@ package com.example.android.alifbaa;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.View;
@@ -69,7 +71,11 @@ public class FlashCardsActivity extends FragmentActivity {
         Button home = findViewById(R.id.home_button);
         Button next = findViewById(R.id.btn_next);
         Button prev = findViewById(R.id.btn_prev);
-        if (true) {
+
+        // Checking the Random order Activation
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String randomOrder = preferences.getString("RANDOM", "OFF");
+        if (randomOrder.equals("ON")) {
             Random r = new Random();
             for (int item = NBR_ITEMS - 1; item > 0; item--) {
                 int k = r.nextInt(item);

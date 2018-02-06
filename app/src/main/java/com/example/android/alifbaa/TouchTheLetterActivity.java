@@ -141,6 +141,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             questionLetterImg.setVisibility(View.VISIBLE);
         }
 
+        // for random order Activation
         String randomOrder = preferences.getString("RANDOM", "OFF");
         if (randomOrder.equals("ON")) {
             for (int item = letters.length - 1; item > 0; item--) {

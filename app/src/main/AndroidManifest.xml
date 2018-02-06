@@ -18,7 +18,8 @@
         </activity>
         <activity
             android:name=".AlphabetTilesActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -26,7 +27,8 @@
         </activity>
         <activity
             android:name=".TouchTheLetterActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,7 +36,8 @@
         </activity>
         <activity
             android:name=".LetterTrackingActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -51,29 +54,35 @@
         </activity>
         <activity
             android:name=".ContactUs"
-            android:parentActivityName=".SettingsActivity">
+            android:parentActivityName=".SettingsActivity"
+            android:screenOrientation="portrait">
         <meta-data
             android:name="android.support.PARENT_ACTIVITY"
             android:value=".SettingsActivity" />
         </activity>
         <activity
             android:name=".FlashCardsActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
         <activity android:name=".SettingsActivity"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait">
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".WinningActivity"></activity>
-        <activity android:name=".TeacherMode"></activity>
-        <activity android:name=".BlackBoardActivity"></activity>
+        <activity android:name=".WinningActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".TeacherMode"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BlackBoardActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

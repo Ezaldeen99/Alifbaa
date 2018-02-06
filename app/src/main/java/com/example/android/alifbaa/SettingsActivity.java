@@ -8,11 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SettingsActivity extends AppCompatActivity {
 //sulaiman
@@ -22,7 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
 
         //home button
-        final CircleImageView home_button = findViewById(R.id.float_button_home);
+        final ImageView home_button = findViewById(R.id.float_button_home);
         // random order
         final Switch switch1 = (Switch) findViewById(R.id.random_order);
         // Lowercase letters
