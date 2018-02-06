@@ -1,5 +1,6 @@
 package com.example.android.alifbaa;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.os.Bundle;
@@ -12,9 +13,8 @@ import android.widget.ImageView;
 
 
 public class LetterTrackingActivity extends AppCompatActivity {
-
     static ImageView imageView;
-    int counter = 1;
+    int lettersCounter = 1;
     Letter[] letters = {
             new Letter(1, R.drawable.letter_a),
             new Letter(2, R.drawable.letter_b),
@@ -66,7 +66,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
         ImageView imageView = (ImageView) findViewById(R.id.letter_tracing);
 
 
-        Bitmap bmp = loadBitmapFromView(imageView);
+        Bitmap bmp = convertViewToBitmap(imageView);
         //convert the image view to a bitmap
 
 
@@ -78,10 +78,10 @@ public class LetterTrackingActivity extends AppCompatActivity {
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
-
+//intialize the paintiew
         paintView.init(metrics);
 
-
+//call clear when the earser pressed
         earser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,11 +89,11 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
             }
         });
+//        exit game when user press home
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
+                dialog();
             }
         });
 
@@ -102,23 +102,26 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
     @Override
     protected void onRestart() {
+//        on restart change the letter and its bitmap and set its value again
         super.onRestart();
-        if (counter != 28) {
-            imageView.setImageResource(letters[counter].getLetterImg());
-            counter++;
-            Bitmap bmp = loadBitmapFromView(imageView);
-            //convert the image view to a bitmap
+        if (lettersCounter != letters.length) {
+//            if the counter reaches the end of the arraylist the game ends
+            imageView.setImageResource(letters[lettersCounter].getLetterImg());
+            lettersCounter++;
 
+            Bitmap bmp = convertViewToBitmap(imageView);
+            //convert the image view to a bitmap
 
             viewbitmap = new Viewbitmap();
             viewbitmap.setMbitmap(bmp);
 
             final DisplayMetrics metrics = new DisplayMetrics();
             getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
             paintView.clear(metrics);
             paintView.init(metrics);
         } else {
-            finish();
+            gameDone();
         }
 
     }
@@ -126,17 +129,17 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
 //this code will convert a view to bitmap
 
-    public final Bitmap loadBitmapFromView(View v) {
+    public final Bitmap convertViewToBitmap(View v) {
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        Bitmap b = Bitmap.createBitmap(metrics.widthPixels, metrics.heightPixels, Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(b);
+        Bitmap bitmap = Bitmap.createBitmap(metrics.widthPixels, metrics.heightPixels, Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
         v.layout(0, 0, metrics.widthPixels, metrics.heightPixels);
-        v.draw(c);
-        if (b == null)
+        v.draw(canvas);
+        if (bitmap == null)
             return null;
         else
-            return b;
+            return bitmap;
     }
 
     @Override
@@ -145,5 +148,17 @@ public class LetterTrackingActivity extends AppCompatActivity {
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.clear(metrics);
         finish();
+    }
+
+    //this will be called when game finishes
+    private void gameDone() {
+        finish();
+        Intent intent = new Intent(LetterTrackingActivity.this, WinningActivity.class);
+        startActivity(intent);
+    }
+
+    public void dialog() {
+        CustomDialog cdd = new CustomDialog(LetterTrackingActivity.this);
+        cdd.show();
     }
 }

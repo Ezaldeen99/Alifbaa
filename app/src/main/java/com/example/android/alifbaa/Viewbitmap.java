@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class Viewbitmap {
     private Bitmap mbitmap;
-    private ArrayList mPath;
 
     public int getCounter() {
         return counter;
@@ -20,14 +19,6 @@ public class Viewbitmap {
 
     private int counter;
 
-    public ArrayList getmPath() {
-        return mPath;
-    }
-
-    public void setmPath(ArrayList mPath) {
-        this.mPath = mPath;
-
-    }
 
     public Viewbitmap() {
         super();

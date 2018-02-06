@@ -69,6 +69,13 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".BlackBoardActivity"
+            android:parentActivityName=".LetterTrackingActivity"
+            >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
         <activity android:name=".SettingsActivity"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">

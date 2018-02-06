@@ -19,19 +19,14 @@ public class BlackBoardActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_black_board);
 
-
         paintView = (PaintViewResult) findViewById(R.id.p);
         Button tick = (Button) findViewById(R.id.tick);
 
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-
         paintView.init(metrics);
         ImageView imageView = findViewById(R.id.im);
-
-        Bitmap bmp = loadBitmapFromView(this, paintView);
-
+        Bitmap bmp = ConvertViewToBitmap(this, paintView);
 
         imageView.setImageBitmap(bmp);
         paintView.setVisibility(View.GONE);
@@ -40,25 +35,21 @@ public class BlackBoardActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                paintView.clear();
-                Viewbitmap viewbitmap = new Viewbitmap();
                 finish();
             }
         });
     }
 
-    public static Bitmap loadBitmapFromView(Context context, View v) {
-        DisplayMetrics dm = context.getResources().getDisplayMetrics();
-        v.measure(View.MeasureSpec.makeMeasureSpec(dm.widthPixels, View.MeasureSpec.EXACTLY),
-                View.MeasureSpec.makeMeasureSpec(dm.heightPixels, View.MeasureSpec.EXACTLY));
+    public static Bitmap ConvertViewToBitmap(Context context, View v) {
+        DisplayMetrics displayMetrics = context.getResources().getDisplayMetrics();
+        v.measure(View.MeasureSpec.makeMeasureSpec(displayMetrics.widthPixels, View.MeasureSpec.EXACTLY),
+                View.MeasureSpec.makeMeasureSpec(displayMetrics.heightPixels, View.MeasureSpec.EXACTLY));
         v.layout(0, 0, v.getMeasuredWidth(), v.getMeasuredHeight());
-        Bitmap returnedBitmap = Bitmap.createBitmap(v.getMeasuredWidth(),
+        Bitmap bitmap = Bitmap.createBitmap(v.getMeasuredWidth(),
                 v.getMeasuredHeight(), Bitmap.Config.ARGB_8888);
-        Canvas c = new Canvas(returnedBitmap);
-        v.draw(c);
-
-        return returnedBitmap;
+        Canvas canvas = new Canvas(bitmap);
+        v.draw(canvas);
+        return bitmap;
     }
-
 
 }

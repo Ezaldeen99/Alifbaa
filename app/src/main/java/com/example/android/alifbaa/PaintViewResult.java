@@ -5,9 +5,11 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -20,12 +22,6 @@ public class PaintViewResult extends View {
     public static final int COLOR = Color.RED;
 
     private Paint mPaint;
-    PaintView paintView = new PaintView(getContext());
-
-    public static ArrayList<TouchTrace> getPaths() {
-        return paths;
-    }
-
     public static void setPaths(ArrayList<TouchTrace> paths) {
         PaintViewResult.paths = paths;
     }
@@ -43,7 +39,6 @@ public class PaintViewResult extends View {
         super(context);
 
     }
-
     public PaintViewResult(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mPaint = new Paint();
@@ -60,13 +55,8 @@ public class PaintViewResult extends View {
         mBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
         mCanvas = new Canvas(mBitmap);
 
-        currentColor = COLOR;
+        currentColor =COLOR;
         strokeWidth = BRUSH_SIZE;
-    }
-
-    public void clear() {
-        setPaths(null);
-
     }
 
     @Override
