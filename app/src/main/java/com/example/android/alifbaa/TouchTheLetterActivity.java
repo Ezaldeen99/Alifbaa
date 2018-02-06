@@ -1,12 +1,10 @@
 package com.example.android.alifbaa;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -211,23 +209,8 @@ public class TouchTheLetterActivity extends AppCompatActivity {
     // the dialog function is responsible for displaying alert dialog to notify the user that he will lose his progress
     // if he exit the game and give him two options(Yes,No).
     public void dialog() {
-        AlertDialog.Builder dialog = new AlertDialog.Builder(TouchTheLetterActivity.this);
-        dialog.setMessage("Are You Sure, all the progress will be lost?");
-        dialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                touchTheVoice.release();
-                wrongVoice.release();
-                finish();
-            }
-        });
-        dialog.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.dismiss();
-            }
-        });
-        dialog.create().show();
+        CustomDialog cdd = new CustomDialog(TouchTheLetterActivity.this);
+        cdd.show();
     }
 
     // the game function is responsible for developing the random images for display them on the game screen and ,
