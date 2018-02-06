@@ -14,7 +14,6 @@ import android.widget.TextView;
 import java.util.Random;
 
 
-
 public class MainActivity extends AppCompatActivity {
     ImageView flashCardGame;
     ImageView touchTheLetterGame;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         touchTheLetterGame = (ImageView) findViewById(R.id._2nd_game_button);
         alphabetTilesGame = (ImageView) findViewById(R.id._3rd_game_button);
         letterTrackingGame = (ImageView) findViewById(R.id._4th_game_button);
-        settings =  findViewById(R.id.settings);
+        settings = findViewById(R.id.settings);
         flashCardGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
             d = ran.nextInt(8) + 1;
             text = findViewById(R.id.first_text);
             edit = findViewById(R.id.answer);
-            text.setText(s + " + " + d + " = ");
+            String textString=s + " + " + d + " = ";
+            text.setText(textString);
             text.setTextSize(24);
             yes = findViewById(R.id.btn_yes);
             yes.setOnClickListener(this);

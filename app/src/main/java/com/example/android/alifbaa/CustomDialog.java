@@ -6,13 +6,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
-/**
- * Created by azozs on 1/13/2018.
- */
 
 public class CustomDialog extends android.app.Dialog implements android.view.View.OnClickListener {
-     private Activity c;
-     private Button yes, no;
+    private Activity c;
+    private Button yes, no;
 
 
     CustomDialog(Activity a) {

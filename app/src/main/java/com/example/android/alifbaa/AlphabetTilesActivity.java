@@ -15,9 +15,6 @@ import android.widget.ImageView;
 
 import java.util.Random;
 
-/**
- * Created by brayan pc on 12/4/2017.
- */
 
 public class AlphabetTilesActivity extends AppCompatActivity {
     private static final int NBR_ITEMS = 30;
@@ -113,9 +110,9 @@ public class AlphabetTilesActivity extends AppCompatActivity {
                     if (counter == NBR_ITEMS) {
                         String chronoText = clock.getText().toString();
                         String array[] = chronoText.split(":");
-                        int stoppedMilliseconds = Integer.parseInt(array[1]) * 60 * 1000
-                                + Integer.parseInt(array[2]) * 1000;
-                        int estmateTime = 3660000;
+                        int stoppedMilliseconds = Integer.parseInt(array[1]) * 60 * 100
+                                + Integer.parseInt(array[2]) * 100;
+                        int estmateTime = 36600;
 
                         clock.stop();
                         //TODO Add the right score for the game

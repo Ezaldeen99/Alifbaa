@@ -1,9 +1,5 @@
 package com.example.android.alifbaa;
 
-/**
- * Created by lost on 27/12/2017.
- */
-
 class Letter {
     private int letterId;
     private int letterImg;
@@ -28,10 +24,6 @@ class Letter {
     public Letter(int letterId, int letterImg) {
         this.letterId = letterId;
         this.letterImg = letterImg;
-    }
-
-    public int getLetterId() {
-        return letterId;
     }
 
     public int getLetterImg() {

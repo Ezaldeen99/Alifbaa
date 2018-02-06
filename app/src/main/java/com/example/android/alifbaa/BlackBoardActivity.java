@@ -11,10 +11,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
-
 public class BlackBoardActivity extends Activity {
-   PaintViewResult paintView;
+    PaintViewResult paintView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,19 +33,15 @@ public class BlackBoardActivity extends Activity {
         Bitmap bmp = loadBitmapFromView(this, paintView);
 
 
-
         imageView.setImageBitmap(bmp);
         paintView.setVisibility(View.GONE);
-
 
         tick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 paintView.clear();
-                Viewbitmap viewbitmap=new Viewbitmap();
-
-
+                Viewbitmap viewbitmap = new Viewbitmap();
                 finish();
             }
         });

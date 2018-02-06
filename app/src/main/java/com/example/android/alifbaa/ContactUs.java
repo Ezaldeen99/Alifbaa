@@ -12,9 +12,7 @@ import android.widget.EditText;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by sulaiman on 26/1/2018.
- */
+
 public class ContactUs extends AppCompatActivity {
 
     @Override
@@ -58,8 +56,8 @@ public class ContactUs extends AppCompatActivity {
                     return;
                 }
                 Intent mail = new Intent(Intent.ACTION_SEND);
-                //  alif baa email should be put here:
-                mail.putExtra(Intent.EXTRA_EMAIL, new String[]{"suleiman_hayek@yahoo.com"});
+                //  alif baa email should be replace with down: Alifbaa@Alifbaa.com
+                mail.putExtra(Intent.EXTRA_EMAIL, new String[]{"Alifbaa@Alifbaa.com"});
                 mail.putExtra(Intent.EXTRA_SUBJECT, "Contact Form");
                 mail.putExtra(Intent.EXTRA_TEXT, " Name: " + name + "\n Phone Number: " + phone + "\n context: \n " + mess);
                 mail.setType("message/rfc822");

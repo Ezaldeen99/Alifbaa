@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 
 public class LetterTrackingActivity extends AppCompatActivity {
+
     static ImageView imageView;
     int counter = 1;
     Letter[] letters = {
@@ -117,7 +118,7 @@ public class LetterTrackingActivity extends AppCompatActivity {
             paintView.clear(metrics);
             paintView.init(metrics);
         } else {
-    finish();
+            finish();
         }
 
     }

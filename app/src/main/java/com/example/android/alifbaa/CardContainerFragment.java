@@ -97,14 +97,14 @@ public class CardContainerFragment extends android.app.Fragment {
         CardContainerFragment f = new CardContainerFragment();
         Bundle args = new Bundle();
         args.putInt("image", num);
-        args.putIntArray("AnimalsSounds",AnimalsSounds);
-        args.putIntArray("letterSounds",letterSounds);
-        args.putIntArray("letters",letters);
-        args.putIntArray("animals",animals);
-        args.putIntArray("animalsSpelling",animalsSpelling);
-        args.putIntArray("arabicLetterSpelling",arabicLetterSpelling);
-        args.putIntArray("englishWords",englishWords);
-        args.putIntArray("arabicWords",arabicWords);
+        args.putIntArray("AnimalsSounds", AnimalsSounds);
+        args.putIntArray("letterSounds", letterSounds);
+        args.putIntArray("letters", letters);
+        args.putIntArray("animals", animals);
+        args.putIntArray("animalsSpelling", animalsSpelling);
+        args.putIntArray("arabicLetterSpelling", arabicLetterSpelling);
+        args.putIntArray("englishWords", englishWords);
+        args.putIntArray("arabicWords", arabicWords);
         f.setArguments(args);
         return f;
     }

@@ -1,11 +1,8 @@
 package com.example.android.alifbaa;
 
 import android.graphics.Bitmap;
-import android.util.DisplayMetrics;
-import android.util.Log;
 
 import java.util.ArrayList;
-
 
 
 public class Viewbitmap {
@@ -13,14 +10,12 @@ public class Viewbitmap {
     private ArrayList mPath;
 
     public int getCounter() {
-        Log.e("ssssssssssssssssssg", counter+"");
         return counter;
 
     }
 
     public void setCounter(int counter) {
         this.counter = counter;
-        Log.e("ssssssssssssssssssset", counter+"");
     }
 
     private int counter;
@@ -47,5 +42,5 @@ public class Viewbitmap {
     }
 
 
-    }
+}
 

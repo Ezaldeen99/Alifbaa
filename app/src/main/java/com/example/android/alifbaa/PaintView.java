@@ -672,7 +672,6 @@ public class PaintView extends View {
                 float yhaa1 = Dimensions.DpToPix(340, getContext());
 
 
-
                 Points phaa0 = new Points(Math.round(xhaa0), Math.round(yhaa0));
                 xypoints.add(phaa0);
                 Points phaa1 = new Points(Math.round(xhaa1), Math.round(yhaa1));
@@ -715,7 +714,6 @@ public class PaintView extends View {
     }
 
 
-
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -730,7 +728,7 @@ public class PaintView extends View {
         }
 
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-//        canvas.restore();
+//      canvas.restore();
 
         Paint painttt = new Paint();
         painttt.setStyle(Paint.Style.STROKE);
@@ -755,7 +753,6 @@ public class PaintView extends View {
         }
 
         //to get the bitmap which was generated from converting the image view
-
 
 
         switch (event.getAction()) {
@@ -870,7 +867,6 @@ public class PaintView extends View {
                 break;
 
         }
-
 
 
         return true;

@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
@@ -23,43 +22,50 @@ public class SettingsActivity extends AppCompatActivity {
         //home button
         final ImageView home_button = findViewById(R.id.float_button_home);
         // random order
-        final Switch switch1 = (Switch) findViewById(R.id.random_order);
+        final Switch randomOrderSwitch = (Switch) findViewById(R.id.random_order);
         //enable scoring
-        final Switch switch3 = (Switch) findViewById(R.id.enable_scoring);
+        final Switch enableScoringSwitch = (Switch) findViewById(R.id.enable_scoring);
         // Show hints
-        final Switch switch4 = (Switch) findViewById(R.id.Show_hints);
+        final Switch displayHintsSwitch = (Switch) findViewById(R.id.Show_hints);
         // teacher mode
-        final Switch switch5 = (Switch) findViewById(R.id.teacher_mode);
+        final Switch teacherModeSwitch = (Switch) findViewById(R.id.teacher_mode);
 
+        // checking the sheared preferences if it has Display Hints option enabled ot not.
+        // if it is enabled so checked the switch otherwise unchecked it.
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         if (preferences.contains("HINTS")) {
             String displayHints = preferences.getString("HINTS", "ON");
             if (displayHints.equals("ON"))
-                switch4.setChecked(true);
+                displayHintsSwitch.setChecked(true);
             else
-                switch4.setChecked(false);
+                displayHintsSwitch.setChecked(false);
         } else
-            switch4.setChecked(true);
+            displayHintsSwitch.setChecked(true);
 
+        // checking the sheared preferences if it has Random Order option enabled ot not.
+        // if it is enabled so checked the switch otherwise unchecked it.
         if (preferences.contains("RANDOM")) {
             String randomOrder = preferences.getString("RANDOM", "OFF");
             if (randomOrder.equals("ON"))
-                switch1.setChecked(true);
+                randomOrderSwitch.setChecked(true);
             else
-                switch1.setChecked(false);
+                randomOrderSwitch.setChecked(false);
         } else
-            switch1.setChecked(false);
+            randomOrderSwitch.setChecked(false);
 
+        // checking the sheared preferences if it has Enable Scoring option enabled ot not.
+        // if it is enabled so checked the switch otherwise unchecked it.
         if (preferences.contains("SCORING")) {
             String enableScoring = preferences.getString("SCORING", "ON");
             if (enableScoring.equals("ON"))
-                switch1.setChecked(true);
+                randomOrderSwitch.setChecked(true);
             else
-                switch1.setChecked(false);
+                randomOrderSwitch.setChecked(false);
         } else
-            switch1.setChecked(true);
-               // contact us
-         TextView contact_text = findViewById(R.id.contact);
+            randomOrderSwitch.setChecked(true);
+
+        // contact us
+        TextView contact_text = findViewById(R.id.contact);
         contact_text.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,71 +78,70 @@ public class SettingsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
-                if (home_button.isClickable()) {
-                    Toast.makeText(SettingsActivity.this, "home button activiated", Toast.LENGTH_SHORT).show();
-                } else
-                    Toast.makeText(SettingsActivity.this, " home button deactiviated", Toast.LENGTH_SHORT).show();
             }
         });
         //  i used the setonCheckedChangeListner instead of the setOnclickListner
         // setOnCheckedListner inherits compoundbutton attributes
-        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        randomOrderSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                // ischecked switch1 ?
+                // Here the SharedPreferences will edit the value of Random Order Option value according to
+                // the switch if it is checked or not.
+                // Checked -> ON
+                // UnChecked -> OFF
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
                 SharedPreferences.Editor editor = preferences.edit();
-
-                if (switch1.isChecked()) {
+                if (randomOrderSwitch.isChecked()) {
                     editor.putString("RANDOM", "ON");
-                    Log.v("RANDOM","Are NOW ON");
-                }
-                else {
+                } else {
                     editor.putString("RANDOM", "OFF");
-                    Log.v("RANDOM","Are NOW OFF");
                 }
                 editor.apply();
             }
         });
 
-        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        enableScoringSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                // Here the SharedPreferences will edit the value of Enable Scoring Option value according to
+                // the switch if it is checked or not.
+                // Checked -> ON
+                // UnChecked -> OFF
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
                 SharedPreferences.Editor editor = preferences.edit();
 
-                if (switch3.isChecked()) {
+                if (enableScoringSwitch.isChecked()) {
                     editor.putString("SCORING", "ON");
-                    Log.v("SCORING","Are NOW ON");
-                }
-                else {
+                } else {
                     editor.putString("SCORING", "OFF");
-                    Log.v("SCORING","Are NOW OFF");
                 }
                 editor.apply();
             }
         });
-        switch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        displayHintsSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+
+                // Here the SharedPreferences will edit the value of Display Hints Option value according to
+                // the switch if it is checked or not.
+                // Checked -> ON
+                // UnChecked -> OFF
                 SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
                 SharedPreferences.Editor editor = preferences.edit();
 
-                if (switch4.isChecked()) {
+                if (displayHintsSwitch.isChecked()) {
                     editor.putString("HINTS", "ON");
-                    Log.v("HINTS","Are NOW ON");
-                }
-                else {
+                } else {
                     editor.putString("HINTS", "OFF");
-                    Log.v("HINTS","Are NOW OFF");
 
                 }
                 editor.apply();
             }
         });
-        switch5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        teacherModeSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if (switch5.isChecked()) {
+                if (teacherModeSwitch.isChecked()) {
                     Toast.makeText(SettingsActivity.this, "teacher mode is on", Toast.LENGTH_SHORT).show();
                 } else
                     Toast.makeText(SettingsActivity.this, "teacher mode is off", Toast.LENGTH_SHORT).show();

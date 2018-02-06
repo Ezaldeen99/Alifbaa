@@ -128,10 +128,10 @@ public class TouchTheLetterActivity extends AppCompatActivity {
         imageViews[2] = image3;
         imageViews[3] = image4;
 
-        // For Displaying the hints ,checking the sharedPreferences
+        // Check the SharedPreferences for Enabling Random Order and Display Hints Options from settings activity.
+        // For Displaying the hints .
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         String displayHints = preferences.getString("HINTS", "ON");
-        Log.v("HINTS Are ", displayHints);
 
         if (!displayHints.equals("ON")) {
             findTheLetterText.setVisibility(View.INVISIBLE);
@@ -141,7 +141,7 @@ public class TouchTheLetterActivity extends AppCompatActivity {
             questionLetterImg.setVisibility(View.VISIBLE);
         }
 
-        // for random order Activation
+        // for random order Activation, it is ON so the letters inside array will be replaced.
         String randomOrder = preferences.getString("RANDOM", "OFF");
         if (randomOrder.equals("ON")) {
             for (int item = letters.length - 1; item > 0; item--) {
