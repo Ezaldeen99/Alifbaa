@@ -14,8 +14,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class SettingsActivity extends AppCompatActivity {
-//sulaiman
-   @Override
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
@@ -24,8 +24,8 @@ public class SettingsActivity extends AppCompatActivity {
         final ImageView home_button = findViewById(R.id.float_button_home);
         // random order
         final Switch switch1 = (Switch) findViewById(R.id.random_order);
-        // Lowercase letters
-
+        //enable scoring
+        final Switch switch3 = (Switch) findViewById(R.id.enable_scoring);
         // Show hints
         final Switch switch4 = (Switch) findViewById(R.id.Show_hints);
         // teacher mode
@@ -42,8 +42,17 @@ public class SettingsActivity extends AppCompatActivity {
             switch4.setChecked(true);
 
         if (preferences.contains("RANDOM")) {
-            String randomOrder = preferences.getString("RANDOM", "ON");
+            String randomOrder = preferences.getString("RANDOM", "OFF");
             if (randomOrder.equals("ON"))
+                switch1.setChecked(true);
+            else
+                switch1.setChecked(false);
+        } else
+            switch1.setChecked(false);
+
+        if (preferences.contains("SCORING")) {
+            String enableScoring = preferences.getString("SCORING", "ON");
+            if (enableScoring.equals("ON"))
                 switch1.setChecked(true);
             else
                 switch1.setChecked(false);
@@ -89,6 +98,23 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+        switch3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(SettingsActivity.this);
+                SharedPreferences.Editor editor = preferences.edit();
+
+                if (switch3.isChecked()) {
+                    editor.putString("SCORING", "ON");
+                    Log.v("SCORING","Are NOW ON");
+                }
+                else {
+                    editor.putString("SCORING", "OFF");
+                    Log.v("SCORING","Are NOW OFF");
+                }
+                editor.apply();
+            }
+        });
         switch4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
