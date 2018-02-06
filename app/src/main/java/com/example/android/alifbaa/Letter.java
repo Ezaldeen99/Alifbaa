@@ -1,8 +1,5 @@
 package com.example.android.alifbaa;
 
-/**
- * Created by lost on 27/12/2017.
- */
 
 class Letter {
     private int letterId;
