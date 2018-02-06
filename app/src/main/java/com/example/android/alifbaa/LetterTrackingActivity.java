@@ -144,10 +144,11 @@ public class LetterTrackingActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        dialog();
         final DisplayMetrics metrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
         paintView.clear(metrics);
-        finish();
+
     }
 
     //this will be called when game finishes
