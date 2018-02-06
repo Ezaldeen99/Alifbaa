@@ -71,6 +71,7 @@
         </activity>
         <activity android:name=".BlackBoardActivity"
             android:parentActivityName=".LetterTrackingActivity"
+            android:screenOrientation="portrait"
             >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -86,10 +87,7 @@
         </activity>
         <activity android:name=".WinningActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".TeacherMode"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".BlackBoardActivity"
-            android:screenOrientation="portrait"/>
+
     </application>
 
 </manifest>
