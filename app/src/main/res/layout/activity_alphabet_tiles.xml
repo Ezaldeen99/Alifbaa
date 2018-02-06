@@ -6,23 +6,8 @@
     android:background="@drawable/background_colored"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/clouds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/clouds" />
+    <include layout="@layout/background_objects" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <ImageView
-        android:id="@+id/grass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/grass" />
 
     <Chronometer
         android:id="@+id/clock"
@@ -42,8 +27,8 @@
         android:layout_centerInParent="true"
         android:layout_gravity="center"
         android:layout_margin="16dp"
-        android:rotationY="180"
         android:clipToPadding="true"
+        android:rotationY="180"
         app:columnCount="5" />
 
     <Button

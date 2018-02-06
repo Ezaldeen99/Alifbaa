@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="16dp"
-        android:text="alif"
+        android:text="@string/alif"
         android:textColor="@color/words_color"
         android:textSize="24sp"
         android:textStyle="bold" />

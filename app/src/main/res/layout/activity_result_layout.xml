@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fefefe"
     android:orientation="vertical"
-    android:paddingBottom="8dp"
-    android:background="#fefefe">
+    android:paddingBottom="8dp">
 
     <TextView
         android:id="@+id/letter_sound_text"
@@ -12,16 +13,17 @@
         android:layout_height="0dp"
         android:layout_weight="0.5"
         android:gravity="center"
-        android:text="alif"
-        android:textStyle="bold"
         android:textColor="#284c6a"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textStyle="bold"
+        tools:text="alif" />
 
     <ImageView
         android:id="@+id/letter_animal_img"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="4"
+        android:contentDescription="@string/object_image"
         android:src="@drawable/animal_a" />
 
     <ImageView
@@ -29,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:contentDescription="@string/object_word_writing_in_arabic"
         android:src="@drawable/spelling_a" />
 
     <TextView
@@ -36,17 +39,18 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.5"
-        android:text="rabbit"
-        android:textStyle="bold"
+        android:gravity="center"
         android:textColor="#284c6a"
         android:textSize="24sp"
-        android:gravity="center"/>
+        android:textStyle="bold"
+        tools:text="rabbit" />
 
     <ImageView
         android:id="@+id/tick_button"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.4"
-        android:gravity="left"
+        android:contentDescription="@string/tick_button"
+        android:gravity="start"
         android:src="@drawable/tickbutton" />
 </LinearLayout>

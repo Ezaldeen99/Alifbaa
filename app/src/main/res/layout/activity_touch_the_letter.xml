@@ -30,7 +30,8 @@
             android:layout_height="80dp"
             android:layout_gravity="center"
             android:layout_marginBottom="15dp"
-            android:src="@drawable/letter_a" />
+            android:src="@drawable/letter_a"
+            android:contentDescription="@string/hint_letter_image" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +46,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/letter_a" />
+                android:src="@drawable/letter_a"
+                android:contentDescription="@string/letter_image_option_one" />
 
             <ImageView
                 android:id="@+id/image2"
@@ -53,7 +55,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/letter_d" />
+                android:src="@drawable/letter_d"
+                android:contentDescription="@string/letter_image_option_two" />
         </LinearLayout>
 
         <LinearLayout
@@ -69,7 +72,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/letter_f" />
+                android:src="@drawable/letter_f"
+                android:contentDescription="@string/letter_image_option_three" />
 
             <ImageView
                 android:id="@+id/image4"
@@ -77,7 +81,8 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:src="@drawable/letter_c" />
+                android:src="@drawable/letter_c"
+                android:contentDescription="@string/letter_image_option_four" />
         </LinearLayout>
 
         <Button

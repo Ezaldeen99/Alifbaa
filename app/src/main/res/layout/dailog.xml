@@ -26,14 +26,14 @@
             android:id="@+id/btn_no"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:background="@drawable/leftbutton"/>
+            android:background="@drawable/leftbutton" />
 
         <Button
             android:id="@+id/btn_yes"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginStart="30dp"
-            android:background="@drawable/tickbutton"/>
+            android:background="@drawable/tickbutton" />
     </LinearLayout>
 
 </LinearLayout>

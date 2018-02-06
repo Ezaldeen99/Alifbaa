@@ -5,27 +5,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/background_colored">
 
-    <ImageView
-        android:id="@+id/clouds"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/clouds" />
-    <ImageView
-        android:id="@+id/grass"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/grass" />
+    <include layout="@layout/background_objects" />
+
     <ImageView
         android:id="@+id/letter-tracing"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/letter_a" />
-
-
+        android:src="@drawable/letter_a"
+        android:contentDescription="@string/image_letter_to_trace" />
 
     <com.example.android.alifbaa.PaintView
         android:id="@+id/paintView"
@@ -35,7 +24,6 @@
     android:id="@+id/none"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="aaaaaaa"
     android:visibility="gone"
     android:background="#000000"
     android:layout_alignParentBottom="true"/>
