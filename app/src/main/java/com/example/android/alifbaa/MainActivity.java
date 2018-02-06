@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Random;
 
@@ -75,7 +76,9 @@ public class MainActivity extends AppCompatActivity {
         private Button yes;
         TextView text;
         EditText edit;
-        int answer, s, d;
+        String answer;
+        int s;
+        int d;
 
         SettingDialog(Activity a) {
             super(a);
@@ -92,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
             d = ran.nextInt(8) + 1;
             text = findViewById(R.id.first_text);
             edit = findViewById(R.id.answer);
-            String textString=s + " + " + d + " = ";
+            String textString = s + " + " + d + " = ";
             text.setText(textString);
             text.setTextSize(24);
             yes = findViewById(R.id.btn_yes);
@@ -104,11 +107,12 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View view) {
             switch (view.getId()) {
                 case R.id.btn_yes:
-                    answer = Integer.parseInt(edit.getText().toString());
-                    if (answer == s + d) {
+                    answer = edit.getText().toString();
+                    if (answer.equals(String.valueOf(s + d))) {
                         Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                         startActivity(intent);
-                    }
+                    } else
+                        Toast.makeText(MainActivity.this, "Insert Correct Number", Toast.LENGTH_SHORT).show();
                     break;
                 default:
                     dismiss();
