@@ -22,12 +22,6 @@ public class PaintViewResult extends View {
     public static final int COLOR = Color.RED;
 
     private Paint mPaint;
-    PaintView paintView=new PaintView(getContext());
-
-    public static ArrayList<TouchTrace> getPaths() {
-        return paths;
-    }
-
     public static void setPaths(ArrayList<TouchTrace> paths) {
         PaintViewResult.paths = paths;
     }
@@ -63,10 +57,6 @@ public class PaintViewResult extends View {
 
         currentColor =COLOR;
         strokeWidth = BRUSH_SIZE;
-    }
-    public void clear() {
-        setPaths(null);
-
     }
 
     @Override
